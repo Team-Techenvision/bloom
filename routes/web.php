@@ -40,8 +40,7 @@ Route::get('/clear-cache', function() {
     dd("Cache is cleared");
 });
 
-Route::get('/registration', 'Website\WebsiteController@registration');
-Route::get('/login', 'Website\WebsiteController@login');
+
 
 
 
@@ -137,6 +136,6 @@ Route::middleware(['auth', 'Admin'])->group(function () {
     Route::get('myform/getchapter/{id}',array('as'=>'getchapter.ajax','uses'=>'AdminController@getchapter'));
 });
 
-// Route::get('{any}', 'QovexController@logout');
+Route::get('{any}', 'QovexController@logout');
 
 
