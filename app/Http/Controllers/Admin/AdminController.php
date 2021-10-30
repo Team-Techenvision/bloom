@@ -134,7 +134,7 @@ class AdminController extends Controller
         $data['page_title'] = 'All Categories';       
        $data['Categories'] =  Categories::get();
         // dd($data);
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
     public function add_category()
@@ -142,7 +142,7 @@ class AdminController extends Controller
         $data['flag'] = 7; 
         $data['page_title'] = 'Add Categories';
         $data['Categories'] = Categories::where('status',"1")->get(); 
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
     public function submit_category(Request $req)
@@ -229,7 +229,7 @@ class AdminController extends Controller
         $data['page_title'] = 'Edit Category'; 
         $data['categories'] = Categories::where('id',$id)->first(); 
         // dd($data);
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
 
@@ -248,7 +248,7 @@ class AdminController extends Controller
         $data['page_title'] = 'All Sub Categories';       
        $data['Sub_Categories'] =  SubCategories::get();
         // dd($data);
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
     public function add_sub_category()
@@ -256,7 +256,7 @@ class AdminController extends Controller
         $data['flag'] = 10; 
         $data['page_title'] = 'Add Sub Categories';
         $data['Categories'] = Categories::where('status',"1")->get(); 
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
     public function submit_sub_category(Request $req)
@@ -345,7 +345,7 @@ class AdminController extends Controller
         $data['Categories'] = Categories::get(); 
         $data['SubCategories'] = SubCategories::where('id',$id)->first(); 
         // dd($data);
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
 
@@ -364,7 +364,7 @@ class AdminController extends Controller
         $data['page_title'] = 'All Blog';       
        $data['blogs'] =  Blogs::get();
         // dd($data);
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
     public function add_blogs()
@@ -372,7 +372,7 @@ class AdminController extends Controller
         $data['flag'] = 13; 
         $data['page_title'] = 'Add Blog';
         // $data['tabs'] = Tabs::where('status',"1")->get(); 
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
     public function submit_blogs(Request $req){            
@@ -445,7 +445,7 @@ class AdminController extends Controller
         $data['page_title'] = 'Edit Blog'; 
         $data['blogs'] = Blogs::where('id',$id)->first(); 
         // dd($data);
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
     public function delete_blogs($id){ 
@@ -460,7 +460,7 @@ class AdminController extends Controller
         $data['page_title'] = 'All Plan';       
        $data['plans'] =  Plans::get();
         // dd($data);
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
     public function add_plans()
@@ -468,7 +468,7 @@ class AdminController extends Controller
         $data['flag'] = 16; 
         $data['page_title'] = 'Add Plan';
         // $data['tabs'] = Tabs::where('status',"1")->get(); 
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
     public function submit_plans(Request $req)
     {
@@ -521,7 +521,7 @@ class AdminController extends Controller
         $data['page_title'] = 'Edit Plan'; 
         $data['plans'] = Plans::where('id',$id)->first(); 
         // dd($data);
-        return view('Admin/webviews/manage_admin_user',$data);
+        return view('Admin/Webviews/manage_admin_user',$data);
     }
 
     public function update_plan_status($id, $status){ 
