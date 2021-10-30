@@ -1,0 +1,4 @@
+
+body[data-layout=detached] #layout-wrapper::before {
+    background: linear-gradient(to right, #325805, #47851e)!important;
+}
