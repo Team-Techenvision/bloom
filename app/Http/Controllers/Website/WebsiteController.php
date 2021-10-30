@@ -5,11 +5,17 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Banner;
+use App\Blogs;
+use App\Categories;
+
 class WebsiteController extends Controller
 {
     public function index()
     {
         $data['flag'] = 1;
+        $data['banner'] = Banner::where('status',1)->first();
+        $data['categories_contain'] = Categories::where('status',1)->get();
         return view('Website/Webviews/manage_website_pages',$data);
     }
 
@@ -22,11 +28,14 @@ class WebsiteController extends Controller
     public function categories()
     {
         $data['flag'] = 3;
+        $data['categories_contain'] = Categories::where('status',1)->get();
         return view('Website/Webviews/manage_website_pages',$data);
     }
     public function blog_Page()
     {
         $data['flag'] = 4;
+        $data['blog_contain'] = Blogs::where('status',1)->get();
+       // dd($data['blog_contain']);
         return view('Website/Webviews/manage_website_pages',$data);
         
     }
