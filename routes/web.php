@@ -85,6 +85,14 @@ Route::middleware(['auth', 'Admin'])->group(function () {
     Route::get('update-blogs/{id}/{status}', 'Admin\AdminController@update_tab_status');
 
 
+    Route::get('view-plans', 'Admin\AdminController@view_plans');
+    Route::get('add-plans', 'Admin\AdminController@add_plans');
+    Route::post('submit-plans', 'Admin\AdminController@submit_plans');
+    Route::get('edit-plans/{id}', 'Admin\AdminController@edit_plans');
+    Route::get('delete-plans/{id}', 'Admin\AdminController@delete_plans');
+    Route::get('update-plans/{id}/{status}', 'Admin\AdminController@update_plan_status');
+
+
 });
 
 Route::get('{any}', 'Website\WebsiteController@index');
