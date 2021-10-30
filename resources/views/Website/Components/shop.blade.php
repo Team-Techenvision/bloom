@@ -1,4 +1,4 @@
-<div class="detail-block detail-block_margin">
+<div class="detail-block detail-block_margin" style="background-image: url('Website/img/image/1-1-1536x583.png')">
     <div class="wrapper">
         <div class="detail-block__content">
             <h1>Shop</h1>
@@ -366,7 +366,7 @@
     <div class="wrapper">
         <div class="subscribe-form">
             <div class="subscribe-form__img">
-                <img data-src="https://via.placeholder.com/460x302" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+                <img data-src="{{asset('Website/img/image/logo1.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
                     class="js-img" alt="">
             </div>
             <form>
@@ -376,7 +376,7 @@
                     <div class="box-field">
                         <input type="text" class="form-control" placeholder="Enter your email">
                     </div>
-                    <button type="submit" class="btn">subscribe</button>
+                    <button type="submit" class="btn btn-info">subscribe</button>
                 </div>
             </form>
         </div>

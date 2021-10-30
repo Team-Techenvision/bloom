@@ -49,7 +49,7 @@
                                 <span class="products-item__sale">sale</span>
                             </div>
                             <div class="products-item__img">
-                                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                <img data-src="{{asset('Website/img/image/luchiana-1959282579.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                                 <div class="products-item__hover">
                                     <i class="icon-search"></i>
                                     <div class="products-item__hover-options">
@@ -68,7 +68,7 @@
                                 <span class="products-item__new">new</span>
                             </div>
                             <div class="products-item__img">
-                                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                <img data-src="{{asset('Website/img/image/Image-PD5EM2N-paqh2933y9yyjgzoj7uidzu7mivvgwkp7fywyxv2gw.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                                 <div class="products-item__hover">
                                     <i class="icon-search"></i>
                                     <div class="products-item__hover-options">
@@ -87,7 +87,7 @@
                                 <span class="products-item__sale">sale</span>
                             </div>
                             <div class="products-item__img">
-                                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                <img data-src="{{asset('Website/img/image/female-hands-with-soap-foam-KVKDKGZ.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                                 <div class="products-item__hover">
                                     <i class="icon-search"></i>
                                     <div class="products-item__hover-options">
@@ -106,7 +106,7 @@
                                 <span class="products-item__sale">sale</span>
                             </div>
                             <div class="products-item__img">
-                                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                <img data-src="{{asset('Website/img/image/luchiana-1959487418-460x259.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                                 <div class="products-item__hover">
                                     <i class="icon-search"></i>
                                     <div class="products-item__hover-options">
@@ -125,7 +125,7 @@
                                 <span class="products-item__sale">sale</span>
                             </div>
                             <div class="products-item__img">
-                                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                                 <div class="products-item__hover">
                                     <i class="icon-search"></i>
                                     <div class="products-item__hover-options">
@@ -148,7 +148,7 @@
                                 <span class="products-item__sale">sale</span>
                             </div>
                             <div class="products-item__img">
-                                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                                 <div class="products-item__hover">
                                     <i class="icon-search"></i>
                                     <div class="products-item__hover-options">
@@ -171,7 +171,7 @@
                                 <span class="products-item__sale">sale</span>
                             </div>
                             <div class="products-item__img">
-                                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                                <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                                 <div class="products-item__hover">
                                     <i class="icon-search"></i>
                                     <div class="products-item__hover-options">
@@ -367,15 +367,15 @@
         </div>
 
     </div>
-    <div class="info-blocks__item info-blocks__item-reverse js-img" data-src="https://via.placeholder.com/960x900">
+    <div class="info-blocks__item info-blocks__item-reverse js-img" data-src="{{asset('Website/img/image/coconut-soap-HWRZKN3-683x1024-1-200x300.jpg')}}">
         <div class="wrapper">
             <div class="info-blocks__item-img">
-                <img data-src="https://via.placeholder.com/960x900" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                 <iframe allowfullscreen></iframe>
                 <div class="info-blocks__item-img-overlay">
                     <span>Promotion video</span>
                     <div class="info-blocks__item-img-play">
-                        <img data-src="img/play-btn.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                        <img data-src="{{asset('Website/img/image/play-white-1.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                     </div>
                 </div>
             </div>
@@ -409,7 +409,7 @@
                 <span class="products-item__new">new</span>
             </div>
             <div class="products-item__img">
-                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                 <div class="products-item__hover">
                     <i class="icon-search"></i>
                     <div class="products-item__hover-options">
@@ -428,7 +428,7 @@
                 <span class="products-item__new">new</span>
             </div>
             <div class="products-item__img">
-                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                <img data-src="{{asset('Website/img/image/luchiana-1959487418-460x259.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                 <div class="products-item__hover">
                     <i class="icon-search"></i>
                     <div class="products-item__hover-options">
@@ -447,7 +447,7 @@
                 <span class="products-item__new">new</span>
             </div>
             <div class="products-item__img">
-                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                <img data-src="{{asset('Website/img/image/Image.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                 <div class="products-item__hover">
                     <i class="icon-search"></i>
                     <div class="products-item__hover-options">
@@ -467,7 +467,7 @@
                 <span class="products-item__new">new</span>
             </div>
             <div class="products-item__img">
-                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                <img data-src="{{asset('Website/img/image/luchiana-1959282579.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                 <div class="products-item__hover">
                     <i class="icon-search"></i>
                     <div class="products-item__hover-options">
@@ -486,7 +486,7 @@
                 <span class="products-item__sale">sale</span>
             </div>
             <div class="products-item__img">
-                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                <img data-src="{{asset('Website/img/image/coconut-soap-HWRZKN3-683x1024-1-200x300.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                 <div class="products-item__hover">
                     <i class="icon-search"></i>
                     <div class="products-item__hover-options">
@@ -515,7 +515,7 @@
         <div class="blog-items">
             <div class="blog-item">
                 <a href="#" class="blog-item__img">
-                    <img data-src="https://via.placeholder.com/555x300" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                    <img data-src="{{asset('Website/img/image/luchiana-1959282579.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                     <span class="blog-item__date">
                         <span>Aug</span> 10
                     </span>
@@ -526,7 +526,7 @@
             </div>
             <div class="blog-item">
                 <a href="#" class="blog-item__img">
-                    <img data-src="https://via.placeholder.com/555x300" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                    <img data-src="{{asset('Website/img/image/coconut-soap-HWRZKN3-683x1024-1-200x300.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                     <span class="blog-item__date">
                         <span>Aug</span> 08
                     </span>
@@ -547,7 +547,7 @@
     <div class="wrapper">
         <div class="subscribe-form">
             <div class="subscribe-form__img">
-                <img data-src="https://via.placeholder.com/460x302" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                <img data-src="{{asset('Website/img/image/logo1.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
             </div>
             <form>
                 <h3>Stay in touch</h3>

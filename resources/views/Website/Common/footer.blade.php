@@ -7,7 +7,7 @@
     </div>
     <div class="header-content">
         <div class="header-logo" style="height: 50px;">
-            <img src="{{asset('Website/img/logo.png')}}" alt="" style="height: 100%;">
+            <img src="{{asset('images/logo.png')}}" alt="" style="height: 100%;">
         </div>
         <div class="header-box">
             <ul class="header-nav">

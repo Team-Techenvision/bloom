@@ -1,5 +1,5 @@
  <!-- BEGIN DETAIL MAIN BLOCK -->
- <div class="detail-block">
+ <div class="detail-block" style="background-image: url('Website/img/image/spa-soap-composition-with-orchid-3ZF6FTM.jpg')">
     <div class="wrapper">
         <div class="detail-block__content" >
             <h1>Contact</h1>
@@ -58,8 +58,8 @@
                 <p>
                     Email us if you have any questions, we will be sure to contact you and find a solution. Also,
                     our managers will help you choose the product that suits you best, at the best price. From year
-                    to year, the BeShop network develops and improves, taking into account all consumer needs and
-                    market trends. But for us, the concern remains that when coming to the BeShop store, customers
+                    to year, the Bloom network develops and improves, taking into account all consumer needs and
+                    market trends. But for us, the concern remains that when coming to the Bloom store, customers
                     do not have questions about the convenience and comfort of shopping, product quality and
                     the level of professionalism of sales consultants.
                 </p>
