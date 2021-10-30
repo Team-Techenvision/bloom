@@ -1,7 +1,7 @@
  <!-- BEGIN DETAIL MAIN BLOCK -->
  <div class="detail-block">
     <div class="wrapper">
-        <div class="detail-block__content">
+        <div class="detail-block__content" >
             <h1>Contact</h1>
             <ul class="bread-crumbs">
                 <li class="bread-crumbs__item">
@@ -17,8 +17,9 @@
                         <i class="icon-map-pin-big"></i>
                     </div>
                     <div class="detail-block__item-info">
-                        27 Division St, New<br>
-                        York, NY 10002, USA
+                        9806 A Sector 3 Rd Phase 13th Main, Yelahanka New
+                            Town, Bengaluru, Karnataka
+                            560064
                     </div>
                 </div>
                 <div class="detail-block__item">
@@ -39,8 +40,8 @@
                         <i class="icon-2"></i>
                     </div>
                     <div class="detail-block__item-info">
-                        Mon - Fri: 9 am - 6 pm<br>
-                        Sat - Sun: Holiday
+                        Mon - Sat: 7am – 6pm<br>
+                        Sunday: Holiday
                     </div>
                 </div>
             </div>
@@ -91,8 +92,8 @@
 </div>
 <!-- LOGOS EOF   -->
 <!-- BEGIN DISCOUNT -->
-<div class="discount discount-contacts js-img" data-src="https://via.placeholder.com/1920x1067">
-    <div class="wrapper">
+<div class="discount discount-contacts js-img" data-src="{{asset('Website/img/image/spa-soap-composition-with-orchid-3ZF6FTM.jpg')}}" style="background-attachment: fixed;">
+    <div class="wrapper" >
         <div class="discount-info">
             <span class="saint-text">write to us</span>
             <span class="main-text">leave a message</span>
@@ -109,7 +110,7 @@
                 <div class="box-field box-field__textarea">
                     <textarea class="form-control" placeholder="Enter your message"></textarea>
                 </div>
-                <button type="submit" class="btn">send</button>
+                <button type="submit" class="btn btn-info">send</button>
             </form>
         </div>
     </div>
@@ -117,7 +118,9 @@
 <!-- DISCOUNT EOF   -->
 <!-- BEGIN CONTACTS MAP -->
 <div class="contacts-map">
-    <div id="map"></div>
+    <div id="map1">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d343.4864031675898!2d77.58805909564494!3d13.092529034859924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae185cddbddf4d%3A0x92c6f685d0f84a8a!2sPhase%2013th!5e0!3m2!1sen!2sin!4v1635505785728!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
 </div>
 <!-- CONTACTS MAP EOF   -->
 <!-- BEGIN INSTA PHOTOS -->

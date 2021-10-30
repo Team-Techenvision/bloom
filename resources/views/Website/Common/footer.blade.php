@@ -6,17 +6,17 @@
         <i class="header-top-close js-header-top-close icon-close"></i>
     </div>
     <div class="header-content">
-        <div class="header-logo">
-            <img src="img/header-logo.svg" alt="">
+        <div class="header-logo" style="height: 50px;">
+            <img src="{{asset('Website/img/logo.png')}}" alt="" style="height: 100%;">
         </div>
         <div class="header-box">
             <ul class="header-nav">
-                <li><a href="{{url('/')}}" class="active">Home</a></li>
-                <li><a href="{{url('/about')}}" class="">About us</a></li>
-                <li><a href="{{url('/shop')}}">shop</a></li>
-                <li><a href="{{url('/categories')}}">Categories</a></li>
-                <li><a href="{{url('/blog')}}">blog</a></li>
-                <li><a href="{{url('/contacts')}}">contact</a></li>
+                <li><a href="{{url('/')}}" class="@if($flag == 1)active @endif">Home</a></li>
+                <li><a href="{{url('/about')}}" class="@if($flag == 8)active @endif">About us</a></li>
+                <li><a href="{{url('/shop')}}" class="@if($flag == 2)active @endif">shop</a></li>
+                <li><a href="{{url('/categories')}}" class="@if($flag == 3)active @endif">Categories</a></li>
+                <li><a href="{{url('/blog')}}" class="@if($flag == 4)active @endif">blog</a></li>
+                <li><a href="{{url('/contacts')}}" class="@if($flag == 5)active @endif">contact</a></li>
             </ul>
             <ul class="header-options">
                 <li><a href="#"><i class="icon-search"></i></a></li>
@@ -61,7 +61,7 @@
             </div>
             <div class="footer-nav">
                 <div class="footer-nav__col">
-                    <span class="footer-nav__col-title">About</span>
+                    <span class="footer-nav__col-title">Our company</span>
                     <ul>
                         <li><a href="{{url('about')}}">About us</a></li>
                         <li><a href="{{url('/categories')}}">Categories</a></li>
@@ -72,7 +72,8 @@
                     </ul>
                 </div>
                 <div class="footer-nav__col">
-                    <span class="footer-nav__col-title">Categories</span>
+                    {{-- <span class="footer-nav__col-title">Categories</span> --}}
+                    <span class="footer-nav__col-title">Useful links</span>
                     <ul>
                         <li><a href="#">Make up</a></li>
                         <li><a href="#">SPA</a></li>
@@ -83,7 +84,7 @@
                     </ul>
                 </div>
                 <div class="footer-nav__col">
-                    <span class="footer-nav__col-title">Useful links</span>
+                    <span class="footer-nav__col-title">Follow us</span>
                     <ul>
                         <li><a href="#">Careers</a></li>
                         <li><a href="#">Privacy policy</a></li>
@@ -96,20 +97,22 @@
                 <div class="footer-nav__col">
                     <span class="footer-nav__col-title">Contact</span>
                     <ul>
-                        <li><i class="icon-map-pin"></i> 27 Division St, New York, NY 10002, USA</li>
+                        <li><i class="icon-map-pin"></i> 9806 A Sector 3 Rd Phase 13th Main, Yelahanka New
+                            Town, Bengaluru, Karnataka
+                            560064</li>
                         <li>
                             <i class="icon-smartphone"></i>
                             <div class="footer-nav__col-phones">
-                                <a href="tel:+13459971345">+1 345 99 71 345</a>
-                                <a href="tel:+13457464975">+1 345 74 64 975</a>
+                                <a href="tel:+13459971345">+1.322.786.1983</a>
+                                <a href="tel:+13457464975">+1.322.786.1983</a>
                             </div>
                         </li>
-                        <li><i class="icon-mail"></i><a href="mailto:info@beshop.com">info@beshop.com</a></li>
+                        {{-- <li><i class="icon-mail"></i><a href="mailto:info@beshop.com">info@beshop.com</a></li> --}}
                     </ul>
                 </div>
             </div>
             <div class="footer-copy">
-                <span>&copy; All rights reserved. BeShop 2020</span>
+                <span>&copy; All rights reserved. Bloom <?= date('Y'); ?></span>
             </div>
         </div>
     </footer>

@@ -5,7 +5,7 @@
 
         <div class="user-wid text-center py-4">
             <div class="user-img">
-                <img src="{{asset('images/users/avatar-2.jpg')}}" alt="" class="avatar-md mx-auto rounded-circle">
+                <img src="{{asset('images/users/avatar-4.jpg')}}" alt="" class="avatar-md mx-auto rounded-circle">
             </div>
 
             <div class="mt-3">
@@ -38,17 +38,11 @@
                         <span>Master Pages</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">  
-                        <li><a href="{{url('view-medium')}}">View Medium</a></li>
-                        <li><a href="{{url('view-standard')}}"> View Standard</a></li>
-                        <li><a href="{{url('view-subject')}}"> View Subject</a></li>
-                        <li><a href="{{url('view-chapter')}}">View Chapter</a></li>
-                        <li><a href="{{url('view-video')}}">View Video Link</a></li>
-                        {{-- <li><a href="add-standard">Add Standard</a></li>
-                        <li><a href="add-subject">Add Subject</a></li>
-                        <li><a href="add-chapter">Add Chapter</a></li> --}}                       
-                        {{-- <li><a href="{{url('view-semister')}}">View Semester</a></li> --}}                       
-                        {{-- <li><a href="{{url('view-college')}}">View College</a></li> --}}
-                        {{-- <li><a href="{{url('view-test-type')}}">View Test Type</a></li> --}}
+                        <li><a href="{{url('view-banner')}}">View Banner</a></li>                       
+                        <li><a href="{{url('view-category')}}">View Category</a></li>
+                        <li><a href="{{url('view-category')}}">View Sub-Category</a></li>
+                        <li><a href="{{url('view-blogs')}}">View Blogs</a></li>
+                        <li><a href="{{url('view-plans')}}">View Plans</a></li>
                     </ul>
                 </li>
                 

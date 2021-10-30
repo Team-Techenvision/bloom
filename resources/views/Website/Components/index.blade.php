@@ -1,12 +1,12 @@
- <!-- BEGIN MAIN BLOCK -->
- <div class="main-block load-bg">
+<!-- BEGIN MAIN BLOCK -->
+<div class="main-block load-bg" style="background-image: url('Website/img/image/1-1-1536x583.png')">
     <div class="wrapper">
         <div class="main-block__content">
-            <span class="saint-text">Professional</span>
+            {{-- <span class="saint-text">Professional</span>
             <h1 class="main-text">Beauty & Care</h1>
             <p>Nourish your skin with toxin-free cosmetic products. With the offers that you can’t refuse.
             </p>
-            <a href="#" class="btn">Shop now</a>
+            <a href="#" class="btn btn-info">Shop now</a> --}}
         </div>
     </div>
 </div>
@@ -279,7 +279,7 @@
             <span class="main-text">Get Your <span>50%</span> Off</span>
             <p>Nourish your skin with toxin-free cosmetic products. With the offers that you can’t refuse.
             </p>
-            <a href="#" class="btn">get now!</a>
+            <a href="#" class="btn btn-info">get now!</a>
         </div>
     </div>
 </div>
@@ -362,7 +362,7 @@
                     With the offers that you can’t refuse.</span>
                 <p>Non aliqua reprehenderit reprehenderit culpa laboris nulla minim anim velit adipisicing ea aliqua alluptate sit do do.Non aliqua reprehenderit reprehenderit culpa laboris nulla minim anim velit adipisicing ea aliqua alluptate
                     sit do do.Non aliqua reprehenderit reprehenderit culpa laboris nulla minim.</p>
-                <a href="#" class="btn">Shop now</a>
+                <a href="#" class="btn btn-info">Shop now</a>
             </div>
         </div>
 
@@ -537,7 +537,7 @@
             </div>
         </div>
         <div class="latest-news__btn">
-            <a href="#" class="btn">Read blog</a>
+            <a href="#" class="btn btn-info">Read blog</a>
         </div>
     </div>
 </section>
@@ -556,7 +556,7 @@
                     <div class="box-field">
                         <input type="email" class="form-control" placeholder="Enter your email">
                     </div>
-                    <button type="submit" class="btn">subscribe</button>
+                    <button type="submit" class="btn btn-info">subscribe</button>
                 </div>
             </form>
         </div>

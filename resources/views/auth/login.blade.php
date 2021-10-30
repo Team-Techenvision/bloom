@@ -9,14 +9,18 @@
 
     @section('content')
     <div class="home-btn d-none d-sm-block">
-        <a href="index" class="text-dark"><i class="fas fa-home h2"></i></a>
+        <a href="{{url('/')}}" class="text-dark"><i class="fas fa-home h2"></i></a>
     </div>
     <div class="account-pages my-5 pt-sm-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div class="card overflow-hidden">
-                        <div class="bg-login text-center">
+
+                        <div class="login-logo text-center">
+                            <img class="m-logo px-5" width="100%" height="100%" src="{{asset('images/logo.png')}}" alt="">
+                        </div>
+                        {{-- <div class="bg-login text-center">
                             <div class="bg-login-overlay"></div>
                             <div class="position-relative">
                                 <h5 class="text-white font-size-20">Welcome Back !</h5>
@@ -25,7 +29,7 @@
                                     <img src="images/logo-sm-dark.png" alt="" height="30">
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="card-body pt-5">
                             <div class="p-2">
                                 <form method="POST" action="{{ route('login') }}">
@@ -56,7 +60,7 @@
                                     </div>
 
                                     <div class="mt-3">
-                                        <button class="btn btn-primary btn-block waves-effect waves-light" id="login" type="submit">{{ __('Login') }}</button>
+                                        <button class="btn btn-success btn-block waves-effect waves-light" id="login" type="submit">{{ __('Login') }}</button>
                                     </div>
 
                                     <div class="mt-4 text-center">

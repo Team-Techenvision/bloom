@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Video extends Model
+class Banner extends Model
 {
     //
-    protected $table = 'video';
+    protected $table = 'banners';
 }
