@@ -13,11 +13,33 @@
     </div>
 </div>
 <!-- DETAIL MAIN BLOCK EOF   -->
+
 <!-- BEGIN BLOG -->
 <div class="blog">
     <div class="wrapper">
         <div class="blog-items">
-            <div class="blog-item">
+             
+            @if($blog_contain)
+                @foreach ($blog_contain as $item)            
+
+                <div class="blog-item">
+                    <a href="Javascript:Void(0);" class="blog-item__img">
+                        <img data-src="{{asset($item->blog_images)}}" class="js-img" alt="">
+                        <span class="blog-item__date">
+                            <span> </span>
+                        </span>
+                    </a>
+                    {{-- <a href="Javascript:Void(0);" class="blog-item__title">Limited promo</a> --}}
+                    <h4>{{$item->blog_title}}</h4>
+                    <p>{{$item->blog_content}}</p>
+                    <a href="Javascript:Void(0);" class="blog-item__link">Get Discount <i class="icon-arrow-md"></i></a>
+                </div>
+                    
+                @endforeach
+            @endif
+            {{-- ================================================================= --}}
+
+            {{-- <div class="blog-item">
                 <a href="Javascript:Void(0);" class="blog-item__img">
                     <img data-src="{{asset('Website/img/image/female-hands-with-soap-foam-KVKDKGZ.jpg')}}" class="js-img" alt="">
                     <span class="blog-item__date">
@@ -28,8 +50,9 @@
                 <h4>Get the + 75% Discount</h4>
                 <p>Spesial price during our company anniversary</p>
                 <a href="Javascript:Void(0);" class="blog-item__link">Get Discount <i class="icon-arrow-md"></i></a>
-            </div>
-            <div class="blog-item">
+            </div> --}}
+
+            {{-- <div class="blog-item">
                 <a href="Javascript:Void(0);" class="blog-item__img">
                     <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
                         class="js-img" alt="">
@@ -40,8 +63,8 @@
                 <a href="Javascript:Void(0);" class="blog-item__title">Features of cosmetics with honey</a>
                 <p>Easy Ways To Sample Minimalist Living Before Committing.</p>
                 <a href="Javascript:Void(0);" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div>
-            <div class="blog-item">
+            </div> --}}
+            {{-- <div class="blog-item">
                 <a href="Javascript:Void(0);" class="blog-item__img">
                     <img data-src="{{asset('Website/img/image/luchiana-1959487418-460x259.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
                         class="js-img" alt="">
@@ -52,8 +75,8 @@
                 <a href="Javascript:Void(0);" class="blog-item__title">Perfumes, perfumed or eau de toilette?</a>
                 <p>New Trends in 2021	</p>
                 <a href="Javascript:Void(0);" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div>
-            <div class="blog-item">
+            </div> --}}
+            {{-- <div class="blog-item">
                 <a href="Javascript:Void(0);" class="blog-item__img">
                     <img data-src="{{asset('Website/img/image/Image.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
                         class="js-img" alt="">
@@ -64,8 +87,8 @@
                 <a href="Javascript:Void(0);" class="blog-item__title">Which of the lines will suit you?</a>
                 <p>Everything You Need To Know About Essential Oils.</p>
                 <a href="Javascript:Void(0);" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div>
-            <div class="blog-item">
+            </div> --}}
+            {{-- <div class="blog-item">
                 <a href="Javascript:Void(0);" class="blog-item__img">
                     <img data-src="{{asset('Website/img/image/coconut-soap-HWRZKN3-683x1024-1-200x300.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
                         class="js-img" alt="">
@@ -76,8 +99,8 @@
                 <a href="Javascript:Void(0);" class="blog-item__title">Exclusive: review of the new line</a>
                 <p>Why Peppermint Should Be Considered A Beauty Essential.</p>
                 <a href="Javascript:Void(0);" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div>
-            <div class="blog-item">
+            </div> --}}
+            {{-- <div class="blog-item">
                 <a href="Javascript:Void(0);" class="blog-item__img">
                     <img data-src="{{asset('Website/img/image/luchiana-1959282579.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
                         class="js-img" alt="">
@@ -89,7 +112,7 @@
                 <p>Nourish your skin with toxin-free cosmetic products. With the offers that yo skin with
                     toxin-free cosmetic products that you can’t refuse.</p>
                 <a href="Javascript:Void(0);" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div>
+            </div> --}}
         </div>
         <ul class="paging-list">
             <li class="paging-list__item paging-prev">

@@ -1,5 +1,5 @@
 <!-- BEGIN MAIN BLOCK -->
-<div class="main-block load-bg" style="background-image: url('Website/img/image/1-1-1536x583.png')">
+<div class="main-block load-bg" style="background-image: url({{$banner->banner_image}})">
     <div class="wrapper">
         <div class="main-block__content">
             {{-- <span class="saint-text">Professional</span>
@@ -321,7 +321,21 @@
         <p>Nourish your skin with toxin-free cosmetic products. With the offers that you can’t refuse.</p>
     </div>
     <div class="top-categories__items">
+
+        @if($categories_contain)
+        @foreach ($categories_contain as $item)
         <a href="#" class="top-categories__item">
+            <img data-src="{{asset($item->category_image)}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+            <div class="top-categories__item-hover">
+                <h5>{{$item->category_name}}</h5>
+                <span>browse products -</span>
+                <i class="icon-arrow-lg"></i>
+            </div>
+        </a>
+        @endforeach
+    @endif
+
+        {{-- <a href="#" class="top-categories__item">
             <img data-src="https://via.placeholder.com/620x700" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
             <div class="top-categories__item-hover">
                 <h5>SPA</h5>
@@ -344,7 +358,7 @@
                 <span>browse products -</span>
                 <i class="icon-arrow-lg"></i>
             </div>
-        </a>
+        </a> --}}
     </div>
 </section>
 <!-- TOP CATEGORIES EOF   -->
