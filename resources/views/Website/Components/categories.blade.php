@@ -1,5 +1,5 @@
  <!-- BEGIN DETAIL MAIN BLOCK -->
- <div class="detail-block detail-block_margin">
+ <div class="detail-block detail-block_margin" style="background-image: url('Website/img/image/2-1-1536x583.png')">
     <div class="wrapper">
         <div class="detail-block__content">
             <h1>Categories</h1>

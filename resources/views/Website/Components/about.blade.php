@@ -1,14 +1,14 @@
  <!-- BEGIN DETAIL MAIN BLOCK -->
- <div class="detail-block">
+ <div class="detail-block" style="background-image: url('Website/img/image/spa-soap-composition-with-orchid-3ZF6FTM.jpg');">
     <div class="wrapper">
         <div class="detail-block__content">
             <h1>About</h1>
-            <ul class="bread-crumbs">
+            {{-- <ul class="bread-crumbs">
                 <li class="bread-crumbs__item">
                     <a href="index.html" class="bread-crumbs__link">Home</a>
                 </li>
                 <li class="bread-crumbs__item">About</li>
-            </ul>
+            </ul> --}}
             <div class="detail-block__items">
                 <div class="detail-block__item">
                     <div class="detail-block__item-icon">
@@ -50,16 +50,16 @@
     <div class="wrapper">
         <div class="trending-top">
             <span class="saint-text">Promotion video</span>
-            <h2>Welcome to BeShope</h2>
+            <h2>Welcome to Bloom</h2>
             <p>Today we can offer our customers exclusive products of 108 brands marked "only in BeShope"</p>
         </div>
         <div class="promo-video__block">
-            <img data-src="https://via.placeholder.com/1140x550" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+            <img data-src="{{asset('Website/img/image/luchiana-1959282579.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
             <iframe allowfullscreen></iframe>
             <div class="info-blocks__item-img-overlay">
                 <span>Promotion video</span>
                 <div class="info-blocks__item-img-play">
-                    <img data-src="img/play-btn.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                    <img data-src="{{asset('Website/img/image/play-white-1.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                 </div>
             </div>
         </div>
@@ -86,14 +86,15 @@
 </section>
 <!-- PROMO VIDEO EOF   -->
 <!-- BEGIN DISCOUNT -->
-<div class="discount discount-about js-img" data-src="https://via.placeholder.com/1920x900">
+<div class="discount discount-about js-img" data-src="{{asset('Website/img/image/Screenshot-2021.png')}}">
     <div class="wrapper">
-        <div class="discount-info">
-            <span class="saint-text">Success story</span>
-            <h2>BeShop develops its own brands</h2>
-            <p>The BeShope network is being developed and improved, taking into account all consumer.</p>
-            <p class="discount-info__sm">Forming the range of stores, we, above all, strive not only to meet the format of "home shop", offering each customer the most basic household goods, but also to create a unique space of beauty and care. BeShope stores offer their customers the widest and highest quality selection of products from world-renowned manufacturers.</p>
-            <a href="shop.html" class="btn">Shop now</a>
+        <div class="discount-info1" style="background-color: rgba(223, 226, 226, 0.568);padding:30px 25px;">
+            <span class="saint-text" style="text-align: center;">Welcome to Bloom</span>
+            <h2 style="text-align: center;">About Us</h2>
+            <p style="color: #222222;">Our LIP Balms,moisturizer, Lotions & Soaps are made out of Shea,Cocoa,Mango,Avacado, Soy Butters, and completely free from SLS, Sulphates & Parabens.</p>
+            <p class="" style="color: #222222">Forming the range of stores, we, above all, strive not only to meet the format of "home shop", offering each customer the most basic household goods, but also to create a unique space of beauty and care. BeShope stores offer their customers the widest and highest quality selection of products from world-renowned manufacturers.</p>
+            <p style="color: #222222">We take lots of care to ensure that every products is loaded with Vitamin E and carrier oils like Almond, Avacado, Argan Oil, Olive Oil, Castor oil etc and also Glycering to keep your skin hydrated throught out. We use pure essential oils in all our products,which adds up to enhanced texture of skin and hairs.Also skin absorbs the essential oils and keeps you overall whole and healthy.</p>
+            <a href="Javascript:Void(0);" class="btn btn-info" style="margin-top: 15px;">Shop now</a>
         </div>
     </div>
 </div>
@@ -137,7 +138,7 @@
         <div class="testimonials-slider js-testimonials-slider">
             <div class="testimonials-slide">
                 <p>
-                    I am grateful to the employees of BeShop for the quality products that I have been using for more than a year, try to work at this level
+                    I am grateful to the employees of Bloom for the quality products that I have been using for more than a year, try to work at this level
                     in the future. Thank you)
                 </p>
                 <div class="testimonials-author">
@@ -147,7 +148,7 @@
             </div>
             <div class="testimonials-slide">
                 <p>
-                    I am grateful to the employees of BeShop for the quality products that I have been using for more than a year, try to work at this level
+                    I am grateful to the employees of Bloom for the quality products that I have been using for more than a year, try to work at this level
                     in the future. Thank you)
                 </p>
                 <div class="testimonials-author">
@@ -164,7 +165,7 @@
     <div class="wrapper">
         <div class="subscribe-form">
             <div class="subscribe-form__img">
-                <img data-src="https://via.placeholder.com/460x302" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+                <img data-src="{{asset('Website/img/image/logo1.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
                     class="js-img" alt="">
             </div>
             <form>
@@ -174,7 +175,7 @@
                     <div class="box-field">
                         <input type="text" class="form-control" placeholder="Enter your email">
                     </div>
-                    <button type="submit" class="btn">subscribe</button>
+                    <button type="submit" class="btn btn-info">subscribe</button>
                 </div>
             </form>
         </div>
@@ -225,5 +226,6 @@
             <i class="icon-insta"></i>
         </div>
     </a>
+    
 </div>
 <!-- INSTA PHOTOS EOF   -->
