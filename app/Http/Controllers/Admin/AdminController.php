@@ -454,5 +454,83 @@ class AdminController extends Controller
         return redirect('view-blogs');
     }
 
+    public function view_plans()
+    {
+        $data['flag'] = 15; 
+        $data['page_title'] = 'All Plan';       
+       $data['plans'] =  Plans::get();
+        // dd($data);
+        return view('Admin/webviews/manage_admin_user',$data);
+    }
+
+    public function add_plans()
+    {
+        $data['flag'] = 16; 
+        $data['page_title'] = 'Add Plan';
+        // $data['tabs'] = Tabs::where('status',"1")->get(); 
+        return view('Admin/webviews/manage_admin_user',$data);
+    }
+    public function submit_plans(Request $req)
+    {
+    //    dd($req);
+        $this->validate($req,[
+            'plan_name'=>'required',       
+            'price'=>'required|numeric'             
+         ]);
+
+
+         if($req->plan_id) { 
+            Plans::where('id',$req->plan_id)->update([
+                'plan_name' => $req->plan_name,
+                'price' => $req->price,
+                'description' => $req->description,
+                'status' => $req->status,
+            ]);
+            toastr()->success('Plan Updated Successfully!');
+            return redirect('view-plans');
+         }else{
+ 
+                $data = new Plans;
+                $data->plan_name=$req->plan_name; 
+                $data->price=$req->price;       
+                $data->description=$req->description;      
+                $data->status=$req->status;             
+                $result = $data->save();
+            if($result)
+            {
+                toastr()->success('Plan Successfully Added!');
+            }
+            else
+            {
+                toastr()->error('Plan Not Added!!');
+            }         
+    
+        // toastr()->success('Subject Successfully Added!');
+        return redirect('view-plans');
+        }
+    }
+
+    public function delete_plans($id){ 
+        $data['result']= Plans::where('id',$id)->delete();
+        toastr()->error('plan Deleted !');
+        return redirect('view-plans');
+    }
+
+    public function edit_plans($id){
+        $data['flag'] = 17; 
+        $data['page_title'] = 'Edit Plan'; 
+        $data['plans'] = Plans::where('id',$id)->first(); 
+        // dd($data);
+        return view('Admin/webviews/manage_admin_user',$data);
+    }
+
+    public function update_plan_status($id, $status){ 
+        Plans::where('id',$id)->update([
+            'status' => $status,
+        ]);
+        toastr()->error('Plan Status Updated!');
+        return redirect('view-plans');
+    }
+
     
 }

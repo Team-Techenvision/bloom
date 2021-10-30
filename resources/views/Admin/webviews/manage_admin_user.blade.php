@@ -46,6 +46,12 @@
         @include('Admin.components/add_blogs')
     @elseif($flag == 14) 
         @include('Admin.components/edit_blogs')
+    @elseif($flag == 15) 
+        @include('Admin.components/plans_list')
+    @elseif($flag == 16) 
+        @include('Admin.components/add_plans')
+    @elseif($flag == 17) 
+        @include('Admin.components/edit_plans')
     @endif
     </div>
                     <!-- end row -->
