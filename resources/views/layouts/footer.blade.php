@@ -2,11 +2,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <script>document.write(new Date().getFullYear())</script> © zankar 
+                <script>document.write(new Date().getFullYear())</script> © Bloom 
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-right d-none d-sm-block">
-                    Design & Develop by Techenvision
+                    Design & Develop by magnetontech
                 </div>
             </div>
         </div>
