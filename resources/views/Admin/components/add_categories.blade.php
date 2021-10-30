@@ -6,41 +6,23 @@
             {{-- <h4 class="card-title">Buttons example</h4> --}}
             {{-- <p class="card-title-desc">The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
             </p> --}}
-            <div class="col-md-8 m-auto">                                       
-                <form class="" action="{{url('submit-banner')}}" method="POST" enctype="multipart/form-data">                        
+            <div class="col-md-8 m-auto">
+                                       
+                <form class="" action="{{url('submit-category')}}" method="POST" enctype="multipart/form-data">                        
                 @csrf 
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Banner Name <small class="text-danger">*</small></label>
+                        <label class="col-sm-3 col-form-label">Category Name <small class="text-danger">*</small></label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="banner_name"  placeholder="Enter Banner" required/>
+                            <input type="text" class="form-control" name="category_name" required placeholder="Enter Category" required/>
                         </div>
-                    </div>  
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Banner Title</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="banner_title"  placeholder="Enter Title" />
-                        </div>
-                    </div>  
+                    </div>   
                     
-                    
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Banner Description</label>
-                        <div class="col-sm-9">
-                            <div class="form-group">                            
-                                <div>
-                                    <textarea  class="form-control" rows="3" name="description" placeholder="Enter Description"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">Image <small class="text-danger">*</small></label>
                         <div class="col-md-9">
-                            <input type="file" name="banner_image" required>                            
+                            <input type="file" name="category_image">                            
                         </div>
-                        <small class="text-danger mx-auto">Image size must be 1920*370 pixel </small>
+                        <small class="text-danger mx-auto">Image size must be 200*260 pixel </small>
                     </div>
 
                     <div class="form-group row">
@@ -57,7 +39,7 @@
                             <button type="reset" class="btn btn-secondary waves-effect m-l-5">
                             Cancel
                             </button>
-                            <button type="submit" class="btn btn-success waves-effect waves-light">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">
                             Submit
                             </button>
                            

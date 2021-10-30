@@ -3,14 +3,14 @@
     <div class="card">
         <div class="card-body"> 
             <div class="col-12 text-right pb-2"> 
-                <a href="{{url('add-banner')}}" class="btn btn-success">Add Banner</a>
+                <a href="{{url('add-category')}}" class="btn btn-success">Add Categories</a>
             </div>    
         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap text-center" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                     <tr>
                         <th>No </th>
-                        <th>Banner Name</th>
-                        <th>Banner Image</th>
+                        <th>Categories Name</th>
+                        <th>Image</th>
                         <th>Status</th>                            
                         <th>Action</th>
                     </tr>
@@ -18,20 +18,19 @@
 
                 <tbody>
                     <?php $i = 1; ?>
-                    @foreach($banner as $row)
+                    @foreach($Categories as $row)
                     <tr>
                         <td>{{$i++}}</td>
-                        <td>{{$row->banner_name}}</td>   
-                        <td>{{$row->banner_image}}</td>                            
+                        <td>{{$row->category_name }}</td>  
+                        <td><img src="{{$row->category_image}}" alt="" width="120" height="100"></td>                          
                         <td>@if($row->status == 1) Active @else De-Active @endif</td>
                         @php
                         $deactive = 0;
                         $active = 1;
                         @endphp
                         <td>
-                            <a href="{{url('edit-banner/'.$row->id)}}" class="btn btn-success mr-2">Edit</a>
-                            <a href="{{url('delete-banner/'.$row->id)}}" class="btn btn-danger mr-2">Delete</a>
-                        </td>                                               
+                            <a href="{{url('edit-category/'.$row->id)}}" class="btn btn-success mr-2">Edit</a>
+                             @if($row->status == 1) <a href="{{url('update-category/'.$row->id.'/'.$deactive)}}" class="btn btn-danger">Deactive</a>@else <a href="{{url('update-category/'.$row->id.'/'.$active)}}" class="btn btn-success">Active</a>@endif </td>                                               
                     </tr>
                     @endforeach
                    

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title') Categories List @endsection
+@section('title') Admin List @endsection
 @section('css')
 
     <!-- DataTables -->
@@ -11,7 +11,7 @@
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') Categories List  @endslot
+         @slot('title') Admin List  @endslot
          {{-- @slot('li_1') Tables  @endslot --}}
      @endcomponent
 
@@ -29,25 +29,26 @@
                                     <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th>Sr No.</th>
-                                                <th>Categories name </th>
+                                                <th>Sr. No.</th>
+                                                <th>Username </th>
+                                                <th>Email</th>
+                                                <th>Mobile No.</th>
                                                 <th>Status</th>
-                                                <th>Action</th>
+                                                {{-- <th>Action</th>                                             --}}
                                             </tr>
                                         </thead>
-
                                         <tbody>
+                                            <?php $i = 1; ?>
+                                            @foreach($admin as $row)                                    
                                             <tr>
-                                                @php $i=1; @endphp
-                                                @foreach ($Categories as $categories)
                                                 <td>{{$i++}}</td>
-                                                <td>{{$categories->categories_name }}</td>
-                                                <td>{{$categories->status}}</td>
-                                                <td> <a href=""></a> <i class="fas fa-archive"></i> </td>  
-
-                                                @endforeach
-                                                                                              
+                                                <td>{{$row->name}}</td>
+                                                <td>{{$row->email}}</td>
+                                                <td>{{$row->phone}}</td>                            
+                                                <td>@if($row->status == 1) Active @else De-Active @endif</td>
+                                                {{-- <td><a href="{{url('edit-college/'.$row->id)}}" class="btn btn-info mr-2">Edit</a><a href="{{url('delete-college/'.$row->id)}}" class="btn btn-danger">Delete</a></td>                                                --}}
                                             </tr>
+                                            @endforeach
                                            
                                         </tbody>
                                     </table>

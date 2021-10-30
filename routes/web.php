@@ -51,8 +51,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::middleware(['auth', 'Admin'])->group(function () {
-    Route::get('admin', 'AdminController@admin_list');
-    Route::get('user-list', 'AdminController@user_list');
+    Route::get('admin', 'Admin\AdminController@admin_list');
+    Route::get('user-list', 'Admin\AdminController@user_list');
     Route::get('view-user-details/{id}', 'AdminController@user_details');
     Route::get('/home', 'HomeController@index')->name('home'); 
 
@@ -62,6 +62,29 @@ Route::middleware(['auth', 'Admin'])->group(function () {
     Route::get('edit-banner/{id}', 'Admin\AdminController@edit_banner');
     Route::get('delete-banner/{id}', 'Admin\AdminController@delete_banner');
     Route::get('update-banner/{id}/{status}', 'Admin\AdminController@update_tab_status');
+
+    Route::get('view-category', 'Admin\AdminController@view_category');
+    Route::get('add-category', 'Admin\AdminController@add_category');
+    Route::post('submit-category', 'Admin\AdminController@submit_category');
+    Route::get('edit-category/{id}', 'Admin\AdminController@edit_category');
+    Route::get('delete-category/{id}', 'Admin\AdminController@delete_category');
+    Route::get('update-category/{id}/{status}', 'Admin\AdminController@update_category_status');
+
+    Route::get('view-sub-category', 'Admin\AdminController@view_sub_category');
+    Route::get('add-sub-category', 'Admin\AdminController@add_sub_category');
+    Route::post('submit-sub-category', 'Admin\AdminController@submit_sub_category');
+    Route::get('edit-sub-category/{id}', 'Admin\AdminController@edit_sub_category');
+    Route::get('delete-sub-category/{id}', 'Admin\AdminController@delete_sub_category');
+    Route::get('update-sub-category/{id}/{status}', 'Admin\AdminController@update_sub_category_status');
+
+    Route::get('view-blogs', 'Admin\AdminController@view_blogs');
+    Route::get('add-blogs', 'Admin\AdminController@add_blogs');
+    Route::post('submit-blogs', 'Admin\AdminController@submit_blogs');
+    Route::get('edit-blogs/{id}', 'Admin\AdminController@edit_blogs');
+    Route::get('delete-blogs/{id}', 'Admin\AdminController@delete_blogs');
+    Route::get('update-blogs/{id}/{status}', 'Admin\AdminController@update_tab_status');
+
+
 });
 
 Route::get('{any}', 'Website\WebsiteController@index');

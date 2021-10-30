@@ -63,10 +63,9 @@
                     </div>
                     <div class="form-group text-center mt-5">
                         <div>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">
+                            <button type="submit" class="btn btn-success waves-effect waves-light">
                             Update
                             </button>
-                           
                         </div>
 
                         <div class="any_message mt-3">

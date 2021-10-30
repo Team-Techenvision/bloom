@@ -40,7 +40,7 @@
                     <ul class="sub-menu" aria-expanded="false">  
                         <li><a href="{{url('view-banner')}}">View Banner</a></li>                       
                         <li><a href="{{url('view-category')}}">View Category</a></li>
-                        <li><a href="{{url('view-category')}}">View Sub-Category</a></li>
+                        <li><a href="{{url('view-sub-category')}}">View Sub-Category</a></li>
                         <li><a href="{{url('view-blogs')}}">View Blogs</a></li>
                         <li><a href="{{url('view-plans')}}">View Plans</a></li>
                     </ul>
