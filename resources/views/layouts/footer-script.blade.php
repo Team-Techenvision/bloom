@@ -105,4 +105,21 @@
             });
         </script>
 
+<script>
+    $(document).ready(function()
+             {
+             $('#add_more_btn').click(function()
+                 {
+                     $("#add_div").append(' <div class="form-group row"><label class="col-md-4 col-form-label"> Sub Image </label><div class="col-md-4"><input type="file" name="product_image[]"></div><div class="col-md-4"><a href="javascript:void(0);" id="remCF1" class="remCF2 btn btn-danger float-right">Remove</a></div></div>');
+                 });
+ 
+                 $('#add_div').on('click','.remCF2',function() 
+                 {
+                     //alert("!!");
+                     $(this).parent().parent().remove();
+                 });
+ 
+             });
+ </script>
+
         @yield('script-bottom')

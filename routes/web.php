@@ -92,6 +92,23 @@ Route::middleware(['auth', 'Admin'])->group(function () {
     Route::get('delete-plans/{id}', 'Admin\AdminController@delete_plans');
     Route::get('update-plans/{id}/{status}', 'Admin\AdminController@update_plan_status');
 
+    Route::get('view-product', 'Admin\ProductController@view_product');
+    Route::get('add-product', 'Admin\ProductController@add_product');
+    Route::post('submit-product', 'Admin\ProductController@submit_product');
+    Route::get('edit-product/{id}', 'Admin\ProductController@edit_product');
+    Route::get('delete-product/{id}', 'Admin\ProductController@delete_product');
+
+    Route::get('view-product-attribute/{id}', 'Admin\ProductController@view_product_attribute');
+    Route::get('add-product-attribute/{id}', 'Admin\ProductController@add_product_attribute');
+    Route::post('submit-product-attribute', 'Admin\ProductController@submit_product_attribute');
+    Route::get('edit-product-attribute/{id}', 'Admin\ProductController@edit_product_attribute');
+    Route::get('delete-product-attribute/{id}', 'Admin\ProductController@delete_product_attribute');
+
+    Route::get('view-product-images/{id}', 'Admin\ProductController@view_product_images');
+    Route::get('add-product-images/{id}', 'Admin\ProductController@add_product_images');
+    Route::post('submit-product-images', 'Admin\ProductController@submit_product_images');
+    Route::get('edit-product-images/{id}', 'Admin\ProductController@edit_product_images');
+    Route::get('delete-product-images/{id}', 'Admin\ProductController@delete_product_images');
 
 });
 
