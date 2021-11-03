@@ -6,4 +6,6 @@
 
 .pricing-card h4{
     font-family: "Tenor Sans";
+    background-color: darksalmon;
+    margin-bottom: 15px;
 }

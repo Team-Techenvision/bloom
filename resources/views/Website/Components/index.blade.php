@@ -620,6 +620,10 @@
 <!-- BEGIN ADVANTAGES -->
 <div class="advantages">
     <div class="wrapper">
+        <div class="trending-top">
+            <span class="saint-text">Our Plans</span>
+            <h2>Subcription Plans</h2>           
+        </div>
         <div class="advantages-items">
             @foreach ($plans as $item)
                 <div class="advantages-item pricing-card">
@@ -627,7 +631,7 @@
                         <i class="icon-natural"></i>
                     </div> --}}
                     <h4>{{$item->plan_name}}</h4>
-                    <h2>  {{$item->price}}</h2>
+                    <h2> RS.  {{$item->price}}</h2>
                     <p>{!!$item->description!!}</p>
                     <a href="#" class="btn btn-info" style="margin-top: 30px;">Sign Up</a>
                 </div>
