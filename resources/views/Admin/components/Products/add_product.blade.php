@@ -55,7 +55,7 @@
                         <div class="col-sm-9">
                             <div class="form-group">                            
                                 <div>
-                                    <textarea  class="form-control" rows="3" name="long_description" placeholder="Enter Product Description"></textarea>
+                                    <textarea id="elm1" class="form-control" rows="3" name="long_description" placeholder="Enter Product Description"></textarea>
                                 </div>
                             </div>
                         </div>

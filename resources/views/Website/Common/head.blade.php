@@ -12,4 +12,6 @@
     <meta name="keywords" content="" />
     <link rel="icon" type="image/x-icon" href="{{asset('img/favicon.ico')}}" />
     <link rel="preload stylesheet" href="{{asset('Website/css/style.css')}}" as="style">
+    <link rel="preload stylesheet" href="{{asset('Website/css/custom.css')}}" as="style">
+
 </head>

@@ -19,8 +19,8 @@
 
         @if($categories_contain)
             @foreach ($categories_contain as $item)
-            <a href="#" class="top-categories__item">
-                <img data-src="{{asset($item->category_image)}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+            <a href="{{url('/ProductList')}}/{{$item->id}}" class="top-categories__item">
+                <img data-src="{{asset($item->category_image)}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="" style="object-fit: unset;">
                 <div class="top-categories__item-hover">
                     <h5>{{$item->category_name}}</h5>
                     <span>browse products -</span>
@@ -82,45 +82,86 @@
 </section>
 <!-- TOP CATEGORIES EOF   -->
 <!-- BEGIN INSTA PHOTOS -->
+<!--<div class="insta-photos">-->
+<!--    <a href="#" class="insta-photo">-->
+<!--        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"-->
+<!--            alt="">-->
+<!--        <div class="insta-photo__hover">-->
+<!--            <i class="icon-insta"></i>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    <a href="#" class="insta-photo">-->
+<!--        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"-->
+<!--            alt="">-->
+<!--        <div class="insta-photo__hover">-->
+<!--            <i class="icon-insta"></i>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    <a href="#" class="insta-photo">-->
+<!--        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"-->
+<!--            alt="">-->
+<!--        <div class="insta-photo__hover">-->
+<!--            <i class="icon-insta"></i>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    <a href="#" class="insta-photo">-->
+<!--        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"-->
+<!--            alt="">-->
+<!--        <div class="insta-photo__hover">-->
+<!--            <i class="icon-insta"></i>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    <a href="#" class="insta-photo">-->
+<!--        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"-->
+<!--            alt="">-->
+<!--        <div class="insta-photo__hover">-->
+<!--            <i class="icon-insta"></i>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    <a href="#" class="insta-photo">-->
+<!--        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"-->
+<!--            alt="">-->
+<!--        <div class="insta-photo__hover">-->
+<!--            <i class="icon-insta"></i>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--</div>-->
+<!-- INSTA PHOTOS EOF   -->
+ {{-- ====================================================================== --}}
+<!-- BEGIN INSTA PHOTOS -->
 <div class="insta-photos">
-    <a href="#" class="insta-photo">
-        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
-            alt="">
+    <a href="#" class="insta-photo"> <!---- https://via.placeholder.com/320 ----->
+        <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
             <i class="icon-insta"></i>
         </div>
     </a>
     <a href="#" class="insta-photo">
-        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
-            alt="">
+        <img data-src="{{asset('Website/img/image/luchiana-1959487418-460x259.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
             <i class="icon-insta"></i>
         </div>
     </a>
     <a href="#" class="insta-photo">
-        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
-            alt="">
+        <img data-src="{{asset('Website/img/image/Image.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
             <i class="icon-insta"></i>
         </div>
     </a>
     <a href="#" class="insta-photo">
-        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
-            alt="">
+        <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
             <i class="icon-insta"></i>
         </div>
     </a>
     <a href="#" class="insta-photo">
-        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
-            alt="">
+        <img data-src="{{asset('Website/img/image/luchiana-1959282579.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
             <i class="icon-insta"></i>
         </div>
     </a>
     <a href="#" class="insta-photo">
-        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
-            alt="">
+        <img data-src="{{asset('Website/img/image/Image.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
             <i class="icon-insta"></i>
         </div>

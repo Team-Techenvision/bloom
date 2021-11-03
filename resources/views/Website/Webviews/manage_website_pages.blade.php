@@ -13,7 +13,7 @@
             @if($flag == 1)
                 @include('Website.Components/index') 
             @elseif($flag == 2) 
-                @include('Website.Components/shop')
+                @include('Website.Components/productList')
             @elseif($flag == 3) 
                 @include('Website.Components/categories') 
             @elseif($flag == 4) 

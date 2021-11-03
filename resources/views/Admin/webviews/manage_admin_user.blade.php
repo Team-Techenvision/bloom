@@ -67,5 +67,10 @@
 
     <!-- Datatable init js -->
     <script src="{{ URL::asset('/js/pages/datatables.init.js')}}"></script>
+    <script src="{{URL::asset('/libs/tinymce/tinymce.min.js')}}"></script>
+    <!-- Summernote js -->
+    <script src="{{URL::asset('/libs/summernote/summernote.min.js')}}"></script>
+    <!-- init js -->
+    <script src="{{URL::asset('/js/pages/form-editor.init.js')}}"></script>
 
 @endsection

@@ -13,7 +13,7 @@
             <ul class="header-nav">
                 <li><a href="{{url('/')}}" class="@if($flag == 1)active @endif">Home</a></li>
                 <li><a href="{{url('/about')}}" class="@if($flag == 8)active @endif">About us</a></li>
-                <li><a href="{{url('/shop')}}" class="@if($flag == 2)active @endif">shop</a></li>
+                <li><a href="#" class="@if($flag == 2)active @endif">shop</a></li>
                 <li><a href="{{url('/categories')}}" class="@if($flag == 3)active @endif">Categories</a></li>
                 <li><a href="{{url('/blog')}}" class="@if($flag == 4)active @endif">blog</a></li>
                 <li><a href="{{url('/contacts')}}" class="@if($flag == 5)active @endif">contact</a></li>
@@ -65,7 +65,7 @@
                     <ul>
                         <li><a href="{{url('about')}}">About us</a></li>
                         <li><a href="{{url('/categories')}}">Categories</a></li>
-                        <li><a href="{{url('/shop')}}">Shop</a></li>
+                        <li><a href="#">Shop</a></li>
                         <li><a href="{{url('/blog')}}">Blog</a></li>
                         <li><a href="faq.html">FAQ</a></li>
                         <li><a href="{{url('/contacts')}}">Contacts</a></li>
