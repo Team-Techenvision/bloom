@@ -19,13 +19,13 @@
         <div class="login-form js-img" data-src="img/registration-form__bg.png">
             <form  name="registerForm" method="post" action="{{ url('Register-submit') }}">
                 @csrf
-                <h3>register now</h3>
-                <ul class="login-form__social">
+                <h3>Register now</h3>
+                {{-- <ul class="login-form__social">
                     <li><a href="#"><i class="icon-facebook"></i></a></li>
                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                     <li><a href="#"><i class="icon-insta"></i></a></li>
                     <li><a href="#"><i class="icon-google"></i></a></li>
-                </ul>
+                </ul> --}}
                 <div class="box-field__row">
                     <div class="box-field">
                         <input type="text" name="name" class="form-control" placeholder="Enter your name" required>

@@ -27,7 +27,7 @@ Route::get('/categories', 'Website\WebsiteController@categories');
 Route::get('/blog', 'Website\WebsiteController@blog_Page');
 Route::get('/contacts', 'Website\WebsiteController@contacts');
 Route::get('/wishlist', 'Website\WebsiteController@wishlist');
-Route::get('/cart', 'Website\WebsiteController@cart_page');
+Route::get('/my-cart', 'Website\WebsiteController@cart_page');
 Route::get('/about', 'Website\WebsiteController@about_page');
 Route::get('/faq', 'Website\WebsiteController@faq_page');
 Route::get('/product', 'Website\WebsiteController@product');
@@ -38,6 +38,9 @@ Route::get('/checkout3', 'Website\WebsiteController@checkout3');
 Route::get('/ProductList/{Cat_id}', 'Website\WebsiteController@productList');
 Route::get('/ProductDetail/{product_id}', 'Website\WebsiteController@ProductDetail');
 Route::post('/add-to-cart', 'Website\EcomController@add_to_cart');
+
+Route::post('/remove-product','Website\WebsiteController@removeProduct'); 
+Route::post('/cart-update','Website\WebsiteController@cartUpdate'); 
 
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
@@ -52,8 +55,9 @@ Route::get('logout', 'QovexController@logout');
 
 
 // You can also use auth middleware to prevent unauthenticated users
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth', 'User'], function () {
     // Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/checkout', 'Website\WebsiteController@checkout');
     
 });
 

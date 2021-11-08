@@ -36,7 +36,7 @@ class QovexController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect('/login');
+        return redirect('/Web-login');
     }
     /**
      * Show the form for creating a new resource.

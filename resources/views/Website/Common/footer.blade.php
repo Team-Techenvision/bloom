@@ -22,19 +22,21 @@
             </ul>
             <ul class="header-options">
                 <li><a href="#"><i class="icon-search"></i></a></li>
+                @if(Auth::check())
                 <li><a href="#"><i class="icon-user"></i></a></li>
+                @endif
                 <li><a href="{{url('/wishlist')}}"><i class="icon-heart"></i></a></li>
                 @if(Auth::check())
                     @php
                             $cart_count = DB::table('carts')->where('user_id',Auth::id())->count();
                     @endphp
-                            <li><a href="{{url('/cart')}}"><i class="icon-cart"></i><span>{{$cart_count}}</span></a></li>
+                            <li><a href="{{url('/my-cart')}}"><i class="icon-cart"></i><span>{{$cart_count}}</span></a></li>
                     @else
                         @php
                         $session = Session::getId();
                         $cart_count = DB::table('temp_carts')->where('session_id',$session)->count();
                     @endphp
-                            <li><a href="{{url('/cart')}}"><i class="icon-cart"></i><span>{{$cart_count}}</span></a></li>
+                            <li><a href="{{url('/my-cart')}}"><i class="icon-cart"></i><span>{{$cart_count}}</span></a></li>
               @endif
             </ul>
         </div>
@@ -145,6 +147,8 @@
 <script src="{{asset('Website/js/slick.min.js')}}"></script>
 <script src="{{asset('Website/js/jquery.maskedinput.js')}}"></script>
 <script src="{{asset('Website/js/custom.js')}}"></script>
+@toastr_js
+@toastr_render
 
 
 <script>
@@ -155,6 +159,44 @@ setTimeout(function(){
     document.getElementsByTagName('body')[0].appendChild(elem);
 }, 1500);
 </script>
+
+<script type="text/javascript">
+
+    function counterUpdate(type, id) {
+        //  alert(type);
+        //  alert(id);
+        $.ajax({
+            type: 'post',
+            url: "{{url('/cart-update')}}",
+            data:{  "_token": "{{ csrf_token() }}", attribute_id:id, type : type},
+            success: function(response){
+                console.log(response)
+            window.location.reload();
+            // alert('product successfully deleted from cart');
+            }
+        });
+    };
+
+</script>
+
+<script type="text/javascript">
+
+    function removeProduct(id) {
+        //  alert(id);
+        $.ajax({
+            type: 'post',
+            url: "{{url('/remove-product')}}",
+            data:{  "_token": "{{ csrf_token() }}", attribute_id:id},
+            success: function(response){
+                console.log(response)
+            window.location.reload();
+            // alert('product successfully deleted from cart');
+            }
+        });
+    };
+
+</script>
+
 </body>
 
 </html>

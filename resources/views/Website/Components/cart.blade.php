@@ -5,7 +5,7 @@
             <h1>Cart</h1>
             <ul class="bread-crumbs">
                 <li class="bread-crumbs__item">
-                    <a href="index.html" class="bread-crumbs__link">Home</a>
+                    <a href="{{url('/')}}" class="bread-crumbs__link">Home</a>
                 </li>
                 <li class="bread-crumbs__item">Cart</li>
             </ul>
@@ -14,6 +14,7 @@
 </div>
 <!-- DETAIL MAIN BLOCK EOF   -->
 <!-- BEGIN CART -->
+@if(is_array($result))
 <div class="cart">
     <div class="wrapper">
         <div class="cart-table">
@@ -23,93 +24,63 @@
                     <div class="cart-table__col">Price</div>
                     <div class="cart-table__col">Quantity</div>
                     <div class="cart-table__col">Total</div>
+                    <div class="cart-table__col">Delete</div>
                 </div>
+
+                @php                                                 
+                    $total=0; 
+                @endphp
+
+                @foreach ($result as $item)
+                        
+                    @php
+                        $total += ($item->price) * ($item->quantity);
+                        $subtotal = ($item->price) * ($item->quantity);
+                    @endphp 
+                      @php
+                            $product_image = DB::table('product_images')->where('products_id' , $item->products_id)->where('type', 2)->pluck('product_image')->first();
+                        @endphp
                 <div class="cart-table__row">
+                   
                     <div class="cart-table__col">
-                        <a href="product.html" class="cart-table__img">
-                            <img data-src="https://via.placeholder.com/110" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                        <a href="{{url('ProductDetail/'.$item->products_id)}}" class="cart-table__img">
+                            <img data-src="{{$product_image}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                         </a>
                         <div class="cart-table__info">
-                            <a href="product.html" class="title5">Foundation Beshop</a>
+                            <a href="{{url('ProductDetail/'.$item->products_id)}}" class="title5">{{$item->product_name}}</a>
                             <span class="cart-table__info-stock">in stock</span>
-                            <span class="cart-table__info-num">SKU: IN1203</span>
+                            <span class="cart-table__info-num">SKU: {{$item->product_code}}</span>
                         </div>
-                    </div>
+                    </div>  
                     <div class="cart-table__col">
-                        <span class="cart-table__price"><span>$265.95</span>$200.95</span>
-                    </div>
+                        <span class="cart-table__price"> <i class="fas fa-rupee-sign"></i> {{$item->price}}</span>
+                    </div>                  
                     <div class="cart-table__col">
                         <div class="cart-table__quantity">
                             <div class="counter-box">
-                                <span class="counter-link counter-link__prev"><i class="icon-arrow"></i></span>
-                                <input type="text" class="counter-input" disabled value="1">
-                                <span class="counter-link counter-link__next"><i class="icon-arrow"></i></span>
+                                <span class="counter-link counter-link__prev" onclick="counterUpdate(2,{{$item->attribute_id}})"><i class="icon-arrow"></i></span>
+                                <input type="text" class="counter-input" readonly  value="{{$item->quantity}}">
+                                <span class="counter-link counter-link__next" onclick="counterUpdate(1,{{$item->attribute_id}})"><i class="icon-arrow"></i></span>
                             </div>
                         </div>
                     </div>
                     <div class="cart-table__col">
-                        <span class="cart-table__total">$401.90</span>
+                        <span class="cart-table__total"> <i class="fas fa-rupee-sign"></i> {{$subtotal}}</span>
                     </div>
-                </div>
-                <div class="cart-table__row">
                     <div class="cart-table__col">
-                        <a href="product.html" class="cart-table__img">
-                            <img data-src="https://via.placeholder.com/110" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                        <a href="javascript:void(0)" onclick="removeProduct({{$item->attribute_id}})">
+                            <span class="cart-table__price">  <i class="far fa-trash-alt"></i> </span>
                         </a>
-                        <div class="cart-table__info">
-                            <a href="product.html" class="title5">Hair mask with oat extract</a>
-                            <span class="cart-table__info-stock">in stock</span>
-                            <span class="cart-table__info-num">SKU: IN1203</span>
-                        </div>
-                    </div>
-                    <div class="cart-table__col">
-                        <span class="cart-table__price">$125.95</span>
-                    </div>
-                    <div class="cart-table__col">
-                        <div class="cart-table__quantity">
-                            <div class="counter-box">
-                                <span class="counter-link counter-link__prev"><i class="icon-arrow"></i></span>
-                                <input type="text" class="counter-input" disabled value="1">
-                                <span class="counter-link counter-link__next"><i class="icon-arrow"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cart-table__col">
-                        <span class="cart-table__total">$125.95</span>
-                    </div>
+                    </div>    
                 </div>
-                <div class="cart-table__row">
-                    <div class="cart-table__col">
-                        <a href="product.html" class="cart-table__img">
-                            <img data-src="https://via.placeholder.com/110" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-                        </a>
-                        <div class="cart-table__info">
-                            <a href="product.html" class="title5">Spray balm with oat extract</a>
-                            <span class="cart-table__info-stock">in stock</span>
-                            <span class="cart-table__info-num">SKU: IN1203</span>
-                        </div>
-                    </div>
-                    <div class="cart-table__col">
-                        <span class="cart-table__price">$60.95</span>
-                    </div>
-                    <div class="cart-table__col">
-                        <div class="cart-table__quantity">
-                            <div class="counter-box">
-                                <span class="counter-link counter-link__prev"><i class="icon-arrow"></i></span>
-                                <input type="text" class="counter-input" disabled value="1">
-                                <span class="counter-link counter-link__next"><i class="icon-arrow"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cart-table__col">
-                        <span class="cart-table__total">$60.95</span>
-                    </div>
-                </div>
+
+                @endforeach
+              
             </div>
         </div>
         <div class="cart-bottom">
             <div class="cart-bottom__promo">
-                <form class="cart-bottom__promo-form">
+                {{-- <form class="cart-bottom__promo-form">
                     <div class="box-field__row">
                         <div class="box-field">
                             <input type="text" class="form-control" placeholder="Enter promo code">
@@ -121,8 +92,8 @@
                 <p>
                     Follow our news on the website, as well as subscribe to our social networks. So you will not only be able to receive up-to-date codes,
                     but also learn about new products and promotional items.
-                </p>
-                <div class="contacts-info__social">
+                </p> --}}
+                {{-- <div class="contacts-info__social">
                     <span>Find us here:</span>
                     <ul>
                         <li><a href="#"><i class="icon-facebook"></i></a></li>
@@ -130,28 +101,36 @@
                         <li><a href="#"><i class="icon-insta"></i></a></li>
                         <li><a href="#"><i class="icon-in"></i></a></li>
                     </ul>
-                </div>
+                </div> --}}
             </div>
             <div class="cart-bottom__total">
                 <div class="cart-bottom__total-goods">
-                    Goods on
-                    <span>$588.80</span>
+                    Sub Total
+                    <span><i class="fas fa-rupee-sign"></i> {{$total}}</span>
                 </div>
                 <div class="cart-bottom__total-promo">
-                    Discount on promo code
-                    <span>No</span>
+                    Discount 
+                    <span>00</span>
                 </div>
                 <div class="cart-bottom__total-num">
                     total:
-                    <span>$588.80</span>
+                    <span><i class="fas fa-rupee-sign"></i>{{$total}}</span>
                 </div>
-                <a href="checkout1.html" class="btn">Checkout</a>
+                <a href="{{url('checkout')}}" class="btn">Checkout</a>
             </div>
         </div>
     </div>
     <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
         src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
 </div>
+
+@else
+
+<div class="cart-table__row">
+    <div class="cart-table__col"><a href="{{url('/')}}" class="btn btn-solid">continue shopping</a></div>
+</div>
+
+@endif
 <!-- CART EOF   -->
 <!-- BEGIN INSTA PHOTOS -->
 <div class="insta-photos">

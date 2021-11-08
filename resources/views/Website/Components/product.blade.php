@@ -85,7 +85,7 @@
                 @if($Products->special_price)
                 <span class="product-price"><span>&#8377; {{$Products->price}}</span>&#8377; {{$Products->special_price}}</span>
                 @else
-                <span class="product-price"><span></span>&#8377; {{$Products->price}}</span> 
+                <span class="product-price"><span></span><i class="fas fa-rupee-sign"></i> {{$Products->price}}</span> 
                 @endif
                 <p>@if($Products->long_description){{$Products->short_description}} @endif </p>
                 {{-- <div class="contacts-info__social">

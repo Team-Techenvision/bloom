@@ -79,10 +79,113 @@ class WebsiteController extends Controller
         $data['flag'] = 6;
         return view('Website/Webviews/manage_website_pages',$data);
     }
-    public function cart_page()
-    {
-        $data['flag'] = 7;
+    // public function cart_page()
+    // {
+    //     $data['flag'] = 7;
+
+    //     return view('Website/Webviews/manage_website_pages',$data);
+        
+    // }
+
+    public function cart_page(){   
+        // return 'hello';
+        $data['flag'] = 7; 
+
+        $session = Session::getId();
+        $r = DB::table('temp_carts')->where('session_id',$session)->select('product_id','attribute_id')->get();
+        // dd($r);
+        $cart = DB::table('carts')->where('user_id',Auth::id())->select('product_id','attribute_id')->get();
+        $count = DB::table('temp_carts')->where('session_id',$session)->count();
+
+
+        foreach ($r as $key => $r1) {
+                $data1[]=DB::table('products')
+                ->join('temp_carts', 'products.products_id', '=', 'temp_carts.product_id')
+                ->join('product_attributes', 'products.products_id', '=', 'product_attributes.products_id')
+                ->select('products.products_id','products.product_name','products.product_code','product_attributes.price','temp_carts.quantity','temp_carts.temp_carts_id','temp_carts.attribute_id')
+                ->where('product_attributes.id',$r1->attribute_id)
+                ->first();
+            // dd($data1);
+        }
+
+        foreach ($cart as $key => $r2) {
+            $data1[]=DB::table('products')
+            ->join('carts', 'products.products_id', '=', 'carts.product_id')
+            ->join('product_attributes', 'products.products_id', '=', 'product_attributes.products_id')
+            ->select('products.products_id','products.product_name','products.product_code','product_attributes.price','carts.quantity','carts.id','carts.attribute_id')
+            ->where('product_attributes.id',$r2->attribute_id)
+            ->first();
+        // dd($data1);
+    }
+    
+    if (DB::table('temp_carts')->where('session_id',$session)->count()>0) {
+        $data['result'] = $data1;
+        
+       
+    }elseif (DB::table('carts')->where('user_id',Auth::id())->count()>0) {
+        $data['result'] = $data1;
+       
+        // dd( $data['result']);
+    }else{
+        $data['result']='Please Choose To Continue Shopping';
+    }
+    // dd($data);
         return view('Website/Webviews/manage_website_pages',$data);
+    }
+
+    public function cartUpdate(Request $req){
+        // return $req;
+    	if(Auth::check()){
+            $user_id = Auth::user()->id;
+            $cart_info =  Cart::where('attribute_id',$req->attribute_id)->where('user_id', $user_id)->first();  
+            // return $user_id;
+            if($req->type == 1 ){                
+                //  dd($cart_info) ;
+                 Cart::where('attribute_id',$req->attribute_id)->where('user_id', $user_id)
+                            ->update([
+                            'quantity' => $cart_info->quantity + 1,
+                        ]); 
+            }else{
+                      //  dd($cart_info) 
+                 Cart::where('attribute_id',$req->attribute_id)->where('user_id', $user_id)
+                        ->update([
+                        'quantity' => $cart_info->quantity - 1,
+                    ]); 
+            }
+                   
+        }else{
+            $session = Session::getId();
+            $cart_info =  TempCart::where('attribute_id',$req->attribute_id)->where('session_id', $session)->first();
+            
+            if($req->type == 1 ){                
+                //  dd($cart_info) 
+                TempCart::where('attribute_id',$req->attribute_id)->where('session_id', $session)
+                            ->update([
+                            'quantity' => $cart_info->quantity + 1,
+                        ]); 
+            }else{
+                      //  dd($cart_info) 
+                TempCart::where('attribute_id',$req->attribute_id)->where('session_id', $session)
+                        ->update([
+                        'quantity' => $cart_info->quantity - 1,
+                    ]); 
+            }
+        }
+        toastr()->success('Cart Updated !');
+    	return 1;
+    }
+
+    public function removeProduct(Request $req){
+
+    	if(Auth::check()){
+            $user_id = Auth::user()->id;
+             Cart::where('attribute_id',$req->attribute_id)->where('user_id', $user_id)->delete();             
+        }else{
+            $session = Session::getId();
+            TempCart::where('attribute_id',$req->attribute_id)->where('session_id', $session)->delete();           
+        }
+        toastr()->error('Product deleted from cart');
+    	return 1;
     }
 
     public function about_page()
@@ -196,22 +299,24 @@ class WebsiteController extends Controller
         $data['flag'] = 13;
         return view('Website/Webviews/manage_website_pages',$data);
     }
-    public function checkout1()
-    {
-        $data['flag'] = 14;
-        return view('Website/Webviews/manage_website_pages',$data);
-    }
-
-    public function checkout2()
-    {
-        $data['flag'] = 15;
-        return view('Website/Webviews/manage_website_pages',$data);
-
-    }
-    public function checkout3()
-    {
-        $data['flag'] = 16;
-        return view('Website/Webviews/manage_website_pages',$data);
-
+    public function checkout(){   
+        // return 'hello';
+        $data['flag'] = 14; 
+                $cart = DB::table('carts')->where('user_id',Auth::id())->select('product_id','attribute_id')->get();
+                foreach ($cart as $key => $r2) {
+                    $data1[]=DB::table('products')
+                    ->join('carts', 'products.products_id', '=', 'carts.product_id')
+                    ->join('product_attributes', 'products.products_id', '=', 'product_attributes.products_id')
+                    ->select('products.products_id','products.product_name','products.product_code','product_attributes.price','carts.quantity','carts.id','carts.attribute_id')
+                    ->where('product_attributes.id',$r2->attribute_id)
+                    ->first();
+            }
+            if(DB::table('carts')->where('user_id',Auth::id())->count()>0) {
+                $data['result'] = $data1;
+            }else{
+                $data['result']='Please Choose To Continue Shopping';
+            }
+            // dd($data);
+                return view('Website/Webviews/manage_website_pages',$data);
     }
 }

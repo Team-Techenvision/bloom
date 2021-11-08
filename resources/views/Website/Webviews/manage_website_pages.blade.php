@@ -37,11 +37,7 @@
             @elseif($flag == 13) 
                 @include('Website.Components/post')
             @elseif($flag == 14) 
-                @include('Website.Components/checkout1')
-            @elseif($flag == 15) 
-                @include('Website.Components/checkout2')
-            @elseif($flag == 16) 
-                @include('Website.Components/checkout3')        
+                @include('Website.Components/checkout1')     
             @endif
         </main>
 

@@ -15,7 +15,7 @@
             <div class="detail-block__items">
                 <div class="detail-block__item">
                     <div class="detail-block__item-icon">
-                        <img data-src="img/main-text-decor.svg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                        <img data-src="{{asset('Website/img/main-text-decor.svg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                         <i class="icon-step1"></i>
                     </div>
                     <div class="detail-block__item-info">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="detail-block__item detail-block__item-inactive">
                     <div class="detail-block__item-icon">
-                        <img data-src="img/main-text-decor2.svg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                        <img data-src="{{asset('Website/img/main-text-decor2.svg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                         <i class="icon-step2"></i>
                     </div>
                     <div class="detail-block__item-info">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="detail-block__item detail-block__item-inactive">
                     <div class="detail-block__item-icon">
-                        <img data-src="img/main-text-decor2.svg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                        <img data-src="{{asset('Website/img/main-text-decor2.svg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                         <i class="icon-step3"></i>
                     </div>
                     <div class="detail-block__item-info">
@@ -115,53 +115,55 @@
             <div class="checkout-info">
                 <div class="checkout-order">
                     <h5>Your Order</h5>
+
+                    @php                                                 
+                        $total=0; 
+                        $total_amount=0;
+                        $shipping_charges = 0;
+                        $copoun_amount = 0;
+                    @endphp
+                    @foreach ($result as $item)
+                            
+                        @php
+                            $total += ($item->price) * ($item->quantity);
+                            $subtotal = ($item->price) * ($item->quantity);
+                        @endphp 
+
+                        @php
+                             $product_image = DB::table('product_images')->where('products_id' , $item->products_id)->where('type', 2)->pluck('product_image')->first();
+                        @endphp
+
+                    
+
                     <div class="checkout-order__item">
-                        <a href="#" class="checkout-order__item-img">
-                            <img data-src="https://via.placeholder.com/70" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                        <a href="{{url('ProductDetail/'.$item->products_id)}}" class="checkout-order__item-img">
+                            <img data-src="{{asset($product_image)}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                         </a>
                         <div class="checkout-order__item-info">
-                            <a class="title6" href="#">Foundation Beshop <span>x2</span></a>
-                            <span class="checkout-order__item-price">$401.90</span>
-                            <span class="checkout-order__item-num">SKU: IN1203</span>
+                            <a class="title6" href="{{url('ProductDetail/'.$item->products_id)}}">{{$item->product_name}} <span>x{{$item->quantity}}</span></a>
+                            <span class="checkout-order__item-price">{{$item->price}}</span>
+                            <span class="checkout-order__item-num">SKU: {{$item->product_code}}</span>
                         </div>
                     </div>
-                    <div class="checkout-order__item">
-                        <a href="#" class="checkout-order__item-img">
-                            <img data-src="https://via.placeholder.com/70" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-                        </a>
-                        <div class="checkout-order__item-info">
-                            <a class="title6" href="#">Hair mask with oat extract <span>x1</span></a>
-                            <span class="checkout-order__item-price">$125.95</span>
-                            <span class="checkout-order__item-num">SKU: IN1203</span>
-                        </div>
-                    </div>
-                    <div class="checkout-order__item">
-                        <a href="#" class="checkout-order__item-img">
-                            <img data-src="https://via.placeholder.com/70" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-                        </a>
-                        <div class="checkout-order__item-info">
-                            <a class="title6" href="#">Spray balm with oat extract <span>x1</span></a>
-                            <span class="checkout-order__item-price">$60.95</span>
-                            <span class="checkout-order__item-num">SKU: IN1203</span>
-                        </div>
-                    </div>
+
+                    @endforeach
                 </div>
                 <div class="cart-bottom__total">
                     <div class="cart-bottom__total-goods">
-                        Goods on
-                        <span>$588.80</span>
+                      Total Amount
+                        <span><i class="fas fa-rupee-sign"></i>{{$total}}</span>
                     </div>
                     <div class="cart-bottom__total-promo">
                         Discount on promo code
-                        <span>No</span>
+                        <span>00</span>
                     </div>
                     <div class="cart-bottom__total-delivery">
-                        Delivery <span class="cart-bottom__total-delivery-date">(Aug 28,2020 at 11:30)</span> 
-                        <span>$30</span>
+                        {{-- Delivery <span class="cart-bottom__total-delivery-date">(Aug 28,2020 at 11:30)</span> 
+                        <span>$30</span> --}}
                     </div>
                     <div class="cart-bottom__total-num">
-                        total:
-                        <span>$618.80</span>
+                        Total:
+                        <span><i class="fas fa-rupee-sign"></i>{{$total}}</span>
                     </div>
                 </div>
             </div>

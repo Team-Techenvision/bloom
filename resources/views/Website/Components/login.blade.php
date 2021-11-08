@@ -19,13 +19,13 @@
         <div class="login-form js-img" data-src="img/login-form__bg.png">
             <form  name="loginForm" id='login_form' class="" method="POST" action="{{ url('Login-submit') }}">
                 @csrf
-                <h3>log in with</h3>
-                <ul class="login-form__social">
+                <h3>log in </h3>
+                {{-- <ul class="login-form__social">
                     <li><a href="#"><i class="icon-facebook"></i></a></li>
                     <li><a href="#"><i class="icon-twitter"></i></a></li>
                     <li><a href="#"><i class="icon-insta"></i></a></li>
                     <li><a href="#"><i class="icon-google"></i></a></li>
-                </ul>
+                </ul> --}}
                 <div class="box-field">
                     <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
                 </div>
