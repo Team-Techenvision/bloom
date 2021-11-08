@@ -77,6 +77,7 @@
                     </div> --}}
                 </div>
             </div>
+            
             <div class="product-info">
                 <h3>@if($Products->product_name){{$Products->product_name}}@endif</h3>
                 <span class="product-stock">in stock</span>
@@ -86,18 +87,20 @@
                 @else
                 <span class="product-price"><span></span>&#8377; {{$Products->price}}</span> 
                 @endif
-                <p>@if($Products->long_description){{$Products->long_description}} @endif </p>
-                <div class="contacts-info__social">
+                <p>@if($Products->long_description){{$Products->short_description}} @endif </p>
+                {{-- <div class="contacts-info__social">
                     <span>Find us here:</span>
-                    <ul>
+                    <ul>   
                         <li><a href="#"><i class="icon-facebook"></i></a></li>
                         <li><a href="#"><i class="icon-twitter"></i></a></li>
                         <li><a href="#"><i class="icon-insta"></i></a></li>
                         <li><a href="#"><i class="icon-in"></i></a></li>
                     </ul>
-                </div>
+                </div> --}}
+                <form action="{{url('/add-to-cart')}}" method="post" class="num-block">
+                    @csrf
                 <div class="product-options">
-                    <div class="product-info__color">
+                    {{-- <div class="product-info__color">
                         <span>Сolor:</span>
                         <ul>
                             <li style="background-color: #FCEDEA;"></li>
@@ -107,24 +110,29 @@
                             <li style="background-color: #FDB7A8;"></li>
                             <li style="background-color: #FFA08A;"></li>
                         </ul>
-                    </div>
+                    </div> --}}
                     <div class="product-info__quantity">
                         <span class="product-info__quantity-title">Quantity:</span>
                         <div class="counter-box">
                             <span class="counter-link counter-link__prev"><i class="icon-arrow"></i></span>
-                            <input type="text" class="counter-input" disabled value="1">
+                            <input type="text" name="quantity" class="counter-input"  value="1">
                             <span class="counter-link counter-link__next"><i class="icon-arrow"></i></span>
                         </div>
                     </div>
                 </div>
-                <div class="product-buttons">
-                    <a href="#" class="btn btn-icon btn-info"><i class="icon-cart"></i> cart</a>
-                    <a href="#" class="btn btn-danger btn-icon btn-info"><i class="icon-heart"></i> wish</a>
-                </div>
+               
+                    <input type="hidden" name="products_id" id="product_id_detail_page" value="{{$Products->products_id}}">
+                    <input type="hidden" name="attribute_id" id="attribute_id_detail_page" value="{{$Products->id}}">
+                    <div class="product-buttons">
+                    <button class="btn btn-icon btn-info" type="submit"><i class="icon-cart"></i> cart</button>
+                    {{-- <a href="#" class="btn btn-danger btn-icon btn-info"><i class="icon-heart"></i> wish</a> --}}
             </div>
+                </form>
+            </div>
+            
+    
         </div>
         <div class="product-detail">
-
             <div class="tab-wrap product-detail-tabs">
                 <ul class="nav-tab-list tabs">
                     <li>
@@ -136,7 +144,7 @@
                 </ul>
                 <div class="box-tab-cont">
                     <div class="tab-cont hide" id="product-tab_1">
-                        <p>{{$Products->long_description}}</p>                         
+                        <p>{!!$Products->long_description!!}</p>                         
                     </div>
                     <div class="tab-cont product-reviews" id="product-tab_2">
                         <div class="product-detail__items">

@@ -457,6 +457,13 @@
     </a>
 </div>
 <!-- BEGIN INSTA PHOTOS -->
+
+<style>
+    .shop-main__items .products-item__img 
+    {
+        height:260px;
+    }
+</style>
 <!--<div class="insta-photos">-->
 <!--    <a href="#" class="insta-photo">-->
 <!--        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"-->

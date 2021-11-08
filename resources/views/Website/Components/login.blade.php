@@ -17,7 +17,8 @@
 <div class="login">
     <div class="wrapper">
         <div class="login-form js-img" data-src="img/login-form__bg.png">
-            <form>
+            <form  name="loginForm" id='login_form' class="" method="POST" action="{{ url('Login-submit') }}">
+                @csrf
                 <h3>log in with</h3>
                 <ul class="login-form__social">
                     <li><a href="#"><i class="icon-facebook"></i></a></li>
@@ -26,10 +27,10 @@
                     <li><a href="#"><i class="icon-google"></i></a></li>
                 </ul>
                 <div class="box-field">
-                    <input type="text" class="form-control" placeholder="Enter your email or nickname">
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
                 </div>
                 <div class="box-field">
-                    <input type="password" class="form-control" placeholder="Enter your password">
+                    <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
                 </div>
                 <label class="checkbox-box checkbox-box__sm">
                     <input type="checkbox">
@@ -38,7 +39,7 @@
                 </label>
                 <button class="btn" type="submit">log in</button>
                 <div class="login-form__bottom">
-                    <span>No account? <a href="#">Register now</a></span>
+                    <span>No account? <a href="{{url('/Web-register')}}">Register now</a></span>
                     <a href="#">Lost your password?</a>
                 </div>
             </form>

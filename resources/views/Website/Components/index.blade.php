@@ -21,8 +21,7 @@
             </p>
         </div>
         <div class="tab-wrap trending-tabs">
-            <ul class="nav-tab-list tabs">
-                
+            <ul class="nav-tab-list tabs">                
                   <?php  $i = 1;?>
                 @foreach ($categories_contain as $item)
                     <?php $statusClass  = ""; ?>
@@ -36,24 +35,7 @@
                     <?php $i++ ?>
                 @endforeach
                 
-                {{-- <li class="active">
-                    <a href="#trending-tab_1">Make up</a>
-                </li>
-                <li>
-                    <a href="#trending-tab_2">SPA</a>
-                </li>
-                <li>
-                    <a href="#trending-tab_3">Perfume</a>
-                </li>
-                <li>
-                    <a href="#trending-tab_4">Nails</a>
-                </li>
-                <li>
-                    <a href="#trending-tab_5">Skin care</a>
-                </li>
-                <li>
-                    <a href="#trending-tab_6">Hair care</a>
-                </li> --}}
+                
             </ul>
             <div class="box-tab-cont">
                 
@@ -82,8 +64,8 @@
                                             <div class="products-item__hover">
                                                 <i class="icon-search"></i>
                                                 <div class="products-item__hover-options">
-                                                    <i class="icon-heart"></i>
-                                                    <i class="icon-cart"></i>
+                                                    {{-- <i class="icon-heart"></i>
+                                                    <i class="icon-cart"></i> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -102,220 +84,7 @@
                     @endforeach
                 @endif    
                 
-                <!--<div class="tab-cont" id="trending-tab_1">-->
-                <!--    <div class="products-items js-products-items">-->
-                <!--        <a href="#" class="products-item">-->
-                <!--            <div class="products-item__type">-->
-                <!--                <span class="products-item__sale">sale</span>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__img">-->
-                <!--                <img data-src="{{asset('Website/img/image/luchiana-1959282579.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">-->
-                <!--                <div class="products-item__hover">-->
-                <!--                    <i class="icon-search"></i>-->
-                <!--                    <div class="products-item__hover-options">-->
-                <!--                        <i class="icon-heart"></i>-->
-                <!--                        <i class="icon-cart"></i>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__info">-->
-                <!--                <span class="products-item__name">Detox body Cream</span>-->
-                <!--                <span class="products-item__cost"><span>$249.95</span> $200.95</span>-->
-                <!--            </div>-->
-                <!--        </a>-->
-                <!--        <a href="#" class="products-item">-->
-                <!--            <div class="products-item__type">-->
-                <!--                <span class="products-item__new">new</span>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__img">-->
-                <!--                <img data-src="{{asset('Website/img/image/Image-PD5EM2N-paqh2933y9yyjgzoj7uidzu7mivvgwkp7fywyxv2gw.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">-->
-                <!--                <div class="products-item__hover">-->
-                <!--                    <i class="icon-search"></i>-->
-                <!--                    <div class="products-item__hover-options">-->
-                <!--                        <i class="icon-heart"></i>-->
-                <!--                        <i class="icon-cart"></i>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__info">-->
-                <!--                <span class="products-item__name">Detox body Cream</span>-->
-                <!--                <span class="products-item__cost">$200.95</span>-->
-                <!--            </div>-->
-                <!--        </a>-->
-                <!--        <a href="#" class="products-item">-->
-                <!--            <div class="products-item__type">-->
-                <!--                <span class="products-item__sale">sale</span>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__img">-->
-                <!--                <img data-src="{{asset('Website/img/image/female-hands-with-soap-foam-KVKDKGZ.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">-->
-                <!--                <div class="products-item__hover">-->
-                <!--                    <i class="icon-search"></i>-->
-                <!--                    <div class="products-item__hover-options">-->
-                <!--                        <i class="icon-heart"></i>-->
-                <!--                        <i class="icon-cart"></i>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__info">-->
-                <!--                <span class="products-item__name">Detox body Cream</span>-->
-                <!--                <span class="products-item__cost"><span>$249.95</span> $200.95</span>-->
-                <!--            </div>-->
-                <!--        </a>-->
-                <!--        <a href="#" class="products-item">-->
-                <!--            <div class="products-item__type">-->
-                <!--                <span class="products-item__sale">sale</span>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__img">-->
-                <!--                <img data-src="{{asset('Website/img/image/luchiana-1959487418-460x259.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">-->
-                <!--                <div class="products-item__hover">-->
-                <!--                    <i class="icon-search"></i>-->
-                <!--                    <div class="products-item__hover-options">-->
-                <!--                        <i class="icon-heart"></i>-->
-                <!--                        <i class="icon-cart"></i>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__info">-->
-                <!--                <span class="products-item__name">Detox body Cream</span>-->
-                <!--                <span class="products-item__cost"><span>$249.95</span> $200.95</span>-->
-                <!--            </div>-->
-                <!--        </a>-->
-                <!--        <a href="#" class="products-item">-->
-                <!--            <div class="products-item__type">-->
-                <!--                <span class="products-item__sale">sale</span>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__img">-->
-                <!--                <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">-->
-                <!--                <div class="products-item__hover">-->
-                <!--                    <i class="icon-search"></i>-->
-                <!--                    <div class="products-item__hover-options">-->
-                <!--                        <i class="icon-heart"></i>-->
-                <!--                        <i class="icon-cart"></i>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__info">-->
-                <!--                <span class="products-item__name">Detox body Cream</span>-->
-                <!--                <span class="products-item__cost"><span>$249.95</span> $200.95</span>-->
-                <!--            </div>-->
-                <!--        </a>-->
-                <!--    </div>-->
-                <!--</div>-->
-                <!--<div class="tab-cont hide" id="trending-tab_2">-->
-                <!--    <div class="products-items">-->
-                <!--        <a href="#" class="products-item">-->
-                <!--            <div class="products-item__type">-->
-                <!--                <span class="products-item__sale">sale</span>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__img">-->
-                <!--                <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="" >-->
-                <!--                <div class="products-item__hover">-->
-                <!--                    <i class="icon-search"></i>-->
-                <!--                    <div class="products-item__hover-options">-->
-                <!--                        <i class="icon-heart"></i>-->
-                <!--                        <i class="icon-cart"></i>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__info">-->
-                <!--                <span class="products-item__name">Detox body Cream</span>-->
-                <!--                <span class="products-item__cost"><span>$249.95</span> $200.95</span>-->
-                <!--            </div>-->
-                <!--        </a>-->
-                <!--    </div>-->
-                <!--</div>-->
-                <!--<div class="tab-cont hide" id="trending-tab_3">-->
-                <!--    <div class="products-items">-->
-                <!--        <a href="#" class="products-item">-->
-                <!--            <div class="products-item__type">-->
-                <!--                <span class="products-item__sale">sale</span>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__img">-->
-                <!--                <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">-->
-                <!--                <div class="products-item__hover">-->
-                <!--                    <i class="icon-search"></i>-->
-                <!--                    <div class="products-item__hover-options">-->
-                <!--                        <i class="icon-heart"></i>-->
-                <!--                        <i class="icon-cart"></i>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__info">-->
-                <!--                <span class="products-item__name">Detox body Cream</span>-->
-                <!--                <span class="products-item__cost"><span>$249.95</span> $200.95</span>-->
-                <!--            </div>-->
-                <!--        </a>-->
-                <!--    </div>-->
-                <!--</div>-->
-                <!--<div class="tab-cont hide" id="trending-tab_4">-->
-                <!--    <div class="products-items">-->
-                <!--        <a href="#" class="products-item">-->
-                <!--            <div class="products-item__type">-->
-                <!--                <span class="products-item__sale">sale</span>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__img">-->
-                <!--                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">-->
-                <!--                <div class="products-item__hover">-->
-                <!--                    <i class="icon-search"></i>-->
-                <!--                    <div class="products-item__hover-options">-->
-                <!--                        <i class="icon-heart"></i>-->
-                <!--                        <i class="icon-cart"></i>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__info">-->
-                <!--                <span class="products-item__name">Detox body Cream</span>-->
-                <!--                <span class="products-item__cost"><span>$249.95</span> $200.95</span>-->
-                <!--            </div>-->
-                <!--        </a>-->
-                <!--    </div>-->
-                <!--</div>-->
-                <!--<div class="tab-cont hide" id="trending-tab_5">-->
-                <!--    <div class="products-items">-->
-                <!--        <a href="#" class="products-item">-->
-                <!--            <div class="products-item__type">-->
-                <!--                <span class="products-item__sale">sale</span>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__img">-->
-                <!--                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">-->
-                <!--                <div class="products-item__hover">-->
-                <!--                    <i class="icon-search"></i>-->
-                <!--                    <div class="products-item__hover-options">-->
-                <!--                        <i class="icon-heart"></i>-->
-                <!--                        <i class="icon-cart"></i>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__info">-->
-                <!--                <span class="products-item__name">Detox body Cream</span>-->
-                <!--                <span class="products-item__cost"><span>$249.95</span> $200.95</span>-->
-                <!--            </div>-->
-                <!--        </a>-->
-                <!--    </div>-->
-                <!--</div>-->
-                <!--<div class="tab-cont hide" id="trending-tab_6">-->
-                <!--    <div class="products-items">-->
-                <!--        <a href="#" class="products-item">-->
-                <!--            <div class="products-item__type">-->
-                <!--                <span class="products-item__sale">sale</span>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__img">-->
-                <!--                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">-->
-                <!--                <div class="products-item__hover">-->
-                <!--                    <i class="icon-search"></i>-->
-                <!--                    <div class="products-item__hover-options">-->
-                <!--                        <i class="icon-heart"></i>-->
-                <!--                        <i class="icon-cart"></i>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-                <!--            </div>-->
-                <!--            <div class="products-item__info">-->
-                <!--                <span class="products-item__name">Detox body Cream</span>-->
-                <!--                <span class="products-item__cost"><span>$249.95</span> $200.95</span>-->
-                <!--            </div>-->
-                <!--        </a>-->
-                <!--    </div>-->
-                <!--</div>-->
+                
             </div>
         </div>
 
@@ -395,31 +164,7 @@
         </a>
         @endforeach
     @endif
-
-        {{-- <a href="#" class="top-categories__item">
-            <img data-src="https://via.placeholder.com/620x700" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-            <div class="top-categories__item-hover">
-                <h5>SPA</h5>
-                <span>browse products -</span>
-                <i class="icon-arrow-lg"></i>
-            </div>
-        </a>
-        <a href="#" class="top-categories__item">
-            <img data-src="https://via.placeholder.com/620x700" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-            <div class="top-categories__item-hover">
-                <h5>Nails</h5>
-                <span>browse products -</span>
-                <i class="icon-arrow-lg"></i>
-            </div>
-        </a>
-        <a href="#" class="top-categories__item">
-            <img data-src="https://via.placeholder.com/620x700" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-            <div class="top-categories__item-hover">
-                <h5>Perfum</h5>
-                <span>browse products -</span>
-                <i class="icon-arrow-lg"></i>
-            </div>
-        </a> --}}
+ 
     </div>
 </section>
 <!-- TOP CATEGORIES EOF   -->
@@ -617,28 +362,32 @@
 </section>
 <!-- LATEST NEWS EOF   -->
 
+
+
 <!-- BEGIN ADVANTAGES -->
 <div class="advantages">
-    <div class="wrapper">
-        <div class="trending-top">
-            <span class="saint-text">Our Plans</span>
-            <h2>Subcription Plans</h2>           
-        </div>
-        <div class="advantages-items">
-            @foreach ($plans as $item)
-                <div class="advantages-item pricing-card">
-                    {{-- <div class="advantages-item__icon">
-                        <i class="icon-natural"></i>
-                    </div> --}}
-                    <h4>{{$item->plan_name}}</h4>
-                    <h2> RS.  {{$item->price}}</h2>
-                    <p>{!!$item->description!!}</p>
-                    <a href="#" class="btn btn-info" style="margin-top: 30px;">Sign Up</a>
-                </div>
-            @endforeach
-        </div>
-    </div>
+<div class="wrapper">
+<div class="trending-top">
+<span class="saint-text">Our Plans</span>
+<h2>Subcription Plans</h2>
 </div>
+<div class="advantages-items">
+@foreach ($plans as $item)
+<div class="advantages-item pricing-card">
+{{-- <div class="advantages-item__icon">
+<i class="icon-natural"></i>
+</div> --}}
+<h4>{{$item->plan_name}}</h4>
+<h2> RS. {{$item->price}}</h2>
+<p>{!!$item->description!!}</p>
+<a href="#" class="btn btn-info" style="margin-top: 30px;">Sign Up</a>
+</div>
+@endforeach
+</div>
+</div>
+</div>
+<!-- ADVANTAGES EOF -->
+
 <!-- ADVANTAGES EOF   -->
 
 <!-- BEGIN SUBSCRIBE -->
@@ -704,3 +453,8 @@
     </a>
 </div>
 <!-- INSTA PHOTOS EOF   -->
+<style>
+    .products-item__img {
+        height:260px;
+    }
+</style>

@@ -18,7 +18,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'Website\WebsiteController@index');
-Route::get('/shop', 'Website\WebsiteController@shop_page');
+Route::get('/Web-login', 'Website\WebsiteController@login');
+Route::get('/Web-register', 'Website\WebsiteController@registration');
+Route::post('/Register-submit', 'Website\WebsiteController@register_submit');
+Route::post('Login-submit', 'Website\WebsiteController@login_submit');
+Route::get('/shop', 'Website\WebsiteController@index');
 Route::get('/categories', 'Website\WebsiteController@categories');
 Route::get('/blog', 'Website\WebsiteController@blog_Page');
 Route::get('/contacts', 'Website\WebsiteController@contacts');
@@ -31,6 +35,9 @@ Route::get('/post', 'Website\WebsiteController@post_page');
 Route::get('/checkout1', 'Website\WebsiteController@checkout1');
 Route::get('/checkout2', 'Website\WebsiteController@checkout2');
 Route::get('/checkout3', 'Website\WebsiteController@checkout3');
+Route::get('/ProductList/{Cat_id}', 'Website\WebsiteController@productList');
+Route::get('/ProductDetail/{product_id}', 'Website\WebsiteController@ProductDetail');
+Route::post('/add-to-cart', 'Website\EcomController@add_to_cart');
 
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');

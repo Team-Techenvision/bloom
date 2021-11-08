@@ -1,3 +1,5 @@
+
+
 <!-- BEGIN HEADER -->
 
 <header class="header">
@@ -13,7 +15,7 @@
             <ul class="header-nav">
                 <li><a href="{{url('/')}}" class="@if($flag == 1)active @endif">Home</a></li>
                 <li><a href="{{url('/about')}}" class="@if($flag == 8)active @endif">About us</a></li>
-                <li><a href="#" class="@if($flag == 2)active @endif">shop</a></li>
+                <li><a href="{{url('/shop')}}" class="@if($flag == 2)active @endif">shop</a></li>
                 <li><a href="{{url('/categories')}}" class="@if($flag == 3)active @endif">Categories</a></li>
                 <li><a href="{{url('/blog')}}" class="@if($flag == 4)active @endif">blog</a></li>
                 <li><a href="{{url('/contacts')}}" class="@if($flag == 5)active @endif">contact</a></li>
@@ -22,7 +24,18 @@
                 <li><a href="#"><i class="icon-search"></i></a></li>
                 <li><a href="#"><i class="icon-user"></i></a></li>
                 <li><a href="{{url('/wishlist')}}"><i class="icon-heart"></i></a></li>
-                <li><a href="{{url('/cart')}}"><i class="icon-cart"></i><span>0</span></a></li>
+                @if(Auth::check())
+                    @php
+                            $cart_count = DB::table('carts')->where('user_id',Auth::id())->count();
+                    @endphp
+                            <li><a href="{{url('/cart')}}"><i class="icon-cart"></i><span>{{$cart_count}}</span></a></li>
+                    @else
+                        @php
+                        $session = Session::getId();
+                        $cart_count = DB::table('temp_carts')->where('session_id',$session)->count();
+                    @endphp
+                            <li><a href="{{url('/cart')}}"><i class="icon-cart"></i><span>{{$cart_count}}</span></a></li>
+              @endif
             </ul>
         </div>
 
@@ -47,15 +60,15 @@
                     </ul>
                 </div>
                 <div class="footer-top__logo">
-                    <img data-src="{{asset('img/footer-logo.svg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                    <img data-src="{{asset('Website/img/logo.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                 </div>
                 <div class="footer-top__payments">
                     <span>Payment methods:</span>
                     <ul>
-                        <li><img data-src="{{asset('img/payment1.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
-                        <li><img data-src="{{asset('img/payment2.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
-                        <li><img data-src="{{asset('img/payment3.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
-                        <li><img data-src="{{asset('img/payment4.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
+                        <li><img data-src="{{asset('Website/img/payment1.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
+                        <li><img data-src="{{asset('Website/img/payment2.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
+                        <li><img data-src="{{asset('Website/img/payment3.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
+                        <li><img data-src="{{asset('Website/img/payment4.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt=""></li>
                     </ul>
                 </div>
             </div>
@@ -65,7 +78,7 @@
                     <ul>
                         <li><a href="{{url('about')}}">About us</a></li>
                         <li><a href="{{url('/categories')}}">Categories</a></li>
-                        <li><a href="#">Shop</a></li>
+                        <li><a href="{{url('/shop')}}">Shop</a></li>
                         <li><a href="{{url('/blog')}}">Blog</a></li>
                         <li><a href="faq.html">FAQ</a></li>
                         <li><a href="{{url('/contacts')}}">Contacts</a></li>
