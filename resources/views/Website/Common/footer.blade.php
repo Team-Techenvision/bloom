@@ -20,11 +20,21 @@
                 <li><a href="{{url('/blog')}}" class="@if($flag == 4)active @endif">blog</a></li>
                 <li><a href="{{url('/contacts')}}" class="@if($flag == 5)active @endif">contact</a></li>
             </ul>
-            <ul class="header-options">
-                <li><a href="#"><i class="icon-search"></i></a></li>
+            <ul class="header-options" style="position: relative;">
+                {{-- <li><a href="#"><i class="icon-search"></i></a></li> --}}
                 @if(Auth::check())
-                <li><a href="#"><i class="icon-user"></i></a></li>
-                @endif
+                <li><a href="javascript:void(0);" id="user_profile"><i class="icon-user"></i></a>
+                    <div id="sub_menuProfile">
+                        <ul>
+                            <li><a href="#">Profile</i></a></li>
+                            <li><a href="#">My Address</i></a></li>
+                            <li><a href="#">Log Out</i></a></li>
+                        </ul>
+                    </div>
+                </li>
+             @else
+                <li><a href="{{url('Web-login')}}"><i class="fa fa-power-off"></i></a></li>
+            @endif
                 <li><a href="{{url('/wishlist')}}"><i class="icon-heart"></i></a></li>
                 @if(Auth::check())
                     @php
@@ -142,6 +152,26 @@
 
 <!-- BODY EOF   -->
 
+<style>
+    #sub_menuProfile
+    {
+        display: none;
+        padding: 10px;
+        background: white;      
+        position: absolute;
+        top: 45px;
+        left: 5px;
+    }
+    #sub_menuProfile ul
+    {
+        line-height: 2;
+    }
+    #sub_menuProfile ul li
+    {
+        margin-left: 10px;
+    }
+</style>
+
 <script src="{{asset('Website/js/jquery-3.5.1.min.js')}}"></script>
 <script src="{{asset('Website/js/lazyload.min.js')}}"></script>
 <script src="{{asset('Website/js/slick.min.js')}}"></script>
@@ -195,6 +225,16 @@ setTimeout(function(){
         });
     };
 
+</script>
+
+<script>
+    $(document).ready(function()
+    {
+        $('#user_profile').click(function()
+        {
+            $('#sub_menuProfile').toggle();
+        });
+    });
 </script>
 
 </body>

@@ -16,6 +16,8 @@ use App\Plans;
 use App\User;
 use App\TempCart;
 use App\Cart;
+use App\UserAddress;
+use App\State;
 use DB;
 use Session;
 use Auth;
@@ -31,6 +33,56 @@ class WebsiteController extends Controller
         $data['plans'] = Plans::where('status',1)->get();
 
         return view('Website/Webviews/manage_website_pages',$data);
+    }
+
+    public function My_Address()
+    {
+        $data['flag'] = 15;
+        $data['useraddress']= UserAddress::where('user_id',Auth::user()->id)->get();
+        $data['state_list']= State::get();
+        return view('Website/Webviews/manage_website_pages',$data);
+    }
+
+    public function userAddressSubmit(Request $req){
+
+        // dd($req);
+
+        if($req->address_id){
+            // dd($req);
+            $data = Auth::id();
+            UserAddress::where('id',$req->address_id)->update([
+                'user_id' => Auth::id(),
+                'name' => $req->name,
+                'phone' => $req->phone,
+                'email' => $req->email,
+                'address' => $req->address,
+                'apartment' => $req->apartment,
+                'city' => $req->city,
+                'state' => $req->state,
+                'pin_code' => $req->pin_code,
+                'country' => $req->country,
+            ]);    
+            toastr()->success('Address Updated');
+            return redirect('My-address');
+        }else{
+            // $existing_addr = UserAddress::where('user_id',Auth::id())->count();
+            $data= new UserAddress;
+            $data->user_id = Auth::id();
+            $data->name = $req->name;
+            $data->phone  = $req->phone;
+            $data->email  = $req->email;
+            $data->selected = empty($existing_addr)?"1":"0";
+            $data->address = $req->address;
+            $data->city = $req->city;
+            $data->state  = $req->state;
+            $data->pin_code  = $req->pin_code;
+            $data->country  = $req->country;
+            $data->save();
+
+            toastr()->success('Address Save');
+            return back();
+        }
+
     }
 
       public function productList($Cat_id)

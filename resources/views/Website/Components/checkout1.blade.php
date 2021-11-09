@@ -95,27 +95,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="checkout-form__item">
+                    {{-- <div class="checkout-form__item">
                         <h4>Note</h4>
                         <div class="box-field box-field__textarea">
                             <textarea class="form-control" placeholder="Order note"></textarea>
                         </div>
-                        <label class="checkbox-box checkbox-box__sm">
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                            Create an account
-                        </label>
+                        
                     </div>
                     <div class="checkout-buttons">
                         <a href="#" class="btn btn-grey btn-icon"> <i class="icon-arrow"></i> back</a>
                         <a href="#" class="btn btn-icon btn-next">next <i class="icon-arrow"></i></a>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
             <div class="checkout-info">
                 <div class="checkout-order">
                     <h5>Your Order</h5>
-
                     @php                                                 
                         $total=0; 
                         $total_amount=0;
@@ -154,7 +149,7 @@
                         <span><i class="fas fa-rupee-sign"></i>{{$total}}</span>
                     </div>
                     <div class="cart-bottom__total-promo">
-                        Discount on promo code
+                       Shipping Charges
                         <span>00</span>
                     </div>
                     <div class="cart-bottom__total-delivery">

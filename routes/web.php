@@ -58,7 +58,10 @@ Route::get('logout', 'QovexController@logout');
 Route::group(['middleware' => 'auth', 'User'], function () {
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/checkout', 'Website\WebsiteController@checkout');
-    
+    Route::get('/My-Address', 'Website\WebsiteController@My_Address');
+    Route::post('user-address-submit','Website\WebsiteController@userAddressSubmit');
+    Route::get('user-address-edit/{id}','Website\WebsiteController@userAddressEdit');
+    Route::get('user-address-delete/{id}','Website\WebsiteController@userAddressDelete'); 
 });
 
 Route::middleware(['auth', 'Admin'])->group(function () {
