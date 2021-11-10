@@ -49,64 +49,36 @@
 </div>
 <!-- DETAIL MAIN BLOCK EOF   -->
 <!-- BEGIN CHECKOUT -->
+<form action="{{url('checkout-submit')}}" method="POST">
+    @csrf
 <div class="checkout">
     <div class="wrapper">
         <div class="checkout-content">
             <div class="checkout-form">
-                <form>
-                    <div class="checkout-form__item">
-                        <h4>Info about you</h4>
-                        <div class="box-field">
-                            <input type="text" class="form-control" placeholder="Enter your name">
+                         <div class="box-field__row">
+                            @foreach ($useraddress as $item)
+                           
+                            <div class="box-field"> 
+                                <div class="exsting_address">                                    
+                                    <label class="radio-box"> {{$item->name}}
+                                        <input type="radio" checked="checked" name="address_id" value="{{$item->id}}">
+                                        <span class="checkmark"></span>
+                                        
+                                    </label>
+                                    <ul style="line-height: 1.5;">                                       
+                                        {{-- <li>{{$item->address_type}}</li> --}}                                        
+                                        {{-- <li>{{$item->name}}</li> --}}
+                                        <li>{{$item->address}}</li>
+                                        <li>{{$item->city}},</li>
+                                        <li>{{$item->state}},{{$item->country}},{{$item->pin_code}}</li>
+                                        <li><a href="{{url('user-address-edit')}}/{{$item->id}}">Edit</a>&nbsp; <a href="{{url('user-address-delete')}}/{{$item->id}}">Delete</a></li>
+                                       
+                                    </ul>
+                                </div>
+                            </div>                            
+                            @endforeach
                         </div>
-                        <div class="box-field">
-                            <input type="text" class="form-control" placeholder="Enter your last name">
-                        </div>
-                        <div class="box-field__row">
-                            <div class="box-field">
-                                <input type="tel" class="form-control" placeholder="Enter your phone">
-                            </div>
-                            <div class="box-field">
-                                <input type="email" class="form-control" placeholder="Enter your mail">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="checkout-form__item">
-                        <h4>Delivery Info</h4>
-                        <select class="styled" data-placeholder="Select a country">
-                            <option value="" label="0"></option>
-                            <option>country 1</option>
-                            <option>country 2</option>
-                        </select>
-                        <div class="box-field__row">
-                            <div class="box-field">
-                                <input type="text" class="form-control" placeholder="Enter the city">
-                            </div>
-                            <div class="box-field">
-                                <input type="text" class="form-control" placeholder="Enter the address">
-                            </div>
-                        </div>
-                        <div class="box-field__row">
-                            <div class="box-field">
-                                <input type="text" class="form-control" placeholder="Delivery day">
-                            </div>
-                            <div class="box-field">
-                                <input type="text" class="form-control" placeholder="Delivery time">
-                            </div>
-                        </div>
-                    </div>
-                    {{-- <div class="checkout-form__item">
-                        <h4>Note</h4>
-                        <div class="box-field box-field__textarea">
-                            <textarea class="form-control" placeholder="Order note"></textarea>
-                        </div>
-                        
-                    </div>
-                    <div class="checkout-buttons">
-                        <a href="#" class="btn btn-grey btn-icon"> <i class="icon-arrow"></i> back</a>
-                        <a href="#" class="btn btn-icon btn-next">next <i class="icon-arrow"></i></a>
-                    </div> --}}
-                </form>
+                           
             </div>
             <div class="checkout-info">
                 <div class="checkout-order">
@@ -118,10 +90,13 @@
                         $copoun_amount = 0;
                     @endphp
                     @foreach ($result as $item)
-                            
+                   
                         @php
                             $total += ($item->price) * ($item->quantity);
                             $subtotal = ($item->price) * ($item->quantity);
+
+                            $shipping = DB::table('shipping_charges')->where('min','<=',  $total)->where('max','>=',$total)->pluck('ship_charges')->first();
+                            $final_total = $total + $shipping;
                         @endphp 
 
                         @php
@@ -148,9 +123,10 @@
                       Total Amount
                         <span><i class="fas fa-rupee-sign"></i>{{$total}}</span>
                     </div>
+                  
                     <div class="cart-bottom__total-promo">
                        Shipping Charges
-                        <span>00</span>
+                        <span>{{$shipping}}</span>
                     </div>
                     <div class="cart-bottom__total-delivery">
                         {{-- Delivery <span class="cart-bottom__total-delivery-date">(Aug 28,2020 at 11:30)</span> 
@@ -158,8 +134,13 @@
                     </div>
                     <div class="cart-bottom__total-num">
                         Total:
-                        <span><i class="fas fa-rupee-sign"></i>{{$total}}</span>
+                        <span><i class="fas fa-rupee-sign"></i>{{$final_total}}</span>
                     </div>
+
+                    <input type="hidden" name="total_amount" value="{{$final_total}}">
+                    <input type="hidden" name="payment_mode" value="1">
+
+                    <button type="submit" class="btn" style="margin-top: 50px;">Place Order</button>
                 </div>
             </div>
         </div>
@@ -167,6 +148,7 @@
     <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
         src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
 </div>
+</form>
 <!-- CHECKOUT EOF   -->
 <!-- BEGIN INSTA PHOTOS -->
 <div class="insta-photos">

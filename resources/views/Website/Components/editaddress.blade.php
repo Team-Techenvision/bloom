@@ -19,7 +19,9 @@
         <div class="login-form js-img" data-src="img/registration-form__bg.png">
             <form class="address-form" action="{{url('user-address-submit')}}" method="post" name="add_address" enctype="multipart/form">
                 @csrf
-                <h3>Add Address</h3>
+
+                <input type="hidden" name="address_id" value="{{$useraddress->id}}">
+                <h3>Update Address</h3>
                 {{-- <ul class="login-form__social">
                     <li><a href="#"><i class="icon-facebook"></i></a></li>
                     <li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -28,20 +30,20 @@
                 </ul> --}}
                 <div class="box-field__row">
                     <div class="box-field">
-                        <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+                        <input type="text" name="name" class="form-control" placeholder="Enter your name" value="{{$useraddress->name}}" required>
                     </div>
                     <div class="box-field">
-                        <input type="number" name="phone"  class="form-control" placeholder="Enter Mobile No." required>
+                        <input type="number" name="phone"  class="form-control" placeholder="Enter Mobile No." value="{{$useraddress->phone}}" required>
                     </div>
                 </div>
                 <div class="box-field__row">
                     <div class="box-field">
-                        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        <input type="email" name="email" class="form-control" placeholder="Enter your email" value="{{$useraddress->email}}" required>
                     </div>
                 </div>
                 <div class="box-field__row">
                     <div class="box-field" style="width: calc(100% - 10px);">
-                       <textarea class="form-control" style="padding: 5px 5px!important;" name="address" id="" cols="80" rows="10" placeholder="Enter Address"></textarea>
+                       <textarea class="form-control" style="padding: 5px 5px!important;" name="address" id="" cols="80" rows="10" placeholder="Enter Address">{{$useraddress->address}}</textarea>
                     </div>
                 </div>
 
@@ -50,7 +52,7 @@
                         <select class="form-control" name="state">    
                             <option value="">Select State</option>                                                
                             @foreach($state_list as $r)                                                                                                      
-                                <option value="{{$r->state}}">{{$r->state}}</option>                                                                                                      
+                                <option value="{{$r->state}}" @if($r->state == $useraddress->state)selected @endif>{{$r->state}}</option>                                                                                                      
                             @endforeach                                                          
                         </select>  
                     </div>
@@ -61,42 +63,17 @@
                 
                 <div class="box-field__row">
                     <div class="box-field">                                                                                    
-                        <input type="text" class="form-control"  placeholder="Enter City" name="city">
+                        <input type="text" class="form-control"  placeholder="Enter City" name="city" value="{{$useraddress->city}}">
                     </div>
                     <div class="box-field">
-                        <input type="number" class="form-control"  placeholder="Pincode" min="100000" max="999999" name="pin_code" required>
+                        <input type="number" class="form-control"  placeholder="Pincode" min="100000" max="999999" value="{{$useraddress->pin_code}}" name="pin_code" required>
                     </div>
                 </div>  
 
-                <button class="btn" type="submit">Submit</button>
+                <button class="btn" type="submit">Update</button>
 
             </div>
             </form>
-
-            <div class="login-form">
-                <h3>Saved Address</h3>
-            <div class="box-field__row">
-                @foreach ($useraddress as $item)
-                <div class="box-field"> 
-                    <div class="exsting_address">
-                        <ul style="line-height: 1.5;">
-                           
-                            {{-- <li>{{$item->address_type}}</li> --}}
-                            <li>{{$item->name}}</li>
-                            <li>{{$item->address}}</li>
-                            <li>{{$item->city}},</li>
-                            <li>{{$item->state}},{{$item->country}},{{$item->pin_code}}</li>
-                            <li><a href="{{url('user-address-edit')}}/{{$item->id}}">Edit</a>&nbsp; <a href="{{url('user-address-delete')}}/{{$item->id}}">Delete</a></li>
-                           
-                        </ul>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            </div>
-            
-          
-
         </div>
     </div>
     <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"

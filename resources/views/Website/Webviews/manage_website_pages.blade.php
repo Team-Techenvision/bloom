@@ -39,11 +39,16 @@
             @elseif($flag == 14) 
                 @include('Website.Components/checkout1')  
             @elseif($flag == 15) 
-                @include('Website.Components/myaddress')   
+                @include('Website.Components/myaddress')
+            @elseif($flag == 16) 
+                @include('Website.Components/editaddress')  
+            @elseif($flag == 17) 
+                @include('Website.Components/ordersuccess') 
             @endif
         </main>
 
         <!-- CONTENT EOF   -->
+
 
     
 

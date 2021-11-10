@@ -27,7 +27,7 @@
                     <div id="sub_menuProfile">
                         <ul>
                             <li><a href="#">Profile</i></a></li>
-                            <li><a href="#">My Address</i></a></li>
+                            <li><a href="{{url('My-Address')}}">My Address</i></a></li>
                             <li><a href="#">Log Out</i></a></li>
                         </ul>
                     </div>
@@ -157,9 +157,9 @@
     {
         display: none;
         padding: 10px;
-        background: white;      
+        background: white;       
         position: absolute;
-        top: 45px;
+        top: 22px;
         left: 5px;
     }
     #sub_menuProfile ul
@@ -169,6 +169,11 @@
     #sub_menuProfile ul li
     {
         margin-left: 10px;
+    }
+    
+     #user_profile:hover + #sub_menuProfile , #sub_menuProfile:hover
+    {
+        display: block;
     }
 </style>
 
@@ -227,7 +232,7 @@ setTimeout(function(){
 
 </script>
 
-<script>
+{{-- <script>
     $(document).ready(function()
     {
         $('#user_profile').click(function()
@@ -235,7 +240,7 @@ setTimeout(function(){
             $('#sub_menuProfile').toggle();
         });
     });
-</script>
+</script> --}}
 
 </body>
 

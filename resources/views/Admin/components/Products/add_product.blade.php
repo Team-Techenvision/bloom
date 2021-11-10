@@ -41,6 +41,7 @@
                         <div class="col-md-9">
                             <input type="file" name="product_image">
                         </div>
+                        <label class="col-md-12 col-form-label text-danger"> Image Size 450 * 450 px </label>
                     </div>
 
                     <div class="form-group row">

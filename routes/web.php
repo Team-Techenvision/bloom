@@ -58,6 +58,12 @@ Route::get('logout', 'QovexController@logout');
 Route::group(['middleware' => 'auth', 'User'], function () {
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/checkout', 'Website\WebsiteController@checkout');
+    Route::post('checkout-submit','Website\WebsiteController@checkoutSubmit');
+
+    Route::get('confirm-order/{order_id}','RazorpayController@confirm')->name('confirm.order');
+    Route::post('payment','RazorpayController@payment')->name('payment');
+    Route::get('order-success/{order_id}','Website\WebsiteController@orderSuccessPage');
+
     Route::get('/My-Address', 'Website\WebsiteController@My_Address');
     Route::post('user-address-submit','Website\WebsiteController@userAddressSubmit');
     Route::get('user-address-edit/{id}','Website\WebsiteController@userAddressEdit');

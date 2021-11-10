@@ -18,6 +18,8 @@ use App\TempCart;
 use App\Cart;
 use App\UserAddress;
 use App\State;
+use App\OrderItem;
+use App\Order;
 use DB;
 use Session;
 use Auth;
@@ -56,14 +58,13 @@ class WebsiteController extends Controller
                 'phone' => $req->phone,
                 'email' => $req->email,
                 'address' => $req->address,
-                'apartment' => $req->apartment,
                 'city' => $req->city,
                 'state' => $req->state,
                 'pin_code' => $req->pin_code,
                 'country' => $req->country,
             ]);    
             toastr()->success('Address Updated');
-            return redirect('My-address');
+            return redirect('My-Address');
         }else{
             // $existing_addr = UserAddress::where('user_id',Auth::id())->count();
             $data= new UserAddress;
@@ -83,6 +84,19 @@ class WebsiteController extends Controller
             return back();
         }
 
+    }
+
+    public function userAddressEdit($id){  
+        $data['flag'] = 16;
+        $data['useraddress']= UserAddress::where('id',$id)->first();
+        $data['state_list']= State::get();
+        return view('Website/Webviews/manage_website_pages',$data);
+    }
+
+    public function userAddressDelete($id){
+        UserAddress::where('id',$id)->delete();
+        toastr()->error('Your Address Delete Successfully');
+        return back();
     }
 
       public function productList($Cat_id)
@@ -369,6 +383,111 @@ class WebsiteController extends Controller
                 $data['result']='Please Choose To Continue Shopping';
             }
             // dd($data);
+            $data['useraddress']= UserAddress::where('user_id',Auth::user()->id)->get();
                 return view('Website/Webviews/manage_website_pages',$data);
+    }
+
+    public function checkoutSubmit(Request $req)
+    {
+        // dd($req);
+        $this->validate($req,[
+            'address_id'=>'required',
+            'total_amount'=>'required',
+            'payment_mode'=>'required',
+         ]);
+        //  dd($req);
+         $cart = DB::table('carts')->where('user_id',Auth::id())->count();
+         $cartTotal = 0;
+         if(!empty(Auth::id())) {
+             $cartTotal = DB::Select(DB::raw('SELECT sum(c.quantity*a.price) as cartTotal FROM `carts` as c inner join products as p on c.product_id = p.products_id inner join product_attributes as a on p.products_id = a.products_id WHERE c.user_id='.Auth::id()));
+         }
+         $total1 = (!empty($cartTotal[0]->cartTotal)?$cartTotal[0]->cartTotal:0);
+        //  dd($total1);
+
+        if ($req->address_id) {
+
+                $total_amount1=0;
+                $total_amount=0;
+                $tamount = 0;
+                $total_amount_with_shipping = 0;
+
+                $data=Cart::where('user_id',Auth::user()->id)->get();
+                $address = DB::table('user_addresses')->where('id',$req->address_id)->first();
+               
+                $order_id = "Bloom".Auth::user()->id.time();
+                // dd($order_id);
+                $reg = new Order;
+                $reg->user_id = Auth::user()->id;
+                $reg->order_id = $order_id;
+                $reg->address_id = $req->address_id;
+                $reg->order_status = 1;              
+                $reg->payment_mode = $req->payment_mode;
+                $reg->save();
+                
+                $count=0;
+                $prod_name = [];
+                $sub = [];
+                $extra_discount_1 = 0;
+                $totaltype1Amount = 0;
+                $totaltype1Amt = 0;
+                $total_discount = 0;
+               
+                foreach ($data as $r) {
+                        $sub_order_id = "Bloom".Auth::user()->id.$count.time();
+                        $reg1 = new OrderItem;
+                        $reg1->order_id = $reg->order_id;
+                        $reg1->sub_order_id = $sub_order_id;
+                    	
+                        $reg1->prod_name = Product::where('products_id',$r->product_id)->pluck('product_name')->first();
+                        $reg1->prod_id = $r->product_id;
+                        $reg1->attribute_id = $r->attribute_id;
+                        $reg1->quantity =$r->quantity;
+                        $price=Product::where('product_attributes.id',$r->attribute_id)->leftjoin('product_attributes', 'products.products_id', '=', 'product_attributes.products_id')->pluck('price')->first();
+                        // echo $r->quantity;
+                            $reg1->sub_total=$price;
+                            $total_amount+=$price*$r->quantity;
+                            $totaltype1Amount+=$price  * $r->quantity;
+                            $totaltype1Amount = $totaltype1Amount - $extra_discount_1;
+                        
+                        $reg1->order_status = 1;
+                        $prod_name[] = $reg1->prod_name;
+                        $sub[] = $reg1->sub_total;                    
+                	 $vendor[] = $reg1->assign_vendor_id;
+                    $reg1->save();
+                     $count++;
+                }
+
+                
+
+                if($tamount <= 500 ){
+                    $shipping_percent = 50;
+                }else{
+                    $shipping_percent = 0;
+                }
+                $t_amount_with_shipping = $tamount + $shipping_percent;
+                $total_amount_with_shipping = round($t_amount_with_shipping, 2);
+
+                DB::table('orders')->where('order_id', $order_id)->update([
+                    'shipping_charge' => round($shipping_percent, 2),
+                    'amount' =>  round($total_amount_with_shipping,2),
+                ]);
+                Cart::where('user_id',Auth::user()->id)->delete();
+                Session::forget('couponData');
+
+                if($req->payment_mode=='1'){
+
+                    return redirect('confirm-order/'.$reg->order_id); 
+                
+                    // return redirect('order-success/'.$reg->order_id);
+
+                }
+        }
+
+    }
+
+    public function orderSuccessPage($order_id){
+        $data['flag']=17;
+        $data['booking'] = Order::where('order_id',$order_id)->first();    	
+        return view('Website/Webviews/manage_website_pages',$data);
     }
 }
