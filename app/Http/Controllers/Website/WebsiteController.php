@@ -457,14 +457,11 @@ class WebsiteController extends Controller
                      $count++;
                 }
 
+                $tamount+= $total_amount;
+                $shipping_percent = DB::table('shipping_charges')->where('min','<=',  $totaltype1Amount)->where('max','>=',$totaltype1Amount)->pluck('ship_charges')->first();
                 
-
-                if($tamount <= 500 ){
-                    $shipping_percent = 50;
-                }else{
-                    $shipping_percent = 0;
-                }
                 $t_amount_with_shipping = $tamount + $shipping_percent;
+                // dd($t_amount_with_shipping);
                 $total_amount_with_shipping = round($t_amount_with_shipping, 2);
 
                 DB::table('orders')->where('order_id', $order_id)->update([
