@@ -242,6 +242,12 @@ setTimeout(function(){
     });
 </script> --}}
 
+<script>
+    $(document).ready(function(){
+        $('.razorpay-payment-button').click();
+    });
+</script>
+
 </body>
 
 </html>

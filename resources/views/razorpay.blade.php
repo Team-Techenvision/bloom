@@ -37,9 +37,9 @@
                             data-amount="{{ round($order->amount) }}00"
                             data-currency="INR"
                             data-buttontext="Pay Now"
-                            data-name="Dr HelpDesk"
+                            data-name="Bloom"
                             data-description="{{ $order->order_id }}"
-                            data-image="/UI/images/DHD-Logo.png"
+                            data-image="/images/logo.png"
                             data-prefill.name="{{ $order->user_name }}"
                             data-prefill.email="{{ $order->user_email }}"
                             data-theme.color="#1d99b6">
