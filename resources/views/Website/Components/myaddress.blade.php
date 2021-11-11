@@ -1,5 +1,5 @@
  <!-- BEGIN DETAIL MAIN BLOCK -->
- <div class="detail-block detail-block_margin">
+ <div class="detail-block detail-block_margin" style="background-image: url({{('images/bg_banner.jpg')}})">
     <div class="wrapper">
         <div class="detail-block__content">
             <h1>My Address</h1>

@@ -45,6 +45,35 @@ class WebsiteController extends Controller
         return view('Website/Webviews/manage_website_pages',$data);
     }
 
+    public function My_Profile()
+    {
+        $data['flag'] = 18;
+        $data['user']= User::where('id',Auth::user()->id)->first();
+        return view('Website/Webviews/manage_website_pages',$data);
+    }
+
+    public function userProfileSubmit(Request $req){
+        // dd($req);
+        User::where('id',Auth::user()->id)->update([
+            'name' => $req->name,
+            'phone' => $req->phone,
+            'email' => $req->email,
+        ]);    
+
+        if($req->hasFile('profile_pic')) {
+            $file = $req->file('profile_pic');
+            $filename = 'profile_pic'.time().'.'.$req->profile_pic->extension();
+            $destinationPath = public_path('images/profile/');
+            $file->move($destinationPath, $filename);
+            $image = 'images/profile/'.$filename;
+            User::where('id',Auth::user()->id)->update([  
+                'profile_pic' => $image,
+            ]);
+        }
+        toastr()->success('Profile Updated');
+        return redirect('My-Profile');
+    }
+
     public function userAddressSubmit(Request $req){
 
         // dd($req);
@@ -485,6 +514,19 @@ class WebsiteController extends Controller
     public function orderSuccessPage($order_id){
         $data['flag']=17;
         $data['booking'] = Order::where('order_id',$order_id)->first();    	
+        return view('Website/Webviews/manage_website_pages',$data);
+    }
+
+    public function order_list(){
+        $data['flag']=19;
+        $data['order'] = Order::where('user_id',Auth::user()->id)->get();   	
+        // dd($data);
+        return view('Website/Webviews/manage_website_pages',$data);
+    }
+
+    public function userOrderDetail($id){
+        $data['flag']=20;
+        $data['order'] = OrderItem::where('order_id',$id)->orderBy('id','desc')->get();
         return view('Website/Webviews/manage_website_pages',$data);
     }
 }

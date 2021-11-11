@@ -65,9 +65,16 @@ Route::group(['middleware' => 'auth', 'User'], function () {
     Route::get('order-success/{order_id}','Website\WebsiteController@orderSuccessPage');
 
     Route::get('/My-Address', 'Website\WebsiteController@My_Address');
+    Route::get('My-Profile', 'Website\WebsiteController@My_Profile');
     Route::post('user-address-submit','Website\WebsiteController@userAddressSubmit');
     Route::get('user-address-edit/{id}','Website\WebsiteController@userAddressEdit');
-    Route::get('user-address-delete/{id}','Website\WebsiteController@userAddressDelete'); 
+    Route::get('user-address-delete/{id}','Website\WebsiteController@userAddressDelete');
+
+    Route::get('My-Order', 'Website\WebsiteController@order_list');
+    Route::get('user-order-detail/{id}','Website\WebsiteController@userOrderDetail');
+    Route::get('download-user-invoice/{order_id}','Website\EcomController@downloadUserInvoice');
+    Route::post('user-profile-submit','Website\WebsiteController@userProfileSubmit');
+
 });
 
 Route::middleware(['auth', 'Admin'])->group(function () {
@@ -129,6 +136,9 @@ Route::middleware(['auth', 'Admin'])->group(function () {
     Route::post('submit-product-images', 'Admin\ProductController@submit_product_images');
     Route::get('edit-product-images/{id}', 'Admin\ProductController@edit_product_images');
     Route::get('delete-product-images/{id}', 'Admin\ProductController@delete_product_images');
+
+    Route::get('view-admin-order', 'Admin\ProductController@order_list');
+    Route::get('admin-order-detail/{id}','Admin\ProductController@userOrderDetail');
 
 });
 

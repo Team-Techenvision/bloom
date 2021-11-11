@@ -43,7 +43,13 @@
             @elseif($flag == 16) 
                 @include('Website.Components/editaddress')  
             @elseif($flag == 17) 
-                @include('Website.Components/ordersuccess') 
+                @include('Website.Components/ordersuccess')
+            @elseif($flag == 18) 
+                @include('Website.Components/myprofile') 
+            @elseif($flag == 19) 
+                @include('Website.Components/myorder') 
+            @elseif($flag == 20) 
+                @include('Website.Components/orderDetails') 
             @endif
         </main>
 

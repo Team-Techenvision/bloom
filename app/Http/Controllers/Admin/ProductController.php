@@ -9,6 +9,8 @@ use App\Product;
 use App\Product_Attribute;
 use App\Product_Images;
 use App\Categories;
+use App\OrderItem;
+use App\Order;
 use Auth;
 use DB;
 use Mail;
@@ -289,5 +291,20 @@ class ProductController extends Controller
         toastr()->error('image Deleted !');
         // return redirect('view-product');
         return back();
+    }
+
+    public function order_list(){
+        $data['flag']=10;
+        $data['order'] = Order::get();   
+        $data['page_title'] = 'View Order';	
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_pages',$data);
+    }
+
+    public function userOrderDetail($id){
+        $data['flag']=11;
+        $data['page_title'] = 'View Order Details';
+        $data['order'] = OrderItem::where('order_id',$id)->orderBy('id','desc')->get();
+        return view('Admin/Webviews/manage_admin_pages',$data);
     }
 }

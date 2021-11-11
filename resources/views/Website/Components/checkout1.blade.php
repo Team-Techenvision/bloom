@@ -1,5 +1,5 @@
   <!-- BEGIN DETAIL MAIN BLOCK -->
-  <div class="detail-block detail-block-checkout">
+  <div class="detail-block detail-block-checkout" style="background-image: url({{ asset('images/bg_banner.jpg')}})">
     <div class="wrapper">
         <div class="detail-block__content">
             <h1>Checkout</h1>

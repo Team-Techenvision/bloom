@@ -26,9 +26,10 @@
                 <li><a href="javascript:void(0);" id="user_profile"><i class="icon-user"></i></a>
                     <div id="sub_menuProfile">
                         <ul>
-                            <li><a href="#">Profile</i></a></li>
+                            <li><a href="{{url('My-Profile')}}">Profile</i></a></li>
                             <li><a href="{{url('My-Address')}}">My Address</i></a></li>
-                            <li><a href="#">Log Out</i></a></li>
+                            <li><a href="{{url('My-Order')}}">My Order</i></a></li>
+                            <li><a href="{{url('logout')}}">Logout</i></a></li>
                         </ul>
                     </div>
                 </li>
@@ -182,10 +183,16 @@
 <script src="{{asset('Website/js/slick.min.js')}}"></script>
 <script src="{{asset('Website/js/jquery.maskedinput.js')}}"></script>
 <script src="{{asset('Website/js/custom.js')}}"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 @toastr_js
 @toastr_render
 
-
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
 <script>
 setTimeout(function(){
     var elem = document.createElement('script');

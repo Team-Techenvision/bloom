@@ -34,6 +34,10 @@
         @include('Admin.components.Products.add_product_images')
     @elseif($flag == 9) 
         @include('Admin.components.Products.edit_product_images')
+    @elseif($flag == 10) 
+        @include('Admin.components.Products.view_order')
+    @elseif($flag == 11) 
+        @include('Admin.components.Products.view_order_details')
     @endif
     </div>
                     <!-- end row -->

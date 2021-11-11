@@ -1,5 +1,5 @@
  <!-- BEGIN DETAIL MAIN BLOCK -->
- <div class="detail-block detail-block_margin">
+ <div class="detail-block detail-block_margin" style="background-image: url({{ asset('images/bg_banner.jpg')}})">
     <div class="wrapper">
         <div class="detail-block__content">
             <h1>Log in</h1>
@@ -16,7 +16,7 @@
 <!-- BEGIN LOGIN -->
 <div class="login">
     <div class="wrapper">
-        <div class="login-form js-img" data-src="img/login-form__bg.png">
+        <div class="login-form js-img" data-src="img/registration-form__bg.png">
             <form  name="loginForm" id='login_form' class="" method="POST" action="{{ url('Login-submit') }}">
                 @csrf
                 <h3>log in </h3>
@@ -40,7 +40,7 @@
                 <button class="btn" type="submit">log in</button>
                 <div class="login-form__bottom">
                     <span>No account? <a href="{{url('/Web-register')}}">Register now</a></span>
-                    <a href="#">Lost your password?</a>
+                    {{-- <a href="#">Lost your password?</a> --}}
                 </div>
             </form>
         </div>
