@@ -125,8 +125,11 @@
                     <input type="hidden" name="attribute_id" id="attribute_id_detail_page" value="{{$Products->id}}">
                     <div class="product-buttons">
                     <button class="btn btn-icon btn-info" type="submit"><i class="icon-cart"></i> cart</button>
-                    {{-- <a href="#" class="btn btn-danger btn-icon btn-info"><i class="icon-heart"></i> wish</a> --}}
-            </div>
+                    @if(Auth::check())
+                    @php $user_id =Auth::user()->id; @endphp 
+                    <a href="{{url('add-wishlist/'.$Products->products_id.'/'.$Products->id.'/'.$user_id)}}" class="btn btn-danger btn-icon btn-info"><i class="icon-heart"></i> wish</a>
+                    @endif
+                </div>
                 </form>
             </div>
             

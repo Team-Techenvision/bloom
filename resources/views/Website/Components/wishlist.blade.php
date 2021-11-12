@@ -1,5 +1,5 @@
  <!-- BEGIN DETAIL MAIN BLOCK -->
- <div class="detail-block detail-block_margin">
+ <div class="detail-block detail-block_margin" style="background-image: url({{('images/bg_banner.jpg')}})">
     <div class="wrapper">
         <div class="detail-block__content">
             <h1>Wishlist</h1>
@@ -16,67 +16,61 @@
 <!-- BEGIN WISHLIST -->
 <div class="wishlist">
     <div class="wrapper">
+
+        @if($result->count() > 0) 
         <div class="cart-table">
             <div class="cart-table__box">
                 <div class="cart-table__row cart-table__row-head">
                     <div class="cart-table__col">Product</div>
                     <div class="cart-table__col">Price</div>
-                    <div class="cart-table__col">status</div>
                     <div class="cart-table__col">Add to cart</div>
+                    <div class="cart-table__col">Remove</div>
                 </div>
+
+                @foreach($result as  $wishlists)
+
+                @php   $products = DB::table('products')->where('products.products_id', $wishlists->product_id)->join('product_attributes', 'products.products_id', '=', 'product_attributes.products_id')->first(); @endphp
+                <?php 
+                  $product_image = DB::table('product_images')->where('type',2)->where('products_id' , $products->products_id)->pluck('product_image')->first();  
+                  
+              ?>
                 <div class="cart-table__row">
                     <div class="cart-table__col">
                         <a href="#" class="cart-table__img">
-                            <img data-src="https://via.placeholder.com/110" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                            <img data-src="{{$product_image}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                         </a>
                         <div class="cart-table__info">
-                            <a href="#" class="title5">Foundation Beshop</a>
-                            <span class="cart-table__info-num">SKU: IN1203</span>
+                            <a href="" class="title5">{{$products->product_name}}</a>
+                            {{-- <span class="cart-table__info-num">SKU: IN1203</span> --}}
                         </div>
                     </div>
                     <div class="cart-table__col">
-                        <span class="cart-table__price">$200.95</span>
+                        <span class="cart-table__price">{{$products->price}}</span>
+                    </div>                   
+                    <div class="cart-table__col">
+                            <span class="cart-table__total"><a href="{{url('cart-add/'.$products->products_id.'/'.$products->id.'/'.$wishlists->quantity)}}" class="blog-item__link">buy now <i class="icon-arrow-md"></i></a></span>
                     </div>
                     <div class="cart-table__col">
-                        <span class="wishlist-stock">in stock</span>
+                        <span class="cart-table__total"><a href="{{url('remove-wishlist/'.$products->products_id)}}" class="blog-item__link text-danger">remove now <i class="icon-arrow-md"></i></a></span>
                     </div>
-                    <div class="cart-table__col">
-                        <span class="cart-table__total"><a href="#" class="blog-item__link">buy now <i class="icon-arrow-md"></i></a></span>
-                    </div>
-                </div>
-                <div class="cart-table__row">
-                    <div class="cart-table__col">
-                        <a href="#" class="cart-table__img">
-                            <img data-src="https://via.placeholder.com/110" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-                        </a>
-                        <div class="cart-table__info">
-                            <a href="#" class="title5">Hair mask with oat extract</a>
-                            <span class="cart-table__info-num">SKU: IN1203</span>
-                        </div>
-                    </div>
-                    <div class="cart-table__col">
-                        <span class="cart-table__price">$200.95</span>
-                    </div>
-                    <div class="cart-table__col">
-                        <span class="wishlist-available">not available</span>
-                    </div>
-                    <div class="cart-table__col">
-                        <span class="cart-table__total"><a href="#" class="blog-item__link">buy now <i class="icon-arrow-md"></i></a></span>
-                    </div>
-                </div>
+                </div> 
+                @endforeach        
             </div>
         </div>
-        <div class="wishlist-buttons">
-            <a href="#" class="btn btn-grey">clear Wishlist</a>
-            <a href="#" class="btn">go shopping</a>
+
+        @else
+        <div class="cart-table__row">
+            <div class="cart-table__col"><a href="{{url('/')}}" class="btn btn-solid">Add Items To Wishlist</a></div>
         </div>
+    @endif
+       
     </div>
-    <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
-        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <img class="promo-video__decor js-img" data-src="{{asset('img/promo-video__decor.jpg')}}"
+        src="{{asset('img/promo-video__decor.jpg')}}" alt="">
 </div>
 <!-- WISHLIST EOF   -->
 <!-- BEGIN NEW ARRIVALS -->
-<section class="arrivals product-viewed">
+{{-- <section class="arrivals product-viewed">
     <div class="trending-top">
         <span class="saint-text">Cosmetics</span>
         <h2>You have viewed</h2>
@@ -186,10 +180,10 @@
             </div>
         </a>
     </div>
-</section>
+</section> --}}
 <!-- NEW ARRIVALS EOF   -->
 <!-- BEGIN INSTA PHOTOS -->
-<div class="insta-photos">
+{{-- <div class="insta-photos">
     <a href="#" class="insta-photo">
         <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
             alt="">
@@ -232,5 +226,5 @@
             <i class="icon-insta"></i>
         </div>
     </a>
-</div>
+</div> --}}
 <!-- INSTA PHOTOS EOF   -->

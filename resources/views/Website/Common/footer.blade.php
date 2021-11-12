@@ -36,8 +36,13 @@
              @else
                 <li><a href="{{url('Web-login')}}"><i class="fa fa-power-off"></i></a></li>
             @endif
-                <li><a href="{{url('/wishlist')}}"><i class="icon-heart"></i></a></li>
+                
                 @if(Auth::check())
+
+                        @php
+                                $cart_count = DB::table('wishlists')->where('user_id',Auth::id())->count();
+                        @endphp
+                        <li><a href="{{url('/wishlist')}}"><i class="icon-heart"></i><span>{{$cart_count}}</span></a></li>
                     @php
                             $cart_count = DB::table('carts')->where('user_id',Auth::id())->count();
                     @endphp

@@ -142,12 +142,12 @@
             </li>
         </ul>
     </div>
-    <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
-        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <img class="promo-video__decor js-img" data-src="{{asset('img/promo-video__decor.jpg')}}"
+    src="{{asset('img/promo-video__decor.jpg')}}" alt="">
 </div>
 <!-- BLOG EOF   -->
 <!-- BEGIN SUBSCRIBE -->
-<div class="subscribe">
+<div class="subscribe mb-5">
     <div class="wrapper">
         <div class="subscribe-form">
             <div class="subscribe-form__img">
@@ -216,7 +216,7 @@
 <!-- INSTA PHOTOS EOF   -->
  {{-- ====================================================================== --}}
 <!-- BEGIN INSTA PHOTOS -->
-<div class="insta-photos">
+{{-- <div class="insta-photos">
     <a href="#" class="insta-photo"> <!---- https://via.placeholder.com/320 ----->
         <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
@@ -253,5 +253,5 @@
             <i class="icon-insta"></i>
         </div>
     </a>
-</div>
+</div> --}}
 <!-- INSTA PHOTOS EOF   -->

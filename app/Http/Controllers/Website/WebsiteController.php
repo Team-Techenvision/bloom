@@ -172,6 +172,12 @@ class WebsiteController extends Controller
     public function wishlist()
     {
         $data['flag'] = 6;
+        $wishlists=DB::table('wishlists')->where('user_id',Auth::user()->id)->get();
+        if(!empty($wishlists)){
+            $data['result']=$wishlists;
+        }else{
+            $data['result']='Please Choose To Continue Shopping';
+        }
         return view('Website/Webviews/manage_website_pages',$data);
     }
     // public function cart_page()
@@ -413,7 +419,16 @@ class WebsiteController extends Controller
             }
             // dd($data);
             $data['useraddress']= UserAddress::where('user_id',Auth::user()->id)->get();
+            // dd($data['useraddress']);
+            $address_count =  $data['useraddress']->count();
+            // dd($address_count);
+            if($address_count > 0){
                 return view('Website/Webviews/manage_website_pages',$data);
+            }else{
+                toastr()->error('For Proceed To Checkout Fill Address');
+                return redirect('My-Address');
+            }
+
     }
 
     public function checkoutSubmit(Request $req)
@@ -529,4 +544,21 @@ class WebsiteController extends Controller
         $data['order'] = OrderItem::where('order_id',$id)->orderBy('id','desc')->get();
         return view('Website/Webviews/manage_website_pages',$data);
     }
+
+    public function addtoWishlist(Request $req){
+        // dd($req);
+        $result1=DB::table('wishlists')->where('product_id',$req->products_id)->where('user_id',Auth::user()->id)->count();
+        if($result1 == 0){
+            DB::table('wishlists')->insert([
+                'product_id'=>$req->products_id,
+                'attribute_id'=>$req->attribute_id,
+                'user_id'=> Auth::user()->id,
+                'quantity'=>1
+            ]);
+            toastr()->success('Item Added into Wishlist');
+        }else{
+            toastr()->warning('Item Already into Wishlist');
+        }
+    return back();
+}
 }

@@ -215,7 +215,7 @@
 </div>
 <!-- INFO BLOCKS EOF   -->
 <!-- BEGIN NEW ARRIVALS -->
-<section class="arrivals">
+{{-- <section class="arrivals">
     <div class="trending-top">
         <span class="saint-text">Cosmetics</span>
         <h2>New arrivals</h2>
@@ -320,7 +320,7 @@
             </div>
         </a>
     </div>
-</section>
+</section> --}}
 <!-- NEW ARRIVALS EOF   -->
 <!-- BEGIN LATEST NEWS -->
 <section class="latest-news">
@@ -373,7 +373,7 @@
 </div>
 <div class="advantages-items">
 @foreach ($plans as $item)
-<div class="advantages-item pricing-card">
+<div class="advantages-item pricing-card js-img" data-src="img/registration-form__bg.png">
 {{-- <div class="advantages-item__icon">
 <i class="icon-natural"></i>
 </div> --}}
@@ -391,7 +391,7 @@
 <!-- ADVANTAGES EOF   -->
 
 <!-- BEGIN SUBSCRIBE -->
-<div class="subscribe">
+<div class="subscribe mb-5">
     <div class="wrapper">
         <div class="subscribe-form">
             <div class="subscribe-form__img">
@@ -414,7 +414,7 @@
 
  {{-- ====================================================================== --}}
 <!-- BEGIN INSTA PHOTOS -->
-<div class="insta-photos">
+{{-- <div class="insta-photos">
     <a href="#" class="insta-photo"> <!---- https://via.placeholder.com/320 ----->
         <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
@@ -451,7 +451,7 @@
             <i class="icon-insta"></i>
         </div>
     </a>
-</div>
+</div> --}}
 <!-- INSTA PHOTOS EOF   -->
 <style>
     .products-item__img {

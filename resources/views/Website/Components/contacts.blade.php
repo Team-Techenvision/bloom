@@ -117,7 +117,7 @@
 </div>
 <!-- DISCOUNT EOF   -->
 <!-- BEGIN CONTACTS MAP -->
-<div class="contacts-map">
+<div class="contacts-map mb-5">
     <div id="map1">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d343.4864031675898!2d77.58805909564494!3d13.092529034859924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae185cddbddf4d%3A0x92c6f685d0f84a8a!2sPhase%2013th!5e0!3m2!1sen!2sin!4v1635505785728!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
@@ -171,7 +171,7 @@
 <!-- INSTA PHOTOS EOF   -->
  {{-- ====================================================================== --}}
 <!-- BEGIN INSTA PHOTOS -->
-<div class="insta-photos">
+{{-- <div class="insta-photos">
     <a href="#" class="insta-photo"> <!---- https://via.placeholder.com/320 ----->
         <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
@@ -208,5 +208,5 @@
             <i class="icon-insta"></i>
         </div>
     </a>
-</div>
+</div> --}}
 <!-- INSTA PHOTOS EOF   -->

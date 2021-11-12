@@ -9,3 +9,28 @@
     background-color: darksalmon;
     margin-bottom: 15px;
 }
+
+.pricing-card:hover{
+    background-color:rgba(225, 225, 224, 0.5);
+}
+
+a{
+    text-decoration: none!important;
+}
+.btn {
+    height: 60px!important;
+    line-height: 59px!important;
+    outline: none!important;
+    border: none!important;
+    background: #222222!important;
+    padding: 0 50px!important;
+    font-weight: bold!important;
+    font-size: 14px!important;
+    color: #ffffff!important;
+    text-transform: uppercase!important;
+    display: inline-block!important;
+    -webkit-transition: all 0.3s linear!important;
+    -o-transition: all 0.3s linear!important;
+    transition: all 0.3s linear!important;
+    font-family: "Lato"!important;
+}

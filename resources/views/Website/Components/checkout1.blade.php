@@ -56,8 +56,13 @@
         <div class="checkout-content">
             <div class="checkout-form">
                          <div class="box-field__row">
+                             
                             @foreach ($useraddress as $item)
-                           
+                            {{-- <div class="box-field m-5 p-5"> 
+                                <h5 class="text-danger ">Please Add Address To Checkout</h5>
+                                <div class="cart-table__col"><a href="{{url('/My-Address')}}" class="btn btn-solid">Add Address</a></div>
+                             </div> --}}
+                            
                             <div class="box-field"> 
                                 <div class="exsting_address">                                    
                                     <label class="radio-box"> {{$item->name}}
@@ -75,10 +80,10 @@
                                        
                                     </ul>
                                 </div>
-                            </div>                            
+                            </div>      
+                         
                             @endforeach
                         </div>
-                           
             </div>
             <div class="checkout-info">
                 <div class="checkout-order">
@@ -145,13 +150,13 @@
             </div>
         </div>
     </div>
-    <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
-        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <img class="promo-video__decor js-img" data-src="{{asset('img/promo-video__decor.jpg')}}"
+    src="{{asset('img/promo-video__decor.jpg')}}" alt="">
 </div>
 </form>
 <!-- CHECKOUT EOF   -->
 <!-- BEGIN INSTA PHOTOS -->
-<div class="insta-photos">
+{{-- <div class="insta-photos">
     <a href="#" class="insta-photo">
         <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
             alt="">
@@ -194,5 +199,5 @@
             <i class="icon-insta"></i>
         </div>
     </a>
-</div>
+</div> --}}
 <!-- INSTA PHOTOS EOF   -->

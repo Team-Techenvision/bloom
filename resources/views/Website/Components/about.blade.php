@@ -82,18 +82,19 @@
             </div>
         </div>
     </div>
-    <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <img class="promo-video__decor js-img" data-src="{{asset('img/promo-video__decor.jpg')}}"
+    src="{{asset('img/promo-video__decor.jpg')}}" alt="">
 </section>
 <!-- PROMO VIDEO EOF   -->
 <!-- BEGIN DISCOUNT -->
 <div class="discount discount-about js-img" data-src="{{asset('Website/img/image/Screenshot-2021.png')}}">
     <div class="wrapper">
-        <div class="discount-info1" style="background-color: rgba(223, 226, 226, 0.568);padding:30px 25px;">
-            <span class="saint-text" style="text-align: center;">Welcome to Bloom</span>
-            <h2 style="text-align: center;">About Us</h2>
-            <p style="color: #222222;">Our LIP Balms,moisturizer, Lotions & Soaps are made out of Shea,Cocoa,Mango,Avacado, Soy Butters, and completely free from SLS, Sulphates & Parabens.</p>
-            <p class="" style="color: #222222">Forming the range of stores, we, above all, strive not only to meet the format of "home shop", offering each customer the most basic household goods, but also to create a unique space of beauty and care. BeShope stores offer their customers the widest and highest quality selection of products from world-renowned manufacturers.</p>
-            <p style="color: #222222">We take lots of care to ensure that every products is loaded with Vitamin E and carrier oils like Almond, Avacado, Argan Oil, Olive Oil, Castor oil etc and also Glycering to keep your skin hydrated throught out. We use pure essential oils in all our products,which adds up to enhanced texture of skin and hairs.Also skin absorbs the essential oils and keeps you overall whole and healthy.</p>
+        <div class="discount-info1" style="background-color: rgba(252, 236, 239, 0.668);padding:30px 25px;">
+            <span class="saint-text" style="text-align: center; color: #000;">Welcome to Bloom</span>
+            <h2 style="text-align: center; color: #000;">About Us</h2>
+            <p style="color: #000000;">Our LIP Balms,moisturizer, Lotions & Soaps are made out of Shea,Cocoa,Mango,Avacado, Soy Butters, and completely free from SLS, Sulphates & Parabens.</p>
+            <p class="" style="color: #000000">Forming the range of stores, we, above all, strive not only to meet the format of "home shop", offering each customer the most basic household goods, but also to create a unique space of beauty and care. BeShope stores offer their customers the widest and highest quality selection of products from world-renowned manufacturers.</p>
+            <p style="color: #000000">We take lots of care to ensure that every products is loaded with Vitamin E and carrier oils like Almond, Avacado, Argan Oil, Olive Oil, Castor oil etc and also Glycering to keep your skin hydrated throught out. We use pure essential oils in all our products,which adds up to enhanced texture of skin and hairs.Also skin absorbs the essential oils and keeps you overall whole and healthy.</p>
             <a href="Javascript:Void(0);" class="btn btn-info" style="margin-top: 15px;">Shop now</a>
         </div>
     </div>
@@ -161,7 +162,7 @@
 </section>
 <!-- TESTIMONIALS EOF   -->
 <!-- BEGIN SUBSCRIBE -->
-<div class="subscribe">
+<div class="subscribe mb-5">
     <div class="wrapper">
         <div class="subscribe-form">
             <div class="subscribe-form__img">
@@ -231,7 +232,7 @@
 <!-- INSTA PHOTOS EOF   -->
  {{-- ====================================================================== --}}
 <!-- BEGIN INSTA PHOTOS -->
-<div class="insta-photos">
+{{-- <div class="insta-photos">
     <a href="#" class="insta-photo"> <!---- https://via.placeholder.com/320 ----->
         <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
@@ -268,5 +269,5 @@
             <i class="icon-insta"></i>
         </div>
     </a>
-</div>
+</div> --}}
 <!-- INSTA PHOTOS EOF   -->

@@ -48,4 +48,13 @@ class EcomController extends Controller
         //return back();
         return Auth::check() ? back() : back();
     }
+
+    public function RemoveWishlist($products_id){
+        DB::table('wishlists')->where('product_id', $products_id)->where('user_id',Auth::user()->id)->delete();
+        toastr()->error('Product successfully deleted from Wishlist');
+        return back();
+    }
+
+
+
 }

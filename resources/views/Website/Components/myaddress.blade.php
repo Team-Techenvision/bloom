@@ -73,7 +73,7 @@
             </div>
             </form>
 
-            <div class="login-form">
+            <div class="login-form mb-5">
                 <h3>Saved Address</h3>
             <div class="box-field__row">
                 @foreach ($useraddress as $item)
@@ -99,12 +99,12 @@
 
         </div>
     </div>
-    <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
-        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+   <img class="promo-video__decor js-img" data-src="{{asset('img/promo-video__decor.jpg')}}"
+        src="{{asset('img/promo-video__decor.jpg')}}" alt="">
 </div>
 <!-- REGISTRATION EOF   -->
 <!-- BEGIN SUBSCRIBE -->
-<div class="subscribe">
+{{-- <div class="subscribe">
     <div class="wrapper">
         <div class="subscribe-form">
             <div class="subscribe-form__img">
@@ -123,10 +123,10 @@
             </form>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- SUBSCRIBE EOF   -->
 <!-- BEGIN INSTA PHOTOS -->
-<div class="insta-photos">
+{{-- <div class="insta-photos">
     <a href="#" class="insta-photo">
         <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
             alt="">
@@ -169,5 +169,5 @@
             <i class="icon-insta"></i>
         </div>
     </a>
-</div>
+</div> --}}
 <!-- INSTA PHOTOS EOF   -->

@@ -26,7 +26,7 @@ Route::get('/shop', 'Website\WebsiteController@index');
 Route::get('/categories', 'Website\WebsiteController@categories');
 Route::get('/blog', 'Website\WebsiteController@blog_Page');
 Route::get('/contacts', 'Website\WebsiteController@contacts');
-Route::get('/wishlist', 'Website\WebsiteController@wishlist');
+
 Route::get('/my-cart', 'Website\WebsiteController@cart_page');
 Route::get('/about', 'Website\WebsiteController@about_page');
 Route::get('/faq', 'Website\WebsiteController@faq_page');
@@ -74,6 +74,12 @@ Route::group(['middleware' => 'auth', 'User'], function () {
     Route::get('user-order-detail/{id}','Website\WebsiteController@userOrderDetail');
     Route::get('download-user-invoice/{order_id}','Website\EcomController@downloadUserInvoice');
     Route::post('user-profile-submit','Website\WebsiteController@userProfileSubmit');
+
+    Route::get('add-wishlist/{products_id}/{attribute_id}/{user_id}','Website\WebsiteController@addtoWishlist');
+    Route::get('/wishlist', 'Website\WebsiteController@wishlist');
+	Route::get('remove-wishlist/{products_id}/','Website\EcomController@RemoveWishlist'); 
+
+    Route::get('cart-add/{products_id}/{attribute_id}/{quantity}','Website\EcomController@add_to_cart');
 
 });
 
