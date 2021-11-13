@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2021 at 01:38 PM
+-- Generation Time: Nov 13, 2021 at 01:41 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -67,7 +67,9 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`id`, `blog_title`, `blog_date`, `blog_content`, `blog_images`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'blog 2', '2021-09-30', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'images/blog/blog_image1630569187.jpeg', 1, '2021-09-02 07:47:06', '2021-09-02 07:59:29');
+(1, 'blog 2', '2021-09-30', '<h6>About Sustainability</h6>\r\n<p>It would seem that everything is clear here: the higher the concentration of aromatic components - the more stable the aroma. But not everything is so simple: even if in the laboratory the aroma stays calm for a day or more, in life it is influenced by humidity and temperature, skin condition and the aroma of your body. Therefore, experts advise to apply fragrances on a clean, moisturizing body lotion. But even this does not guarantee that super-concentrated perfumes will last longer than perfumed or eau de toilette. It all depends on the volatility of the ingredients themselves.</p>\r\n<table style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\r\n<tbody>\r\n<tr>\r\n<td style=\"width: 50%;\">\r\n<ul class=\"post-list\">\r\n<li>PerfumeIs the most expensive type of perfume, because it contains the highest concentration of aromatic composition - 20-30%. Therefore, they should be used only for special events.</li>\r\n</ul>\r\n</td>\r\n<td style=\"width: 50%;\">\r\n<ul class=\"post-list\">\r\n<li>Perfumed WaterIs the most concentrated after perfumes mixture of perfume composition 12-15% with ethyl alcohol 85%.</li>\r\n</ul>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 50%;\">\r\n<ul class=\"post-list\">\r\n<li>Cologneis the least concentrated type of perfume. Contains 5% aromatic substances dissolved in 80% ethyl alcohol. By the way, it was the most famous French emperor who introduced colognes into fashion and used 1-2 bottles a day</li>\r\n</ul>\r\n</td>\r\n<td style=\"width: 50%;\">\r\n<ul class=\"post-list\">\r\n<li>Eau De Toiletteis what is most likely on your cosmetic table. The most common type of perfume. Contains 6-12% of the perfume composition. The term itself, by the way, was invented by Napoleon when he invented a bergamot-based fragrance recipe during a military campaign and called it \"eau de toilette.\"</li>\r\n</ul>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'images/blog/blog_image1630569187.jpg', 1, '2021-09-02 07:47:06', '2021-09-02 07:59:29'),
+(3, 'blog 3', '2021-11-01', '<h3 style=\"color: #ff0000;\"><span style=\"background-color: #ffffff; font-family: \'andale mono\', monospace; color: #000000;\">About Sustainability</span></h3>\r\n<p>It would seem that everything is clear here: the higher the concentration of aromatic components - the more stable the aroma. But not everything is so simple: even if in the laboratory the aroma stays calm for a day or more, in life it is influenced by humidity and temperature, skin condition and the aroma of your body. Therefore, experts advise to apply fragrances on a clean, moisturizing body lotion. But even this does not guarantee that super-concentrated perfumes will last longer than perfumed or eau de toilette. It all depends on the volatility of the ingredients themselves.</p>\r\n<p><img src=\"../images/product/product_main_image1635848551.png\" alt=\"blog image\" width=\"150\" height=\"150\" /></p>', 'images/blog/blog_image1630569187.jpg', 1, '2021-09-02 07:47:06', '2021-11-13 00:39:29'),
+(4, 'A Step-By-Step Guide To Add Blog', '2021-11-05', '<h2><strong>About Sustainability</strong></h2>\r\n<p>It would seem that everything is clear here: the higher the concentration of aromatic components - the more stable the aroma. But not everything is so simple: even if in the laboratory the aroma stays calm for a day or more, in life it is influenced by humidity and temperature, skin condition and the aroma of your body. Therefore, experts advise to apply fragrances on a clean, moisturizing body lotion. But even this does not guarantee that super-concentrated perfumes will last longer than perfumed or eau de toilette. It all depends on the volatility of the ingredients themselves.</p>\r\n<table style=\"border-collapse: collapse; width: 100%; margin-left: auto; margin-right: auto;\" border=\"1\">\r\n<tbody>\r\n<tr>\r\n<td style=\"width: 50%;\">\r\n<ul class=\"post-list\">\r\n<li style=\"text-align: justify;\"><strong>PerfumeIs the most expensive type of perfume,</strong> because it contains the highest concentration of aromatic composition.</li>\r\n</ul>\r\n</td>\r\n<td style=\"width: 50%;\">\r\n<ul>\r\n<li style=\"text-align: left;\"><strong>Perfumed WaterIs the most concentrated after perfumes</strong> mixture of perfume composition 12-15% with ethyl alcohol 85%.</li>\r\n</ul>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 50%;\">\r\n<ul class=\"post-list\">\r\n<li><strong>Cologneis the least concentrated type of perfume.</strong> Contains 5% aromatic substances dissolved in 80% ethyl alcohol. By the way, it was the most famous French emperor who introduced colognes into fashion&nbsp;</li>\r\n</ul>\r\n</td>\r\n<td style=\"width: 50%;\">\r\n<ul class=\"post-list\">\r\n<li><strong>Eau De Toiletteis what is most likely on your cosmetic table.</strong> The most common type of perfume. Contains 6-12% of the perfume composition. The term itself, by the way, was invented by Napoleon when he invented a bergamot-based fragran</li>\r\n</ul>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'images/blog/blog_image1636780750.jpeg', 1, '2021-11-12 23:49:11', '2021-11-13 00:17:47');
 
 -- --------------------------------------------------------
 
@@ -84,6 +86,15 @@ CREATE TABLE `carts` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `user_id`, `product_id`, `attribute_id`, `quantity`, `created_at`, `updated_at`) VALUES
+(13, 5, 3, 2, 1, '2021-11-12 06:11:54', '2021-11-12 06:11:54'),
+(17, 4, 2, 1, 1, '2021-11-13 07:29:52', '2021-11-13 07:29:52'),
+(18, 5, 2, 1, 11, '2021-11-13 07:29:52', '2021-11-13 07:29:52');
 
 -- --------------------------------------------------------
 
@@ -105,7 +116,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `category_name`, `category_image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Beauty Products', 'images/category/category_image1635577058.png', 1, '2021-10-30 01:27:38', '2021-10-30 04:20:50');
+(1, 'Beauty Products', 'images/category/category_image1636711549.jpeg', 1, '2021-10-30 01:27:38', '2021-11-12 04:35:49'),
+(2, 'Nails', 'images/category/category_image1636711583.jpeg', 1, '2021-11-12 04:36:23', '2021-11-12 04:36:23'),
+(3, 'Perfumes', 'images/category/category_image1636711614.jpeg', 1, '2021-11-12 04:36:54', '2021-11-12 04:36:55');
 
 -- --------------------------------------------------------
 
@@ -136,19 +149,12 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `order_id`, `cancel_reason`, `cancel_comment`, `address_id`, `amount`, `order_status`, `copoun_code`, `payment_mode`, `payment_id`, `payment_status`, `shipping_charge`, `created_at`, `updated_at`) VALUES
-(1, 4, 'Bloom41636544314', NULL, NULL, 2, '50', 1, NULL, '1', NULL, NULL, 50, '2021-11-10 06:08:34', '2021-11-10 06:08:34'),
-(2, 4, 'Bloom41636544341', NULL, NULL, 2, '50', 1, NULL, '1', NULL, NULL, 50, '2021-11-10 06:09:01', '2021-11-10 06:09:01'),
-(3, 4, 'Bloom41636544368', NULL, NULL, 2, '500', 1, NULL, 'Online', 'pay_IJtQIGtNcWnOKa', 'success', 50, '2021-11-10 06:09:28', '2021-11-10 06:33:19'),
-(4, 4, 'Bloom41636546435', NULL, NULL, 8, '50', 1, NULL, 'Online', 'pay_IJtfIl11U1LeKA', 'success', 50, '2021-11-10 06:43:55', '2021-11-10 06:44:19'),
-(5, 4, 'Bloom41636547079', NULL, NULL, 8, NULL, 1, NULL, '1', NULL, NULL, NULL, '2021-11-10 06:54:39', '2021-11-10 06:54:39'),
-(6, 4, 'Bloom41636547509', NULL, NULL, 8, NULL, 1, NULL, '1', NULL, NULL, NULL, '2021-11-10 07:01:49', '2021-11-10 07:01:49'),
-(7, 4, 'Bloom41636547547', NULL, NULL, 8, NULL, 1, NULL, '1', NULL, NULL, NULL, '2021-11-10 07:02:27', '2021-11-10 07:02:27'),
-(8, 4, 'Bloom41636547585', NULL, NULL, 8, NULL, 1, NULL, '1', NULL, NULL, NULL, '2021-11-10 07:03:05', '2021-11-10 07:03:05'),
-(9, 4, 'Bloom41636547609', NULL, NULL, 8, NULL, 1, NULL, '1', NULL, NULL, NULL, '2021-11-10 07:03:29', '2021-11-10 07:03:29'),
-(10, 4, 'Bloom41636547711', NULL, NULL, 8, NULL, 1, NULL, '1', NULL, NULL, NULL, '2021-11-10 07:05:11', '2021-11-10 07:05:11'),
-(11, 4, 'Bloom41636547746', NULL, NULL, 8, NULL, 1, NULL, '1', NULL, NULL, NULL, '2021-11-10 07:05:46', '2021-11-10 07:05:46'),
-(12, 4, 'Bloom41636547770', NULL, NULL, 8, NULL, 1, NULL, '1', NULL, NULL, NULL, '2021-11-10 07:06:10', '2021-11-10 07:06:10'),
-(13, 4, 'Bloom41636547792', NULL, NULL, 8, '550', 1, NULL, 'Online', 'pay_IJu3I2IAAwAzII', 'success', 0, '2021-11-10 07:06:32', '2021-11-10 07:07:00');
+(1, 4, 'Bloom41636548091', NULL, NULL, 8, '740', 1, NULL, 'Online', 'pay_IJu8LvFEvBTZBj', 'success', 0, '2021-11-10 07:11:31', '2021-11-10 07:11:48'),
+(2, 4, 'Bloom41636548414', NULL, NULL, 8, '160', 1, NULL, 'Online', 'pay_IJuEJZdqLAA8LG', 'success', 50, '2021-11-10 07:16:54', '2021-11-10 07:17:27'),
+(3, 4, 'Bloom41636548624', NULL, NULL, 8, '160', 1, NULL, 'Online', 'pay_IJuHw32lZKNL1J', 'success', 50, '2021-11-10 07:20:24', '2021-11-10 07:20:59'),
+(4, 4, 'Bloom41636635073', NULL, NULL, 8, '160', 1, NULL, 'Online', 'pay_IKIpfOsiirNwHI', 'success', 50, '2021-11-11 07:21:13', '2021-11-11 07:21:27'),
+(5, 4, 'Bloom41636699256', NULL, NULL, 8, '490', 1, NULL, 'Online', 'pay_IKb3sYj6TNzpyy', 'success', 50, '2021-11-12 01:10:56', '2021-11-12 01:11:23'),
+(6, 4, 'Bloom41636719920', NULL, NULL, 8, '160', 1, NULL, '1', NULL, NULL, 50, '2021-11-12 06:55:20', '2021-11-12 06:55:20');
 
 -- --------------------------------------------------------
 
@@ -176,17 +182,13 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `sub_order_id`, `assign_vendor_id`, `prod_name`, `prod_id`, `attribute_id`, `quantity`, `sub_total`, `order_status`, `created_at`, `updated_at`) VALUES
-(1, 'Bloom41636544314', 'Bloom401636544314', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-10 06:08:34', '2021-11-10 06:08:34'),
-(2, 'Bloom41636546435', 'Bloom401636546435', NULL, 'Tamarind Lip Balm', 3, 2, 1, '520', '1', '2021-11-10 06:43:55', '2021-11-10 06:43:55'),
-(3, 'Bloom41636547079', 'Bloom401636547079', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-10 06:54:39', '2021-11-10 06:54:39'),
-(4, 'Bloom41636547509', 'Bloom401636547509', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-10 07:01:49', '2021-11-10 07:01:49'),
-(5, 'Bloom41636547547', 'Bloom401636547547', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-10 07:02:27', '2021-11-10 07:02:27'),
-(6, 'Bloom41636547585', 'Bloom401636547586', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-10 07:03:06', '2021-11-10 07:03:06'),
-(7, 'Bloom41636547609', 'Bloom401636547609', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-10 07:03:29', '2021-11-10 07:03:29'),
-(8, 'Bloom41636547711', 'Bloom401636547711', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-10 07:05:11', '2021-11-10 07:05:11'),
-(9, 'Bloom41636547746', 'Bloom401636547746', NULL, 'Clove Lip Balm', 2, 1, 4, '110', '1', '2021-11-10 07:05:46', '2021-11-10 07:05:46'),
-(10, 'Bloom41636547770', 'Bloom401636547770', NULL, 'Clove Lip Balm', 2, 1, 5, '110', '1', '2021-11-10 07:06:10', '2021-11-10 07:06:10'),
-(11, 'Bloom41636547792', 'Bloom401636547792', NULL, 'Clove Lip Balm', 2, 1, 5, '110', '1', '2021-11-10 07:06:32', '2021-11-10 07:06:32');
+(1, 'Bloom41636548091', 'Bloom401636548091', NULL, 'Clove Lip Balm', 2, 1, 2, '110', '1', '2021-11-10 07:11:31', '2021-11-10 07:11:31'),
+(2, 'Bloom41636548091', 'Bloom411636548091', NULL, 'Tamarind Lip Balm', 3, 2, 1, '520', '1', '2021-11-10 07:11:31', '2021-11-10 07:11:31'),
+(3, 'Bloom41636548414', 'Bloom401636548415', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-10 07:16:55', '2021-11-10 07:16:55'),
+(4, 'Bloom41636548624', 'Bloom401636548624', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-10 07:20:24', '2021-11-10 07:20:24'),
+(5, 'Bloom41636635073', 'Bloom401636635073', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-11 07:21:13', '2021-11-11 07:21:13'),
+(6, 'Bloom41636699256', 'Bloom401636699256', NULL, 'Clove Lip Balm', 2, 1, 4, '110', '1', '2021-11-12 01:10:56', '2021-11-12 01:10:56'),
+(7, 'Bloom41636719920', 'Bloom401636719920', NULL, 'Clove Lip Balm', 2, 1, 1, '110', '1', '2021-11-12 06:55:20', '2021-11-12 06:55:20');
 
 -- --------------------------------------------------------
 
@@ -450,6 +452,7 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profile_pic` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_type` int(10) NOT NULL DEFAULT 2 COMMENT '1 Admin 2 User',
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -463,9 +466,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `phone`, `user_type`, `email_verified_at`, `password`, `remember_token`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@bloom.com', '98764543212', 1, NULL, '$2y$10$w24PG7/VcghhKFZfHszFR.N4lRuVPtw9hmA3KSTl0i4nYNu7JcG8a', NULL, 1, '2021-10-29 10:51:15', '2021-10-29 10:51:15'),
-(4, 'Dhananjay Sawant', 'prakash@gmail.com', '9876543210', 2, NULL, '$2y$10$fRjsQejQF3Croh4qTCbSwernfSQiWKkIi61Yy2wXVck0pFxbUyVd6', NULL, 1, '2021-11-08 03:21:22', '2021-11-08 03:21:22');
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `profile_pic`, `user_type`, `email_verified_at`, `password`, `remember_token`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'admin@bloom.com', '98764543212', NULL, 1, NULL, '$2y$10$w24PG7/VcghhKFZfHszFR.N4lRuVPtw9hmA3KSTl0i4nYNu7JcG8a', NULL, 1, '2021-10-29 10:51:15', '2021-10-29 10:51:15'),
+(4, 'Dhananjay Sawant', 'prakash@gmail.com', '9876543211', 'images/profile/profile_pic1636635919.png', 2, NULL, '$2y$10$fRjsQejQF3Croh4qTCbSwernfSQiWKkIi61Yy2wXVck0pFxbUyVd6', NULL, 1, '2021-11-08 03:21:22', '2021-11-11 07:35:19'),
+(5, 'akshay Jadhav', 'akshay@gmail.com', '9876543210', NULL, 2, NULL, '$2y$10$xnDiG.U674p4c7swrHMQNeDv//trv9EDU/MOXfoPkNQ.mnEiEuRqO', NULL, 1, '2021-11-12 00:41:26', '2021-11-12 00:41:26');
 
 -- --------------------------------------------------------
 
@@ -501,7 +505,51 @@ CREATE TABLE `user_addresses` (
 INSERT INTO `user_addresses` (`id`, `user_id`, `name`, `phone`, `email`, `selected`, `address`, `address_type`, `apartment`, `country`, `state`, `city`, `pin_code`, `created_at`, `updated_at`, `locality`, `landmark`, `phone_alt`) VALUES
 (2, 4, 'Akshay Jadhav', '987654310', 'akshay@gmail.com', 0, 'Rajarampuri 1st Lane kolahpur', 'work', 'flat no 2', 'India', 'MAHARASHTRA', 'Kolhapur', 416001, '2021-10-13 08:25:13', '2021-11-10 01:03:51', NULL, NULL, NULL),
 (7, 3, 'Dhananjay', '9876543233', 'dhananjay.techenvision@gmail.com', 1, 'Rajarampuri Main Road Kolhapur', 'Work', NULL, 'India', 'MAHARASHTRA', 'Kolhapur', 416216, '2021-10-22 05:20:30', '2021-10-22 05:20:30', 'rajarampuri', 'janata bazar chouck', '9876543210'),
-(8, 4, 'dhananjay Sawant', '9876543210', 'prakash@gmail.com', 1, 'Demo Lain Demo City', NULL, NULL, 'India', 'MAHARASHTRA', 'Kolhapur', 416216, '2021-11-09 01:15:46', '2021-11-09 01:15:46', NULL, NULL, NULL);
+(8, 4, 'dhananjay Sawant', '9876543210', 'prakash@gmail.com', 1, 'Demo Lain Demo City', NULL, NULL, 'India', 'MAHARASHTRA', 'Kolhapur', 416216, '2021-11-09 01:15:46', '2021-11-09 01:15:46', NULL, NULL, NULL),
+(10, 5, 'Akshay Jadhav', '9876543126', 'akshay@gmail.com', 1, 'demo lane demo city demo pincode', NULL, NULL, 'India', 'MAHARASHTRA', 'Pune', 521365, '2021-11-12 01:07:02', '2021-11-12 01:07:02', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_subcription`
+--
+
+CREATE TABLE `user_subcription` (
+  `id` int(100) NOT NULL,
+  `user_id` int(100) DEFAULT NULL,
+  `plan_id` int(100) DEFAULT NULL,
+  `payment_status` varchar(200) DEFAULT NULL,
+  `payment_id` varchar(200) DEFAULT NULL,
+  `status` int(10) NOT NULL DEFAULT 1,
+  `plan_start` varchar(250) DEFAULT NULL,
+  `plan_end` varchar(250) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlists`
+--
+
+CREATE TABLE `wishlists` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(100) DEFAULT NULL,
+  `attribute_id` int(100) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `wishlists`
+--
+
+INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `attribute_id`, `quantity`, `type`, `created_at`, `updated_at`) VALUES
+(4, 4, 2, 1, 1, NULL, '2021-11-12 13:08:11', '2021-11-12 13:08:11');
 
 --
 -- Indexes for dumped tables
@@ -612,6 +660,18 @@ ALTER TABLE `user_addresses`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_subcription`
+--
+ALTER TABLE `user_subcription`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -625,31 +685,31 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `plans`
@@ -703,19 +763,31 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT for table `temp_carts`
 --
 ALTER TABLE `temp_carts`
-  MODIFY `temp_carts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `temp_carts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_addresses`
 --
 ALTER TABLE `user_addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `user_subcription`
+--
+ALTER TABLE `user_subcription`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

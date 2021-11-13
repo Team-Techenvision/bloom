@@ -279,125 +279,52 @@
             </div>
         </div>
     </div>
-    <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
-        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <img class="promo-video__decor js-img" data-src="{{asset('img/promo-video__decor.jpg')}}"
+        src="{{asset('img/promo-video__decor.jpg')}}" alt="">
 </div>
 <!-- PRODUCT EOF   -->
 <!-- BEGIN NEW ARRIVALS -->
 <section class="arrivals product-viewed">
     <div class="trending-top">
-        <span class="saint-text">Cosmetics</span>
-        <h2>You have viewed</h2>
+        <span class="saint-text">Similar Products</span>
+        <h2>You May Like</h2>
         <p>Nourish your skin with toxin-free cosmetic products. With the offers that you can’t refuse.</p>
     </div>
     <div class="products-items js-products-items">
-        <a href="#" class="products-item">
-            <div class="products-item__type">
-                <span class="products-item__sale">sale</span>
-                <span class="products-item__new">new</span>
-            </div>
-            <div class="products-item__img">
-                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-                    class="js-img" alt="">
-                <div class="products-item__hover">
-                    <i class="icon-search"></i>
-                    <div class="products-item__hover-options">
-                        <i class="icon-heart"></i>
-                        <i class="icon-cart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="products-item__info">
-                <span class="products-item__name">Detox body Cream</span>
-                <span class="products-item__cost"><span>$249.95</span> $200.95</span>
-            </div>
-        </a>
-        <a href="#" class="products-item">
+        @foreach ($Simillar_products as $item)
+        <a href="{{url('/ProductDetail')}}/{{$item->products_id}}" class="products-item">
             <div class="products-item__type">
                 <span class="products-item__new">new</span>
             </div>
-            <div class="products-item__img">
-                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-                    class="js-img" alt="">
+            <div class="products-item__img">                             
+                <img @if($item->product_image) data-src="{{asset($item->product_image)}}" @else data-src="https://via.placeholder.com/262x370" @endif src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                 <div class="products-item__hover">
                     <i class="icon-search"></i>
                     <div class="products-item__hover-options">
-                        <i class="icon-heart"></i>
-                        <i class="icon-cart"></i>
+                        {{-- <i class="icon-heart"></i>
+                        <i class="icon-cart"></i> --}}
                     </div>
                 </div>
             </div>
             <div class="products-item__info">
-                <span class="products-item__name">Detox body Cream</span>
-                <span class="products-item__cost">$200.95</span>
+                <span class="products-item__name">{{$item->product_name}}</span>
+                @if($item->special_price)
+                    <span class="products-item__cost">&#8377; {{$item->special_price}}</span>
+                @else 
+                    <span class="products-item__cost">&#8377; {{$item->price}}</span>
+                @endif
+                
             </div>
         </a>
-        <a href="#" class="products-item">
-            <div class="products-item__type">
-                <span class="products-item__new">new</span>
-            </div>
-            <div class="products-item__img">
-                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-                    class="js-img" alt="">
-                <div class="products-item__hover">
-                    <i class="icon-search"></i>
-                    <div class="products-item__hover-options">
-                        <i class="icon-heart"></i>
-                        <i class="icon-cart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="products-item__info">
-                <span class="products-item__name">Detox body Cream</span>
-                <span class="products-item__cost">$200.95</span>
-            </div>
-        </a>
-        <a href="#" class="products-item">
-            <div class="products-item__type">
-                <span class="products-item__sale">sale</span>
-                <span class="products-item__new">new</span>
-            </div>
-            <div class="products-item__img">
-                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-                    class="js-img" alt="">
-                <div class="products-item__hover">
-                    <i class="icon-search"></i>
-                    <div class="products-item__hover-options">
-                        <i class="icon-heart"></i>
-                        <i class="icon-cart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="products-item__info">
-                <span class="products-item__name">Detox body Cream</span>
-                <span class="products-item__cost"><span>$249.95</span> $200.95</span>
-            </div>
-        </a>
-        <a href="#" class="products-item">
-            <div class="products-item__type">
-                <span class="products-item__sale">sale</span>
-            </div>
-            <div class="products-item__img">
-                <img data-src="https://via.placeholder.com/400x570" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-                    class="js-img" alt="">
-                <div class="products-item__hover">
-                    <i class="icon-search"></i>
-                    <div class="products-item__hover-options">
-                        <i class="icon-heart"></i>
-                        <i class="icon-cart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="products-item__info">
-                <span class="products-item__name">Detox body Cream</span>
-                <span class="products-item__cost"><span>$249.95</span> $200.95</span>
-            </div>
-        </a>
+        
+        @endforeach
+        
+        
     </div>
 </section>
 <!-- NEW ARRIVALS EOF   -->
 <!-- BEGIN INSTA PHOTOS -->
-<div class="insta-photos">
+{{-- <div class="insta-photos">
     <a href="#" class="insta-photo"> <!---- https://via.placeholder.com/320 ----->
         <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
@@ -434,7 +361,7 @@
             <i class="icon-insta"></i>
         </div>
     </a>
-</div>
+</div> --}}
 <!--<div class="insta-photos">-->
 <!--    <a href="#" class="insta-photo">-->
 <!--        <img data-src="https://via.placeholder.com/320" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"-->
@@ -481,4 +408,9 @@
 <!--</div>-->
 <!-- INSTA PHOTOS EOF   -->
 
-
+<style>
+    .products-items .products-item__img 
+    {
+        height:260px;
+    }
+</style>

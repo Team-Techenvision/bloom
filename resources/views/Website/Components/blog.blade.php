@@ -5,7 +5,7 @@
             <h1>Blog</h1>
             <ul class="bread-crumbs">
                 <li class="bread-crumbs__item">
-                    <a href="index.html" class="bread-crumbs__link">Home</a>
+                    <a href="{{url('/')}}" class="bread-crumbs__link">Home</a>
                 </li>
                 <li class="bread-crumbs__item">Blog</li>
             </ul>
@@ -22,100 +22,29 @@
             @if($blog_contain)
                 @foreach ($blog_contain as $item)            
 
+               
                 <div class="blog-item">
                     <a href="Javascript:Void(0);" class="blog-item__img">
                         <img data-src="{{asset($item->blog_images)}}" class="js-img" alt="">
                         <span class="blog-item__date">
-                            <span> </span>
+                            <span>{{ \Carbon\Carbon::parse($item->blog_date)->format('M')}}</span>
+                            {{ \Carbon\Carbon::parse($item->blog_date)->format('d')}}
                         </span>
                     </a>
-                    {{-- <a href="Javascript:Void(0);" class="blog-item__title">Limited promo</a> --}}
-                    <h4>{{$item->blog_title}}</h4>
-                    <p>{{$item->blog_content}}</p>
-                    <a href="Javascript:Void(0);" class="blog-item__link">Get Discount <i class="icon-arrow-md"></i></a>
+                    <a href="{{url('/blogDetail')}}/{{$item->id}}" class="blog-item__title">{{$item->blog_title}}</a>
+                    {{-- <h4>{{$item->blog_title}}</h4> --}}
+                    <p>{!! \Illuminate\Support\Str::limit($item->blog_content, 150) !!}</p>
+                    <a href="{{url('/blogDetail')}}/{{$item->id}}" class="blog-item__link">View More<i class="icon-arrow-md"></i></a>
                 </div>
                     
                 @endforeach
             @endif
-            {{-- ================================================================= --}}
-
-            {{-- <div class="blog-item">
-                <a href="Javascript:Void(0);" class="blog-item__img">
-                    <img data-src="{{asset('Website/img/image/female-hands-with-soap-foam-KVKDKGZ.jpg')}}" class="js-img" alt="">
-                    <span class="blog-item__date">
-                        <span>Aug</span> 10
-                    </span>
-                </a>
-                <a href="Javascript:Void(0);" class="blog-item__title">Limited promo</a>
-                <h4>Get the + 75% Discount</h4>
-                <p>Spesial price during our company anniversary</p>
-                <a href="Javascript:Void(0);" class="blog-item__link">Get Discount <i class="icon-arrow-md"></i></a>
-            </div> --}}
-
-            {{-- <div class="blog-item">
-                <a href="Javascript:Void(0);" class="blog-item__img">
-                    <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-                        class="js-img" alt="">
-                    <span class="blog-item__date">
-                        <span>Aug</span> 08
-                    </span>
-                </a>
-                <a href="Javascript:Void(0);" class="blog-item__title">Features of cosmetics with honey</a>
-                <p>Easy Ways To Sample Minimalist Living Before Committing.</p>
-                <a href="Javascript:Void(0);" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div> --}}
-            {{-- <div class="blog-item">
-                <a href="Javascript:Void(0);" class="blog-item__img">
-                    <img data-src="{{asset('Website/img/image/luchiana-1959487418-460x259.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-                        class="js-img" alt="">
-                    <span class="blog-item__date">
-                        <span>Jul</span> 15
-                    </span>
-                </a>
-                <a href="Javascript:Void(0);" class="blog-item__title">Perfumes, perfumed or eau de toilette?</a>
-                <p>New Trends in 2021	</p>
-                <a href="Javascript:Void(0);" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div> --}}
-            {{-- <div class="blog-item">
-                <a href="Javascript:Void(0);" class="blog-item__img">
-                    <img data-src="{{asset('Website/img/image/Image.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-                        class="js-img" alt="">
-                    <span class="blog-item__date">
-                        <span>Jun</span> 18
-                    </span>
-                </a>
-                <a href="Javascript:Void(0);" class="blog-item__title">Which of the lines will suit you?</a>
-                <p>Everything You Need To Know About Essential Oils.</p>
-                <a href="Javascript:Void(0);" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div> --}}
-            {{-- <div class="blog-item">
-                <a href="Javascript:Void(0);" class="blog-item__img">
-                    <img data-src="{{asset('Website/img/image/coconut-soap-HWRZKN3-683x1024-1-200x300.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-                        class="js-img" alt="">
-                    <span class="blog-item__date">
-                        <span>May</span> 19
-                    </span>
-                </a>
-                <a href="Javascript:Void(0);" class="blog-item__title">Exclusive: review of the new line</a>
-                <p>Why Peppermint Should Be Considered A Beauty Essential.</p>
-                <a href="Javascript:Void(0);" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div> --}}
-            {{-- <div class="blog-item">
-                <a href="Javascript:Void(0);" class="blog-item__img">
-                    <img data-src="{{asset('Website/img/image/luchiana-1959282579.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
-                        class="js-img" alt="">
-                    <span class="blog-item__date">
-                        <span>May</span> 03
-                    </span>
-                </a>
-                <a href="Javascript:Void(0);" class="blog-item__title">How to keep makeup even in the heat</a>
-                <p>Nourish your skin with toxin-free cosmetic products. With the offers that yo skin with
-                    toxin-free cosmetic products that you can’t refuse.</p>
-                <a href="Javascript:Void(0);" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div> --}}
+           
         </div>
-        <ul class="paging-list">
-            <li class="paging-list__item paging-prev">
+        <ul class="paging-list mb-5">
+
+            {{ $blog_contain->links() }}
+            {{-- <li class="paging-list__item paging-prev">
                 <a href="#" class="paging-list__link">
                     <i class="icon-arrow"></i>
                 </a>
@@ -139,7 +68,7 @@
                 <a href="#" class="paging-list__link">
                     <i class="icon-arrow"></i>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
     <img class="promo-video__decor js-img" data-src="{{asset('img/promo-video__decor.jpg')}}"
@@ -147,7 +76,7 @@
 </div>
 <!-- BLOG EOF   -->
 <!-- BEGIN SUBSCRIBE -->
-<div class="subscribe mb-5">
+{{-- <div class="subscribe mb-5">
     <div class="wrapper">
         <div class="subscribe-form">
             <div class="subscribe-form__img">
@@ -166,7 +95,7 @@
             </form>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- SUBSCRIBE EOF   -->
 <!-- BEGIN INSTA PHOTOS -->
 <!--<div class="insta-photos">-->

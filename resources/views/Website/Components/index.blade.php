@@ -327,36 +327,33 @@
     <div class="wrapper">
         <div class="trending-top">
             <span class="saint-text">Our blog</span>
-            <h2>The latest news at BeShop</h2>
+            <h2>The latest news at Bloom</h2>
             <p>Nourish your skin with toxin-free cosmetic products. With the offers that you can’t refuse.
             </p>
         </div>
         <div class="blog-items">
+
+            @if($blog)
+                @foreach ($blog as $item)
             <div class="blog-item">
                 <a href="#" class="blog-item__img">
-                    <img data-src="{{asset('Website/img/image/luchiana-1959282579.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                    <img data-src="{{asset($item->blog_images)}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                     <span class="blog-item__date">
-                        <span>Aug</span> 10
+                        <span>{{ \Carbon\Carbon::parse($item->blog_date)->format('M')}}</span>
+                        {{ \Carbon\Carbon::parse($item->blog_date)->format('d')}}
                     </span>
                 </a>
-                <a href="#" class="blog-item__title">Best multi-step skin care treatment</a>
-                <p>Nourish your skin with toxin-free cosmetic products. With the offers that yo skin with toxin-free cosmetic products that you can’t refuse.</p>
-                <a href="#" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
+                <a href="{{url('/blogDetail')}}/{{$item->id}}" class="blog-item__title">{{$item->blog_title}}</a>
+                <p>{!! \Illuminate\Support\Str::limit($item->blog_content, 150) !!}</p>
+                <a href="{{url('/blogDetail')}}/{{$item->id}}" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
             </div>
-            <div class="blog-item">
-                <a href="#" class="blog-item__img">
-                    <img data-src="{{asset('Website/img/image/coconut-soap-HWRZKN3-683x1024-1-200x300.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-                    <span class="blog-item__date">
-                        <span>Aug</span> 08
-                    </span>
-                </a>
-                <a href="#" class="blog-item__title">Best multi-step skin care treatment</a>
-                <p>Nourish your skin with toxin-free cosmetic products. With the offers that yo skin with toxin-free cosmetic products that you can’t refuse.</p>
-                <a href="#" class="blog-item__link">Read more <i class="icon-arrow-md"></i></a>
-            </div>
+
+            @endforeach
+            @endif
+            
         </div>
         <div class="latest-news__btn">
-            <a href="#" class="btn btn-info">Read blog</a>
+            <a href="{{url('/blog')}}" class="btn btn-info">Read blog</a>
         </div>
     </div>
 </section>

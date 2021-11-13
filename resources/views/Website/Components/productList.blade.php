@@ -1,12 +1,12 @@
-<div class="detail-block detail-block_margin">
+<div class="detail-block detail-block_margin" style="background-image: url({{ asset('images/bg_banner.jpg')}})">
     <div class="wrapper">
         <div class="detail-block__content">
             <h1>Shop</h1>
             <ul class="bread-crumbs">
                 <li class="bread-crumbs__item">
-                    <a href="#" class="bread-crumbs__link">Home</a>
+                    <a href="{{url('/')}}" class="bread-crumbs__link">Home</a>
                 </li>
-                <li class="bread-crumbs__item">Shop</li>
+                <li class="bread-crumbs__item">Product List</li>
             </ul>
         </div>
     </div>
@@ -14,13 +14,16 @@
 <!-- DETAIL MAIN BLOCK EOF   -->
 <!-- BEGIN SHOP -->
 <div class="shop">
+    <form action="{{url('ProductList')}}/{{$category_id}}" method="post">
+        @csrf
+        <input type="hidden" name="category_id" value="{{$category_id}}">   
     <div class="wrapper">
         <div class="shop-content">
             <div class="shop-aside">
-                <div class="box-field box-field__search">
+                {{-- <div class="box-field box-field__search">
                     <input type="search" class="form-control" placeholder="Search">
                     <i class="icon-search"></i>
-                </div>
+                </div> --}}
                 <div class="shop-aside__item">
                     <span class="shop-aside__item-title">Categories</span>
                     <ul>
@@ -37,11 +40,23 @@
                 </div>
                 <div class="shop-aside__item">
                     <span class="shop-aside__item-title">Price</span>
-                    <div class="range-slider">
-                        <input type="text" class="js-range-slider-price" value="" />
+                    <div class="range-slider">                        
+                        <input type="range" name="priceInputName" id="priceInputId" value="100" min="1" max="1000" oninput="priceOutputId.value = priceInputId.value">
+                        <output name="priceOutputName" id="priceOutputId">100</output>
                     </div>
+
+                    <div class="">
+                        <button class="btn " type="submit"> Filter</button>
+                    </div>
+
+                    <style>
+                        input, textarea
+                        {   
+                            appearance: auto;
+                        }
+                    </style>
                 </div>
-                <div class="shop-aside__item">
+                {{-- <div class="shop-aside__item">
                     <span class="shop-aside__item-title">You have viewed</span>
                     <a href="#" class="shop-aside__item-product">
                         <div class="shop-aside__item-product-img">
@@ -94,64 +109,32 @@
                             </ul>
                         </div>
                     </a>
-                </div>
+                </div> --}}
                 <div class="shop-aside__item">
-                    <span class="shop-aside__item-title">Top 3 for today</span>
-                    <a href="#" class="shop-aside__item-product">
+                    <span class="shop-aside__item-title">New Arrival</span>
+                    @foreach ($Simillar_products as $item)
+                    <a href="{{url('/ProductDetail')}}/{{$item->products_id}}" class="shop-aside__item-product">
                         <div class="shop-aside__item-product-img">
-                            <img data-src="https://via.placeholder.com/60x70"
+                            <img @if($item->product_image) data-src="{{asset($item->product_image)}}" @else data-src="https://via.placeholder.com/262x370" @endif
                             src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                         </div>
                         <div class="shop-aside__item-product-info">
-                            <span class="shop-aside__item-product-title">Detox body Cream</span>
-                            <span class="shop-aside__item-product-price">$200.95</span>
-                            <ul class="star-rating">
+                            <span class="shop-aside__item-product-title">{{$item->product_name}}</span>
+                            <span class="shop-aside__item-product-price">{{$item->price}}</span>
+                            {{-- <ul class="star-rating">
                                 <li><i class="icon-star"></i></li>
                                 <li><i class="icon-star"></i></li>
                                 <li><i class="icon-star"></i></li>
                                 <li><i class="icon-star"></i></li>
                                 <li><i class="icon-star"></i></li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </a>
-                    <a href="#" class="shop-aside__item-product">
-                        <div class="shop-aside__item-product-img">
-                            <img data-src="https://via.placeholder.com/60x70"
-                            src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-                        </div>
-                        <div class="shop-aside__item-product-info">
-                            <span class="shop-aside__item-product-title">Detox body Cream</span>
-                            <span class="shop-aside__item-product-price">$200.95</span>
-                            <ul class="star-rating">
-                                <li><i class="icon-star"></i></li>
-                                <li><i class="icon-star"></i></li>
-                                <li><i class="icon-star"></i></li>
-                                <li><i class="icon-star"></i></li>
-                                <li><i class="icon-star"></i></li>
-                            </ul>
-                        </div>
-                    </a>
-                    <a href="#" class="shop-aside__item-product">
-                        <div class="shop-aside__item-product-img">
-                            <img data-src="https://via.placeholder.com/60x70"
-                            src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-                        </div>
-                        <div class="shop-aside__item-product-info">
-                            <span class="shop-aside__item-product-title">Detox body Cream</span>
-                            <span class="shop-aside__item-product-price">$200.95</span>
-                            <ul class="star-rating">
-                                <li><i class="icon-star"></i></li>
-                                <li><i class="icon-star"></i></li>
-                                <li><i class="icon-star"></i></li>
-                                <li><i class="icon-star"></i></li>
-                                <li><i class="icon-star"></i></li>
-                            </ul>
-                        </div>
-                    </a>
+                    @endforeach                    
+                    
                 </div>
             </div>
             <div class="shop-main">
-
                 <div class="shop-main__filter">
                     <div class="shop-main__checkboxes">
                         <label class="checkbox-box">
@@ -166,9 +149,9 @@
                         </label>
                     </div>
                     <div class="shop-main__select">
-                        <select class="styled">
-                            <option>From expensive to cheap</option>
-                            <option>From cheap to expensive</option>
+                        <select class="styled"  name="price_sort">
+                            <option value="asc" @if(isset($price_sort)) {{$price_sort == 'asc'? 'selected':''}} @endif>From cheap to expensive</option>
+                            <option value="desc" @if(isset($price_sort)) {{$price_sort == 'desc'? 'selected':''}} @endif>From expensive to cheap</option>
                         </select>
                     </div>
                 </div>
@@ -186,8 +169,8 @@
                             <div class="products-item__hover">
                                 <i class="icon-search"></i>
                                 <div class="products-item__hover-options">
-                                    <i class="icon-heart"></i>
-                                    <i class="icon-cart"></i>
+                                    {{-- <i class="icon-heart"></i>
+                                    <i class="icon-cart"></i> --}}
                                 </div>
                             </div>
                         </div>
@@ -363,7 +346,9 @@
                     </a> --}}
                 </div>
                 <ul class="paging-list">
-                    <li class="paging-list__item paging-prev">
+
+                    {{ $Products->links() }}
+                    {{-- <li class="paging-list__item paging-prev">
                         <a href="#" class="paging-list__link">
                             <i class="icon-arrow"></i>
                         </a>
@@ -387,17 +372,18 @@
                         <a href="#" class="paging-list__link">
                             <i class="icon-arrow"></i>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
     </div>
-    <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
-        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+</form>
+    <img class="promo-video__decor js-img" data-src="{{asset('img/promo-video__decor.jpg')}}"
+    src="{{asset('img/promo-video__decor.jpg')}}" alt="">
 </div>
 <!-- SHOP EOF   -->
 <!-- BEGIN SUBSCRIBE -->
-<div class="subscribe">
+{{-- <div class="subscribe">
     <div class="wrapper">
         <div class="subscribe-form">
             <div class="subscribe-form__img">
@@ -416,9 +402,9 @@
             </form>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- SUBSCRIBE EOF   -->
-<div class="insta-photos">
+{{-- <div class="insta-photos">
     <a href="#" class="insta-photo"> <!---- https://via.placeholder.com/320 ----->
         <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
         <div class="insta-photo__hover">
@@ -455,7 +441,7 @@
             <i class="icon-insta"></i>
         </div>
     </a>
-</div>
+</div> --}}
 <!-- BEGIN INSTA PHOTOS -->
 
 <style>

@@ -33,6 +33,7 @@ class WebsiteController extends Controller
         $data['banner'] = Banner::where('status',1)->first();
         $data['categories_contain'] = Categories::where('status',1)->get();
         $data['plans'] = Plans::where('status',1)->get();
+        $data['blog'] = Blogs::where('status',1)->orderby('created_at','desc')->paginate(2);
 
         return view('Website/Webviews/manage_website_pages',$data);
     }
@@ -132,7 +133,7 @@ class WebsiteController extends Controller
     {
         $data['flag'] = 2;
          $data['categories_contain'] = Categories::where('status',1)->get();
-        
+        $data['category_id']= $Cat_id;
         $data['Products'] = DB::table('products')
 		->join('category', 'category.id', '=', 'products.category_id')
         ->join('product_attributes','product_attributes.products_id','=','products.products_id')         
@@ -141,9 +142,56 @@ class WebsiteController extends Controller
         ->where("products.status",1)
         ->where("product_images.type",2)
         ->where("products.category_id",$Cat_id)
+        ->paginate(20);
+
+        $data['Simillar_products'] = DB::table('products')
+		->join('category', 'category.id', '=', 'products.category_id')
+        ->join('product_attributes','product_attributes.products_id','=','products.products_id')         
+        ->join('product_images', 'product_images.products_id', '=', 'products.products_id')           
+        ->select('products.*','product_attributes.price','product_attributes.special_price','product_images.product_image')
+        ->where("products.status",1)
+        ->where("product_images.type",2)
+        ->orderBy('products.created_at', 'desc')->take(4)
         ->get();
+
         return view('Website/Webviews/manage_website_pages',$data);
     } 
+
+    public function productList_filter(Request $req)
+    {
+        // dd($req);
+        $minpr = 1;  
+        $maxpr = $req->priceInputName; 
+        $data['price_sort'] = $req->price_sort;
+        $data['flag'] = 2;
+        $data['category_id']= $req->category_id;
+         $data['categories_contain'] = Categories::where('status',1)->get();
+        $data['Products'] = DB::table('products')
+		->join('category', 'category.id', '=', 'products.category_id')
+        ->join('product_attributes','product_attributes.products_id','=','products.products_id')         
+        ->join('product_images', 'product_images.products_id', '=', 'products.products_id')           
+        ->select('products.*','product_attributes.price','product_attributes.special_price','product_images.product_image')
+        ->where("products.status",1)
+        ->where("product_images.type",2)
+        ->where("products.category_id",$req->category_id)
+        ->whereBetween('price', [$minpr, $maxpr])
+        ->orderBy('price',$req->price_sort)
+        ->paginate(20);
+
+        $data['Simillar_products'] = DB::table('products')
+		->join('category', 'category.id', '=', 'products.category_id')
+        ->join('product_attributes','product_attributes.products_id','=','products.products_id')         
+        ->join('product_images', 'product_images.products_id', '=', 'products.products_id')           
+        ->select('products.*','product_attributes.price','product_attributes.special_price','product_images.product_image')
+        ->where("products.status",1)
+        ->where("product_images.type",2)
+        ->orderBy('products.created_at', 'desc')->take(4)
+        ->get();
+        // dd($data['Products']);
+        return view('Website/Webviews/manage_website_pages',$data);
+    } 
+
+
     // public function shop_page()
     // {
     //     $data['flag'] = 2;
@@ -159,10 +207,17 @@ class WebsiteController extends Controller
     public function blog_Page()
     {
         $data['flag'] = 4;
-        $data['blog_contain'] = Blogs::where('status',1)->get();
+        $data['blog_contain'] = Blogs::where('status',1)->paginate(6);
         return view('Website/Webviews/manage_website_pages',$data);
         
     }
+
+    public function blogDetails($blog_id){
+        $data['flag'] = 21;
+        $data['blog'] = Blogs::where('id',$blog_id)->first();	
+        return view('Website/Webviews/manage_website_pages', $data); 
+    }
+
     public function contacts()
     {
         $data['flag'] = 5;
@@ -195,7 +250,9 @@ class WebsiteController extends Controller
         $session = Session::getId();
         $r = DB::table('temp_carts')->where('session_id',$session)->select('product_id','attribute_id')->get();
         // dd($r);
-        $cart = DB::table('carts')->where('user_id',Auth::id())->select('product_id','attribute_id')->get();
+        if(Auth::check()){
+        $cart = DB::table('carts')->where('user_id',Auth::user()->id)->select('product_id','attribute_id')->get();
+        }
         $count = DB::table('temp_carts')->where('session_id',$session)->count();
 
 
@@ -209,21 +266,24 @@ class WebsiteController extends Controller
             // dd($data1);
         }
 
+        if(Auth::check()){
         foreach ($cart as $key => $r2) {
             $data1[]=DB::table('products')
             ->join('carts', 'products.products_id', '=', 'carts.product_id')
             ->join('product_attributes', 'products.products_id', '=', 'product_attributes.products_id')
-            ->select('products.products_id','products.product_name','products.product_code','product_attributes.price','carts.quantity','carts.id','carts.attribute_id')
+            ->select('products.products_id','products.product_name','products.product_code','product_attributes.price','carts.quantity','carts.id','carts.user_id','carts.attribute_id')
             ->where('product_attributes.id',$r2->attribute_id)
+            // ->where('carts.user_id', Auth::user()->id)
             ->first();
         // dd($data1);
     }
+}
     
     if (DB::table('temp_carts')->where('session_id',$session)->count()>0) {
         $data['result'] = $data1;
         
        
-    }elseif (DB::table('carts')->where('user_id',Auth::id())->count()>0) {
+    }elseif (DB::table('carts')->where('user_id', Auth::user()->id)->count()>0) {
         $data['result'] = $data1;
        
         // dd( $data['result']);
@@ -379,6 +439,7 @@ class WebsiteController extends Controller
         ->where("products.status",1)
         ->where("products.products_id",$product_id)
         ->first();
+        // dd($data['Products']->category_id);
         $data['product_images'] = Product_Images::where('status',1)->where('products_id',$product_id)->orderby('type','DESC')->get();
         // $data['Review'] = Review::where('status',1)->where('product_id',$product_id)->get();
         $data['Review'] = DB::table('reviews')
@@ -387,6 +448,20 @@ class WebsiteController extends Controller
         ->where('reviews.status',1)
         ->where('reviews.product_id',$product_id)
         ->get();
+
+        $data['Simillar_products'] = DB::table('products')
+		->join('category', 'category.id', '=', 'products.category_id')
+        ->join('product_attributes','product_attributes.products_id','=','products.products_id')         
+        ->join('product_images', 'product_images.products_id', '=', 'products.products_id')           
+        ->select('products.*','product_attributes.price','product_attributes.special_price','product_images.product_image')
+        ->where("products.status",1)
+        ->where("product_images.type",2)
+        ->where("products.category_id",$data['Products']->category_id)
+        ->orderBy(DB::raw('RAND()'))->take(4)
+        ->get();
+
+        // dd($data['Simillar_products']);
+
         return view('Website/Webviews/manage_website_pages',$data);
     }
 
@@ -403,7 +478,7 @@ class WebsiteController extends Controller
     public function checkout(){   
         // return 'hello';
         $data['flag'] = 14; 
-                $cart = DB::table('carts')->where('user_id',Auth::id())->select('product_id','attribute_id')->get();
+                $cart = DB::table('carts')->where('user_id',Auth::user()->id)->select('product_id','attribute_id')->get();
                 foreach ($cart as $key => $r2) {
                     $data1[]=DB::table('products')
                     ->join('carts', 'products.products_id', '=', 'carts.product_id')
@@ -412,7 +487,7 @@ class WebsiteController extends Controller
                     ->where('product_attributes.id',$r2->attribute_id)
                     ->first();
             }
-            if(DB::table('carts')->where('user_id',Auth::id())->count()>0) {
+            if(DB::table('carts')->where('user_id',Auth::user()->id)->count()>0) {
                 $data['result'] = $data1;
             }else{
                 $data['result']='Please Choose To Continue Shopping';

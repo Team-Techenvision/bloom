@@ -38,9 +38,11 @@ Route::get('/checkout3', 'Website\WebsiteController@checkout3');
 Route::get('/ProductList/{Cat_id}', 'Website\WebsiteController@productList');
 Route::get('/ProductDetail/{product_id}', 'Website\WebsiteController@ProductDetail');
 Route::post('/add-to-cart', 'Website\EcomController@add_to_cart');
-
+Route::post('/ProductList/{Cat_id}', 'Website\WebsiteController@productList_filter');
 Route::post('/remove-product','Website\WebsiteController@removeProduct'); 
 Route::post('/cart-update','Website\WebsiteController@cartUpdate'); 
+Route::get('blogDetail/{blog_id}', 'Website\WebsiteController@blogDetails');
+
 
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');

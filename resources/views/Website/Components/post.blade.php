@@ -1,5 +1,5 @@
  <!-- BEGIN DETAIL MAIN BLOCK -->
- <div class="detail-block detail-block_margin">
+ <div class="detail-block detail-block_margin" style="background-image: url({{ asset('images/bg_banner.jpg')}})">
     <div class="wrapper">
         <div class="detail-block__content">
             <h1>Blog</h1>
@@ -215,8 +215,8 @@
             </div>
         </div>
     </div>
-    <img class="promo-video__decor js-img" data-src="https://via.placeholder.com/1197x1371/FFFFFF"
-        src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    <img class="promo-video__decor js-img" data-src="{{asset('img/promo-video__decor.jpg')}}"
+        src="{{asset('img/promo-video__decor.jpg')}}" alt="">
 </div>
 <!-- POST EOF   -->
 <!-- BEGIN INSTA PHOTOS -->

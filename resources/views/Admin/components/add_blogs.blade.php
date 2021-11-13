@@ -27,7 +27,7 @@
                         <div class="col-sm-9">
                             <div class="form-group">                            
                                 <div>
-                                    <textarea  class="form-control" rows="3" name="blog_content" placeholder="Enter Content"></textarea>
+                                    <textarea id="elm1"  class="form-control" rows="3" name="blog_content" placeholder="Enter Content"></textarea>
                                 </div>
                             </div>
                         </div>

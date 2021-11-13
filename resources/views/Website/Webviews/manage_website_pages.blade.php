@@ -50,6 +50,8 @@
                 @include('Website.Components/myorder') 
             @elseif($flag == 20) 
                 @include('Website.Components/orderDetails') 
+            @elseif($flag == 21) 
+                @include('Website.Components/blogDetails') 
             @endif
         </main>
 
