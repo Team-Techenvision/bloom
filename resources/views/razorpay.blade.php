@@ -30,7 +30,7 @@
                 @else
                 <h3 style="color:red">Do not refresh the page while your payment is being processed.</h3>
                 <small>If you didn't see payment window press here</small>
-                <form action="/payment?order_id={{$order->order_id}}" method="POST" >
+                <form action="{{url('/payment')}}?order_id={{$order->order_id}}" method="POST">
                     @csrf
                     <script src="https://checkout.razorpay.com/v1/checkout.js"
                             data-key="{{ env('RAZOR_KEY') }}"
