@@ -52,6 +52,8 @@
                 @include('Website.Components/orderDetails') 
             @elseif($flag == 21) 
                 @include('Website.Components/blogDetails') 
+            @elseif($flag == 22) 
+                @include('Website.Components/usersubcription') 
             @endif
         </main>
 

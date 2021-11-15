@@ -34,3 +34,13 @@ a{
     transition: all 0.3s linear!important;
     font-family: "Lato"!important;
 }
+
+.subcription_form{
+    width: 450px!important;
+}
+
+@media only screen and (max-width: 418px) {
+    .subcription_form{
+        width: 100%;
+    }
+  }

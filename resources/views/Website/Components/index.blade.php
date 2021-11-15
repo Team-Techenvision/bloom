@@ -377,7 +377,7 @@
 <h4>{{$item->plan_name}}</h4>
 <h2> RS. {{$item->price}}</h2>
 <p>{!!$item->description!!}</p>
-<a href="#" class="btn btn-info" style="margin-top: 30px;">Sign Up</a>
+<a href="{{url('/user-subcription')}}" class="btn btn-info" style="margin-top: 30px;">Sign Up</a>
 </div>
 @endforeach
 </div>

@@ -20,7 +20,9 @@ use App\UserAddress;
 use App\State;
 use App\OrderItem;
 use App\Order;
+use App\UserSubcription;
 use DB;
+use Carbon\carbon;
 use Session;
 use Auth;
 
@@ -197,6 +199,44 @@ class WebsiteController extends Controller
     //     $data['flag'] = 2;
     //     return view('Website/Webviews/manage_website_pages',$data);
     // }
+
+    public function usersubcription()
+    {
+        $data['flag'] = 22;
+        $data['user'] = User::where('id', Auth::user()->id)->first();
+        $data['plans'] = Plans::where('status',1)->get();
+        // dd($data);
+        return view('Website/Webviews/manage_website_pages',$data);
+    }
+
+    public function user_plan_submit(Request $req){
+        // dd($req);
+
+
+        $current_date = Carbon::now()->toDateString();
+        $expiry_date = Carbon::now()->addYear()->toDateString();
+        // dd($expiry_date);
+
+        $checkuser = UserSubcription::where('user_id',Auth::user()->id)->count();
+        // dd($checkuser);
+        if($checkuser < 1){
+            $data= new UserSubcription;
+            $data->user_id = Auth::user()->id;
+            $data->plan_id = $req->plan_id;
+            $data->status  = 1;
+            $data->plan_start  = $current_date;
+            $data->plan_end = $expiry_date;
+            $data->save();
+            $user_sub_id = $data->id;
+
+            // dd($user_sub_id);
+            return redirect('confirm-plan/'.$user_sub_id);
+        }
+        else{
+            toastr()->error('You Already Subscribed');
+            return back();
+        }
+    }
     
     public function categories()
     {
@@ -204,6 +244,8 @@ class WebsiteController extends Controller
         $data['categories_contain'] = Categories::where('status',1)->get();
         return view('Website/Webviews/manage_website_pages',$data);
     }
+
+
     public function blog_Page()
     {
         $data['flag'] = 4;
@@ -380,6 +422,7 @@ class WebsiteController extends Controller
         toastr()->success('Register successfully');
         return redirect('Web-login');
 }
+
 
     public function login()
     {

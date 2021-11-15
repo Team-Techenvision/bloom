@@ -65,6 +65,16 @@
                         <li><a href="{{url('view-admin-order')}}">View Order</a></li>                       
                     </ul>
                 </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-map-marker-outline"></i>
+                        <span>Reports</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">  
+                        <li><a href="{{url('sell-report')}}">View Sell Report</a></li>
+                    </ul>
+                </li>
                 
 
             </ul>

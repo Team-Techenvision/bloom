@@ -62,9 +62,17 @@ Route::group(['middleware' => 'auth', 'User'], function () {
     Route::get('/checkout', 'Website\WebsiteController@checkout');
     Route::post('checkout-submit','Website\WebsiteController@checkoutSubmit');
 
+    // payment gateway for products
+
     Route::get('confirm-order/{order_id}','RazorpayController@confirm')->name('confirm.order');
     Route::post('payment','RazorpayController@payment')->name('payment');
     Route::get('order-success/{order_id}','Website\WebsiteController@orderSuccessPage');
+
+    // payment gateway for Subcription
+
+    Route::get('confirm-plan/{user_plan_id}','RazorpayPlanController@confirm')->name('confirm.plan');
+    Route::post('plan-payment','RazorpayPlanController@payment')->name('paymentplan');
+    Route::get('plan-success/{user_plan_id}','Website\WebsiteController@orderSuccessPage');
 
     Route::get('/My-Address', 'Website\WebsiteController@My_Address');
     Route::get('My-Profile', 'Website\WebsiteController@My_Profile');
@@ -80,6 +88,9 @@ Route::group(['middleware' => 'auth', 'User'], function () {
     Route::get('add-wishlist/{products_id}/{attribute_id}/{user_id}','Website\WebsiteController@addtoWishlist');
     Route::get('/wishlist', 'Website\WebsiteController@wishlist');
 	Route::get('remove-wishlist/{products_id}/','Website\EcomController@RemoveWishlist'); 
+
+    Route::get('user-subcription','Website\WebsiteController@usersubcription');
+    Route::post('user-plan-submit','Website\WebsiteController@user_plan_submit');
 
     Route::get('cart-add/{products_id}/{attribute_id}/{quantity}','Website\EcomController@add_to_cart');
 
@@ -147,6 +158,9 @@ Route::middleware(['auth', 'Admin'])->group(function () {
 
     Route::get('view-admin-order', 'Admin\ProductController@order_list');
     Route::get('admin-order-detail/{id}','Admin\ProductController@userOrderDetail');
+
+    Route::get('sell-report', 'Admin\ReportController@sell_report');
+    Route::get('sell-export', 'Admin\ReportController@export')->name('sell-export');
 
 });
 
