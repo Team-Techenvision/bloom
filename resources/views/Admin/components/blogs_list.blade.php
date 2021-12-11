@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-body"> 
             <div class="col-12 text-right pb-2"> 
-                <a href="{{url('add-blogs')}}" class="btn btn-info">Add Blogs</a>
+                <a href="{{url('add-blogs')}}" class="btn btn-info">Add Post</a>
             </div>    
         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap text-center" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>

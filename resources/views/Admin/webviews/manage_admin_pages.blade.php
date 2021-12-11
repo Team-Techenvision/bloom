@@ -40,6 +40,8 @@
         @include('Admin.components.Products.view_order_details')
     @elseif($flag == 12) 
         @include('Admin.components.Report.sell_report')
+    @elseif($flag == 13) 
+        @include('Admin.components.Report.user_subscription_report')
     @endif
     </div>
                     <!-- end row -->

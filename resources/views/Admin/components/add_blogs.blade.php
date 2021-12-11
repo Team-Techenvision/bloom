@@ -21,6 +21,18 @@
                             <input type="date" class="form-control" name="blog_date"/>
                         </div>
                     </div>  
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Category</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="category_id" required>
+                                <option value="">Select Category</option>
+                                @foreach($Categories as $r) 
+                                    <option value="{{$r->id}}">{{$r->category_name}}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Blog Content</label>

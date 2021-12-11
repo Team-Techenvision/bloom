@@ -12,7 +12,6 @@ use Mail;
 
 class EcomController extends Controller
 {
-    
     public function add_to_cart(Request $req){
         
         $session = Session::getId();
@@ -47,6 +46,31 @@ class EcomController extends Controller
          toastr()->success('Item Added into Cart');
         //return back();
         return Auth::check() ? back() : back();
+    }
+
+
+    public function add_to_cart_get(Request $request, $products_id, $attribute_id, $quantity){
+        // dd($products_id);
+        if(Auth::check()){
+
+            $result1=DB::table('carts')->where('product_id',$products_id)->where('user_id',Auth::user()->id)->count();
+
+            if($result1 == 0){
+                DB::table('carts')->insert([
+                    'product_id'=>$products_id,
+                    'attribute_id'=>$attribute_id,
+                    'user_id'=> Auth::user()->id,
+                    'quantity'=>$quantity
+                ]);
+                toastr()->success('Item added into cart');
+               
+            }else{
+                toastr()->error('Item already present into cart');
+               
+            }
+        
+            return back();
+        }
     }
 
     public function RemoveWishlist($products_id){

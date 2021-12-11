@@ -290,13 +290,13 @@ class WebsiteController extends Controller
         $data['flag'] = 7; 
 
         $session = Session::getId();
+        // dd($session);
         $r = DB::table('temp_carts')->where('session_id',$session)->select('product_id','attribute_id')->get();
         // dd($r);
         if(Auth::check()){
         $cart = DB::table('carts')->where('user_id',Auth::user()->id)->select('product_id','attribute_id')->get();
         }
         $count = DB::table('temp_carts')->where('session_id',$session)->count();
-
 
         foreach ($r as $key => $r1) {
                 $data1[]=DB::table('products')
@@ -321,13 +321,15 @@ class WebsiteController extends Controller
     }
 }
     
-    if (DB::table('temp_carts')->where('session_id',$session)->count()>0) {
+    if(DB::table('temp_carts')->where('session_id',$session)->count()>0) {
         $data['result'] = $data1;
-        
-       
-    }elseif (DB::table('carts')->where('user_id', Auth::user()->id)->count()>0) {
-        $data['result'] = $data1;
-       
+    }elseif(Auth::check()) {
+        if(DB::table('carts')->where('user_id', Auth::user()->id)->count()>0){
+            $data['result'] = $data1;
+        }
+        else{
+            $data['result']='Please Choose To Continue Shopping';
+        }
         // dd( $data['result']);
     }else{
         $data['result']='Please Choose To Continue Shopping';
@@ -624,7 +626,22 @@ class WebsiteController extends Controller
                 
                 $t_amount_with_shipping = $tamount + $shipping_percent;
                 // dd($t_amount_with_shipping);
-                $total_amount_with_shipping = round($t_amount_with_shipping, 2);
+                $date = Carbon::today()->format('Y-m-d');;
+                // dd($date); die;
+                // check user is subscribed user or not 
+                $discount_percent = DB::table('user_subcription')
+                                        ->join('plans', 'plans.id', '=', 'user_subcription.plan_id')                         
+                                        ->where('user_id','=', Auth::user()->id)
+                                        ->whereDate('user_subcription.plan_end', '>=', $date)
+                                        ->pluck('discount')
+                                        ->first();
+                if($discount_percent >0 ){
+                    $t_amount_with_shipping_final = $t_amount_with_shipping - ($t_amount_with_shipping * $discount_percent/ 100);
+                }else{
+                    $t_amount_with_shipping_final = $t_amount_with_shipping;
+                }
+
+                $total_amount_with_shipping = round($t_amount_with_shipping_final, 2);
 
                 DB::table('orders')->where('order_id', $order_id)->update([
                     'shipping_charge' => round($shipping_percent, 2),
@@ -652,7 +669,7 @@ class WebsiteController extends Controller
 
     public function order_list(){
         $data['flag']=19;
-        $data['order'] = Order::where('user_id',Auth::user()->id)->get();   	
+        $data['order'] = Order::where('user_id',Auth::user()->id)->orderBy('created_at', 'DESC')->get();   	
         // dd($data);
         return view('Website/Webviews/manage_website_pages',$data);
     }

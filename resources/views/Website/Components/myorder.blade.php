@@ -57,7 +57,6 @@
 
                         <div class="box-tab-cont">
                             <div class="tab-cont" id="profile-tab_1">
-
                                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>

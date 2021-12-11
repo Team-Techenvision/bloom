@@ -32,7 +32,10 @@
                         </span>
                     </a>
                     <a href="{{url('/blogDetail')}}/{{$item->id}}" class="blog-item__title">{{$item->blog_title}}</a>
-                    {{-- <h4>{{$item->blog_title}}</h4> --}}
+                    @php
+                    $category_name =  DB::table('category')->where('id',$item->category_id)->pluck('category_name')->first();
+                    @endphp
+                    <h6>{{$category_name}}</h6>
                     <p>{!! \Illuminate\Support\Str::limit($item->blog_content, 150) !!}</p>
                     <a href="{{url('/blogDetail')}}/{{$item->id}}" class="blog-item__link">View More<i class="icon-arrow-md"></i></a>
                 </div>

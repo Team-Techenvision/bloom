@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'Website\WebsiteController@index');
-Route::get('/Web-login', 'Website\WebsiteController@login');
+Route::get('/Web-login', 'Website\WebsiteController@login')->name('Web-login');
 Route::get('/Web-register', 'Website\WebsiteController@registration');
 Route::post('/Register-submit', 'Website\WebsiteController@register_submit');
 Route::post('Login-submit', 'Website\WebsiteController@login_submit');
@@ -92,7 +92,7 @@ Route::group(['middleware' => 'auth', 'User'], function () {
     Route::get('user-subcription','Website\WebsiteController@usersubcription');
     Route::post('user-plan-submit','Website\WebsiteController@user_plan_submit');
 
-    Route::get('cart-add/{products_id}/{attribute_id}/{quantity}','Website\EcomController@add_to_cart');
+    Route::get('cart-add/{products_id}/{attribute_id}/{quantity}','Website\EcomController@add_to_cart_get');
 
 });
 
@@ -161,6 +161,12 @@ Route::middleware(['auth', 'Admin'])->group(function () {
 
     Route::get('sell-report', 'Admin\ReportController@sell_report');
     Route::get('sell-export', 'Admin\ReportController@export')->name('sell-export');
+
+    Route::get('subscription-report', 'Admin\ReportController@subscription_report');
+    Route::get('user-export', 'Admin\ReportController@userexport')->name('user-export');
+    
+
+    
 
 });
 

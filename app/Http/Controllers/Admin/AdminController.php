@@ -371,6 +371,7 @@ class AdminController extends Controller
     {
         $data['flag'] = 13; 
         $data['page_title'] = 'Add Blog';
+        $data['Categories'] = Categories::where('status',"1")->get();
         // $data['tabs'] = Tabs::where('status',"1")->get(); 
         return view('Admin/Webviews/manage_admin_user',$data);
     }
@@ -389,7 +390,8 @@ class AdminController extends Controller
                 $file->move($destinationPath, $filename);
                 $image = 'images/blog/'.$filename;
                 Blogs::where('id',$req->blog_id)->update([
-                    'blog_title' => $req->blog_title,  
+                    'blog_title' => $req->blog_title, 
+                    'category_id' => $req->category_id,  
                     'blog_images' => $image,
                     'blog_date' => $req->blog_date,
                     'blog_content' => $req->blog_content,
@@ -397,7 +399,8 @@ class AdminController extends Controller
                 ]);
             }else{
                 Blogs::where('id',$req->blog_id)->update([
-                    'blog_title' => $req->blog_title,  
+                    'blog_title' => $req->blog_title, 
+                    'category_id' => $req->category_id, 
                     'blog_date' => $req->blog_date,
                     'blog_content' => $req->blog_content,
                     'status' => $req->status,
@@ -420,7 +423,8 @@ class AdminController extends Controller
                 $image = 'images/blog/'.$filename;
                 
                 $data = new Blogs();
-                $data->blog_title = $req->blog_title;  
+                $data->blog_title = $req->blog_title; 
+                $data->category_id = $req->category_id;  
                 $data->blog_date = $req->blog_date;
                 $data->blog_content = $req->blog_content;  
                 $data->blog_images  = $image;
@@ -429,7 +433,8 @@ class AdminController extends Controller
             
         }else{
             $data = new Blogs();
-            $data->blog_title = $req->blog_title;  
+            $data->blog_title = $req->blog_title; 
+            $data->category_id = $req->category_id; 
             $data->blog_date = $req->blog_date;
             $data->blog_content = $req->blog_content;  
             $data->status = $req->status;
@@ -443,6 +448,7 @@ class AdminController extends Controller
     public function edit_blogs($id){
         $data['flag'] = 14; 
         $data['page_title'] = 'Edit Blog'; 
+        $data['Categories'] = Categories::where('status',"1")->get();
         $data['blogs'] = Blogs::where('id',$id)->first(); 
         // dd($data);
         return view('Admin/Webviews/manage_admin_user',$data);

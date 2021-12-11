@@ -25,10 +25,13 @@
             <img data-src="{{asset($blog->blog_images)}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img"
                 alt="blog-image">
             <ul class="post-top__info">
+                @php
+                     $category_name =  DB::table('category')->where('id',$blog->category_id)->pluck('category_name')->first();
+                @endphp
                 <li class="post-top__date"><i class="icon-date"></i>{{ \Carbon\Carbon::parse($blog->blog_date)->format('d M Y')}}</li>
                 <li class="post-top__user"><i class="icon-user2"></i><a href="#">by Admin</a></li>
-                {{-- <li class="post-top__watch"><i class="icon-eye"></i>114</li>
-                <li class="post-top__comment"><i class="icon-comment"></i>35</li> --}}
+                 <li class="post-top__watch"><i class="icon-comment"></i>{{ $category_name }}</li>
+                {{--<li class="post-top__comment"><i class="icon-comment"></i>35</li> --}}
             </ul>
         </div>
         <div class="post-content">

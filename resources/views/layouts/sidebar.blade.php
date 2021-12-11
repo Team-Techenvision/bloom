@@ -73,6 +73,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">  
                         <li><a href="{{url('sell-report')}}">View Sell Report</a></li>
+                        <li><a href="{{url('subscription-report')}}">User Subcription Report</a></li>
                     </ul>
                 </li>
                 
