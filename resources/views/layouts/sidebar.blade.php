@@ -43,6 +43,11 @@
                         <li><a href="{{url('view-sub-category')}}">View Sub-Category</a></li>
                         <li><a href="{{url('view-blogs')}}">View Blogs</a></li>
                         <li><a href="{{url('view-plans')}}">View Plans</a></li>
+                        <li><a href="{{url('view-about-us')}}">About Us</a></li>
+                        <li><a href="{{url('view-testimonial')}}">Testimonial</a></li>
+                        <li><a href="{{url('view-social-media')}}">Social Media Link</a></li>
+                        <li><a href="{{url('view-basic-info')}}">Basic Info</a></li>
+
                     </ul>
                 </li>
             

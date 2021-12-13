@@ -86,15 +86,20 @@
     src="{{asset('img/promo-video__decor.jpg')}}" alt="">
 </section>
 <!-- PROMO VIDEO EOF   -->
+@php
+$about_us = DB::table('about_us')->where('status', 1)->first();
+// print_r($testimonial);
+@endphp
 <!-- BEGIN DISCOUNT -->
-<div class="discount discount-about js-img" data-src="{{asset('Website/img/image/Screenshot-2021.png')}}">
+<div class="discount discount-about js-img" data-src="{{asset($about_us->bg_image)}}">
     <div class="wrapper">
         <div class="discount-info1" style="background-color: rgba(252, 236, 239, 0.668);padding:30px 25px;">
             <span class="saint-text" style="text-align: center; color: #000;">Welcome to Bloom</span>
             <h2 style="text-align: center; color: #000;">About Us</h2>
-            <p style="color: #000000;">Our LIP Balms,moisturizer, Lotions & Soaps are made out of Shea,Cocoa,Mango,Avacado, Soy Butters, and completely free from SLS, Sulphates & Parabens.</p>
+            <div class="abt-text">{!!$about_us->content!!}</div>
+            {{-- <p style="color: #000000;">Our LIP Balms,moisturizer, Lotions & Soaps are made out of Shea,Cocoa,Mango,Avacado, Soy Butters, and completely free from SLS, Sulphates & Parabens.</p>
             <p class="" style="color: #000000">Forming the range of stores, we, above all, strive not only to meet the format of "home shop", offering each customer the most basic household goods, but also to create a unique space of beauty and care. BeShope stores offer their customers the widest and highest quality selection of products from world-renowned manufacturers.</p>
-            <p style="color: #000000">We take lots of care to ensure that every products is loaded with Vitamin E and carrier oils like Almond, Avacado, Argan Oil, Olive Oil, Castor oil etc and also Glycering to keep your skin hydrated throught out. We use pure essential oils in all our products,which adds up to enhanced texture of skin and hairs.Also skin absorbs the essential oils and keeps you overall whole and healthy.</p>
+            <p style="color: #000000">We take lots of care to ensure that every products is loaded with Vitamin E and carrier oils like Almond, Avacado, Argan Oil, Olive Oil, Castor oil etc and also Glycering to keep your skin hydrated throught out. We use pure essential oils in all our products,which adds up to enhanced texture of skin and hairs.Also skin absorbs the essential oils and keeps you overall whole and healthy.</p> --}}
             <a href="Javascript:Void(0);" class="btn btn-info" style="margin-top: 15px;">Shop now</a>
         </div>
     </div>
@@ -137,17 +142,24 @@
             <h2>testimonials</h2>
         </div>
         <div class="testimonials-slider js-testimonials-slider">
+
+            @php
+                $testimonial = DB::table('testimonials')->where('status','=', 1)->get();
+                // print_r($testimonial);
+            @endphp
+            @foreach ($testimonial as $item)
             <div class="testimonials-slide">
                 <p>
-                    I am grateful to the employees of Bloom for the quality products that I have been using for more than a year, try to work at this level
-                    in the future. Thank you)
+                   {!!$item->description!!}
                 </p>
                 <div class="testimonials-author">
-                    <img data-src="https://via.placeholder.com/50" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-                    <h5>Melissa Jones</h5>
+                    <img data-src="{{$item->images}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                    <h5>{{$item->customer_name}}</h5>
                 </div>
             </div>
-            <div class="testimonials-slide">
+            @endforeach
+            
+            {{-- <div class="testimonials-slide">
                 <p>
                     I am grateful to the employees of Bloom for the quality products that I have been using for more than a year, try to work at this level
                     in the future. Thank you)
@@ -156,7 +168,7 @@
                     <img data-src="https://via.placeholder.com/50" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                     <h5>Melissa Gahan</h5>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

@@ -9,6 +9,9 @@
                 </li>
                 <li class="bread-crumbs__item">Contact</li>
             </ul>
+            @php
+                $basic_info = DB::table('basic_info')->where('status', 1)->first();
+            @endphp
             <div class="detail-block__items">
                 <div class="detail-block__item">
                     <div class="detail-block__item-icon">
@@ -17,9 +20,7 @@
                         <i class="icon-map-pin-big"></i>
                     </div>
                     <div class="detail-block__item-info">
-                        9806 A Sector 3 Rd Phase 13th Main, Yelahanka New
-                            Town, Bengaluru, Karnataka
-                            560064
+                        @if($basic_info->address) {{$basic_info->address}} @endif
                     </div>
                 </div>
                 <div class="detail-block__item">
@@ -29,8 +30,8 @@
                         <i class="icon-phone"></i>
                     </div>
                     <div class="detail-block__item-info">
-                        +1 345 99 71 345<br>
-                        info@beshop.com
+                        @if($basic_info->phone1)<a href="tel:{{$basic_info->phone1}}"> {{$basic_info->phone1}} </a>@endif<br>
+                        @if($basic_info->email) {{$basic_info->email}} @endif
                     </div>
                 </div>
                 <div class="detail-block__item">
@@ -40,8 +41,7 @@
                         <i class="icon-2"></i>
                     </div>
                     <div class="detail-block__item-info">
-                        Mon - Sat: 7am – 6pm<br>
-                        Sunday: Holiday
+                        @if($basic_info->timing) {{$basic_info->timing}} @endif
                     </div>
                 </div>
             </div>
@@ -66,11 +66,17 @@
             </div>
             <div class="contacts-info__social">
                 <span>Find us here:</span>
+                @php
+                $social_media = DB::table('social_media')->where('status', 1)->get();
+            @endphp
                 <ul>
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-insta"></i></a></li>
-                    <li><a href="#"><i class="icon-in"></i></a></li>
+                    @foreach ($social_media as $item)
+                    @if($item->social_media_name =='facebook' )<li><a href="{{$item->link}}"><i class="icon-facebook"></i></a></li>@endif
+                    @if($item->social_media_name == 'twitter')<li><a href="{{$item->link}}"><i class="icon-twitter"></i></a></li>@endif
+                    @if($item->social_media_name == 'instagram')<li><a href="{{$item->link}}"><i class="icon-insta"></i></a></li>@endif
+                    @if($item->social_media_name ==  'linkedin')<li><a href="{{$item->link}}"><i class="icon-in"></i></a></li>@endif
+                    @if($item->social_media_name ==  'youtube')<li><a href="{{$item->link}}"><i class="icon-youtube"></i></a></li>@endif
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -119,7 +125,8 @@
 <!-- BEGIN CONTACTS MAP -->
 <div class="contacts-map mb-5">
     <div id="map1">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d343.4864031675898!2d77.58805909564494!3d13.092529034859924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae185cddbddf4d%3A0x92c6f685d0f84a8a!2sPhase%2013th!5e0!3m2!1sen!2sin!4v1635505785728!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="@if($basic_info->map) {{$basic_info->map}} @endif" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d343.4864031675898!2d77.58805909564494!3d13.092529034859924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae185cddbddf4d%3A0x92c6f685d0f84a8a!2sPhase%2013th!5e0!3m2!1sen!2sin!4v1635505785728!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> --}}
     </div>
 </div>
 <!-- CONTACTS MAP EOF   -->

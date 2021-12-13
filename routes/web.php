@@ -94,6 +94,8 @@ Route::group(['middleware' => 'auth', 'User'], function () {
 
     Route::get('cart-add/{products_id}/{attribute_id}/{quantity}','Website\EcomController@add_to_cart_get');
 
+    Route::post('product-review-submit','Website\WebsiteController@addReviewComment');
+
 });
 
 Route::middleware(['auth', 'Admin'])->group(function () {
@@ -138,6 +140,21 @@ Route::middleware(['auth', 'Admin'])->group(function () {
     Route::get('delete-plans/{id}', 'Admin\AdminController@delete_plans');
     Route::get('update-plans/{id}/{status}', 'Admin\AdminController@update_plan_status');
 
+    Route::get('view-about-us', 'Admin\AdminController@view_about_us');
+    Route::get('add-about-us', 'Admin\AdminController@add_about_us');
+    Route::post('submit-about-us', 'Admin\AdminController@submit_about_us');
+    Route::get('edit-about-us/{id}', 'Admin\AdminController@edit_about_us');
+    Route::get('delete-about-us/{id}', 'Admin\AdminController@delete_about_us');
+    Route::get('update-about-us/{id}/{status}', 'Admin\AdminController@update_plan_status');
+
+    Route::get('view-testimonial', 'Admin\AdminController@view_testimonial');
+    Route::get('add-testimonial', 'Admin\AdminController@add_testimonial');
+    Route::post('submit-testimonial', 'Admin\AdminController@submit_testimonial');
+    Route::get('edit-testimonial/{id}', 'Admin\AdminController@edit_testimonial');
+    Route::get('delete-testimonial/{id}', 'Admin\AdminController@delete_testimonial');
+    Route::get('update-testimonial/{id}/{status}', 'Admin\AdminController@update_testimonial_status');
+
+
     Route::get('view-product', 'Admin\ProductController@view_product');
     Route::get('add-product', 'Admin\ProductController@add_product');
     Route::post('submit-product', 'Admin\ProductController@submit_product');
@@ -155,6 +172,18 @@ Route::middleware(['auth', 'Admin'])->group(function () {
     Route::post('submit-product-images', 'Admin\ProductController@submit_product_images');
     Route::get('edit-product-images/{id}', 'Admin\ProductController@edit_product_images');
     Route::get('delete-product-images/{id}', 'Admin\ProductController@delete_product_images');
+
+    Route::get('view-social-media', 'Admin\AdminController@view_social_media');
+    Route::get('add-social-media', 'Admin\AdminController@add_social_media');
+    Route::post('submit-social-media', 'Admin\AdminController@submit_social_media');
+    Route::get('edit-social-media/{id}', 'Admin\AdminController@edit_social_media');
+    Route::get('delete-social-media/{id}', 'Admin\AdminController@delete_social_media');
+
+    Route::get('view-basic-info', 'Admin\AdminController@view_basic_info');
+    Route::get('add-basic-info', 'Admin\AdminController@add_basic_info');
+    Route::post('submit-basic-info', 'Admin\AdminController@submit_basic_info');
+    Route::get('edit-basic-info/{id}', 'Admin\AdminController@edit_basic_info');
+    Route::get('delete-basic-info/{id}', 'Admin\AdminController@delete_basic_info');
 
     Route::get('view-admin-order', 'Admin\ProductController@order_list');
     Route::get('admin-order-detail/{id}','Admin\ProductController@userOrderDetail');

@@ -3,10 +3,10 @@
 <!-- BEGIN HEADER -->
 
 <header class="header">
-    <div class="header-top">
+    {{-- <div class="header-top">
         <span>30% OFF ON ALL PRODUCTS ENTER CODE: beshop2020</span>
         <i class="header-top-close js-header-top-close icon-close"></i>
-    </div>
+    </div> --}}
     <div class="header-content">
         <div class="header-logo" style="height: 50px;">
             <img src="{{asset('images/logo.png')}}" alt="" style="height: 100%;">
@@ -69,12 +69,19 @@
         <div class="wrapper">
             <div class="footer-top">
                 <div class="footer-top__social">
+                    @php
+                    $social_media = DB::table('social_media')->where('status', 1)->get();
+                @endphp
                     <span>Find us here:</span>
                     <ul>
-                        <li><a href="#"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                        <li><a href="#"><i class="icon-insta"></i></a></li>
-                        <li><a href="#"><i class="icon-in"></i></a></li>
+                        @foreach ($social_media as $item)
+                        @if($item->social_media_name =='facebook' )<li><a href="{{$item->link}}"><i class="icon-facebook"></i></a></li>@endif
+                        @if($item->social_media_name == 'twitter')<li><a href="{{$item->link}}"><i class="icon-twitter"></i></a></li>@endif
+                        @if($item->social_media_name == 'instagram')<li><a href="{{$item->link}}"><i class="icon-insta"></i></a></li>@endif
+                        @if($item->social_media_name ==  'linkedin')<li><a href="{{$item->link}}"><i class="icon-in"></i></a></li>@endif
+                        @if($item->social_media_name ==  'youtube')<li><a href="{{$item->link}}"><i class="icon-youtube"></i></a></li>@endif
+                        @endforeach
+                        
                     </ul>
                 </div>
                 <div class="footer-top__logo">
@@ -125,17 +132,19 @@
                         <li><a href="#">Information</a></li>
                     </ul>
                 </div>
+
+                @php
+                    $basic_info = DB::table('basic_info')->where('status', 1)->first();
+                @endphp
                 <div class="footer-nav__col">
                     <span class="footer-nav__col-title">Contact</span>
                     <ul>
-                        <li><i class="icon-map-pin"></i> 9806 A Sector 3 Rd Phase 13th Main, Yelahanka New
-                            Town, Bengaluru, Karnataka
-                            560064</li>
+                        <li><i class="icon-map-pin"></i>@if($basic_info->address) {{$basic_info->address}} @endif</li>
                         <li>
                             <i class="icon-smartphone"></i>
                             <div class="footer-nav__col-phones">
-                                <a href="tel:+13459971345">+1.322.786.1983</a>
-                                <a href="tel:+13457464975">+1.322.786.1983</a>
+                                @if($basic_info->phone1)<a href="tel:{{$basic_info->phone1}}"> {{$basic_info->phone1}} </a>@endif
+                                @if($basic_info->phone2)<a href="tel:{{$basic_info->phone2}}"> {{$basic_info->phone2}} </a>@endif
                             </div>
                         </li>
                         {{-- <li><i class="icon-mail"></i><a href="mailto:info@beshop.com">info@beshop.com</a></li> --}}
@@ -180,6 +189,9 @@
      #user_profile:hover + #sub_menuProfile , #sub_menuProfile:hover
     {
         display: block;
+    }
+    .abt-text p{
+        color: #000!important;
     }
 </style>
 

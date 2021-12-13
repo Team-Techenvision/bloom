@@ -5,12 +5,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\User;
+use App\About_us;
+use App\Testimonial;
 use App\Categories;
 use App\SubCategories;
 use App\Plans;
 use App\Blogs;
 use App\Banner;
-
+use App\Social_media;
+use App\Basic_info;
 use DB;
 use Auth;
 
@@ -538,5 +541,351 @@ class AdminController extends Controller
         return redirect('view-plans');
     }
 
+
+    public function view_about_us()
+    {
+        $data['flag'] = 18; 
+        $data['page_title'] = 'About us';       
+        $data['About_us'] =  About_us::get();
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function add_about_us()
+    {
+        $data['flag'] = 19; 
+        $data['page_title'] = 'About Us';
+        // $data['tabs'] = Tabs::where('status',"1")->get(); 
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+    public function submit_about_us(Request $req){            
+        if($req->about_us_id) { 
+            // dd($req);
+            $req->validate([
+                'content'=> 'required',
+                //'blog_image' => 'image|mimes:jpeg,jpg,png,gif,svg' 
+            ]);    
+            if($req->hasFile('new_bg_image')) {
+                $file = $req->file('new_bg_image');
+                $filename = 'bg_image'.time().'.'.$req->new_bg_image->extension();
+                $destinationPath = public_path('/images');
+                $file->move($destinationPath, $filename);
+                $image = 'images/'.$filename;
+                About_us::where('id',$req->about_us_id)->update([
+                    'content' => $req->content,   
+                    'bg_image' => $image,
+                    'status' => $req->status,
+                ]);
+            }else{
+                About_us::where('id',$req->about_us_id)->update([
+                    'content' => $req->content,   
+                    'status' => $req->status,
+                ]);
+            }
+            toastr()->success('Successfully Updated!');
+            return redirect('view-about-us');
+        }else{  
+            // dd($req);
+            $req->validate([
+                'content'=> 'required',   
+            ]); 
+
+            if($req->hasFile('bg_image')) {
+                $file = $req->file('bg_image');
+                $filename = 'bg_image'.time().'.'.$req->bg_image->extension();
+                $destinationPath = public_path('/images');
+                $file->move($destinationPath, $filename);
+                $image = 'images/'.$filename;
+                
+                $data = new About_us();
+                $data->content = $req->content;  
+                $data->bg_image  = $image;
+                $data->status = $req->status;
+                $data->save(); 
+            
+        }else{
+            $data = new About_us();
+            $data->content = $req->content;  
+            $data->status = $req->status;
+            $data->save(); 
+        } 
+         toastr()->success('Successfully Added!');
+        return redirect('view-about-us');
+        }
+    } 
+
+    public function delete_about_us($id){ 
+        $data['result']= About_us::where('id',$id)->delete();
+        toastr()->error('Deleted !');
+        return redirect('view-about-us');
+    }
+
+    public function edit_about_us($id){
+        $data['flag'] = 20; 
+        $data['page_title'] = 'Edit About Us'; 
+        $data['about_us'] = About_us::where('id',$id)->first(); 
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function update_about_us_status($id, $status){ 
+        About_us::where('id',$id)->update([
+            'status' => $status,
+        ]);
+        toastr()->error('About Status Updated!');
+        return redirect('view-about-us');
+    }
+
+    public function view_testimonial()
+    {
+        $data['flag'] = 21; 
+        $data['page_title'] = 'Testimonial';       
+        $data['Testimonial'] =  Testimonial::get();
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function add_testimonial()
+    {
+        $data['flag'] = 22; 
+        $data['page_title'] = 'Testimonial';
+        // $data['tabs'] = Tabs::where('status',"1")->get(); 
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+    public function submit_testimonial(Request $req){   
+        // dd($req);         
+        if($req->testimonial_id) { 
+            // dd($req);
+            $req->validate([
+                'customer_name'=> 'required',
+                'description'=> 'required',
+                'images' => 'image|mimes:jpeg,jpg,png,gif,svg'
+            ]);    
+            if($req->hasFile('new_images')) {
+                $file = $req->file('new_images');
+                $filename = 'testimonial'.time().'.'.$req->new_images->extension();
+                $destinationPath = public_path('/images/testimonial');
+                $file->move($destinationPath, $filename);
+                $image = 'images/testimonial/'.$filename;
+                
+                Testimonial::where('id',$req->testimonial_id)->update([
+                    'customer_name' => $req->customer_name,   
+                    'images' => $image,
+                    'description' => $req->description,   
+                    'status' => $req->status,
+                ]);
+            }else{
+                Testimonial::where('id',$req->testimonial_id)->update([
+                    'customer_name' => $req->customer_name,   
+                    'description' => $req->description,   
+                    'status' => $req->status,
+                ]);
+            }
+            toastr()->success('Successfully Updated!');
+            return redirect('view-testimonial');
+        }else{  
+            // dd($req);
+            $req->validate([
+                'customer_name'=> 'required',
+                'description'=> 'required',
+                'images' => 'image|mimes:jpeg,jpg,png,gif,svg',  
+            ]); 
+
+            if($req->hasFile('images')) {
+                $file = $req->file('images');
+                $filename = 'testimonial'.time().'.'.$req->images->extension();
+                $destinationPath = public_path('/images/testimonial');
+                $file->move($destinationPath, $filename);
+                $image = '/images/testimonial/'.$filename;
+                
+                $data = new Testimonial();
+                $data->customer_name = $req->customer_name; 
+                $data->description = $req->description;  
+                $data->images  = $image;
+                $data->status = $req->status;
+                $data->save(); 
+            
+        }else{
+            $data = new Testimonial();
+            $data->customer_name = $req->customer_name; 
+            $data->description = $req->description;  
+            $data->status = $req->status;
+            $data->save(); 
+        } 
+         toastr()->success('Successfully Added!');
+        return redirect('view-testimonial');
+        }
+    } 
+
+    public function delete_testimonial($id){ 
+        $data['result']= Testimonial::where('id',$id)->delete();
+        toastr()->error('Deleted !');
+        return redirect('view-testimonial');
+    }
+
+    public function edit_testimonial($id){
+        $data['flag'] = 23; 
+        $data['page_title'] = 'Edit Testimonial'; 
+        $data['Testimonial'] = Testimonial::where('id',$id)->first(); 
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function update_testimonial_status($id, $status){ 
+        About_us::where('id',$id)->update([
+            'status' => $status,
+        ]);
+        toastr()->error('About Status Updated!');
+        return redirect('view-about-us');
+    }
+
+    public function view_social_media()
+    {
+        $data['flag'] = 24; 
+        $data['page_title'] = 'All Social Media';       
+       $data['social_media'] =  Social_media::get();
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function add_social_media()
+    {
+        $data['flag'] = 25; 
+        $data['page_title'] = 'Add Social Media';
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function submit_social_media(Request $req)
+    {
+     
+        // dd($req);
+
+        $this->validate($req,[
+            'social_media_name'=>'required', 
+            'link'=>'required'            
+         ]);
+
+
+         if($req->social_media_id) { 
+            Social_media::where('id',$req->social_media_id)->update([
+                'social_media_name' => $req->social_media_name,
+                'link' => $req->link,
+                'status' => $req->status,
+            ]);
+            toastr()->success('Social Media Updated Successfully!');
+            return redirect('view-social-media');
+         }else{
+ 
+                $data = new Social_media;
+                $data->social_media_name=$req->social_media_name; 
+                $data->link=$req->link;            
+                $data->status=$req->status;             
+                $result = $data->save();               
+            if($result)
+            {
+                toastr()->success('Social Media Successfully Added!');
+            }
+            else
+            {
+                toastr()->error('Social Media Not Added!!');
+            }         
+    
+        // toastr()->success('Subject Successfully Added!');
+        return redirect('view-social-media');
+        }
+    }
+
+
+    public function delete_social_media($id){ 
+        $data['result']=Social_media::where('id',$id)->delete();
+        toastr()->error('Social Media Deleted !');
+        return redirect('view-social-media');
+    }
+
+    public function edit_social_media($id){
+        $data['flag'] = 26; 
+        $data['page_title'] = 'Social Media'; 
+        $data['social_media'] = Social_media::where('id',$id)->first(); 
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function view_basic_info()
+    {
+        $data['flag'] = 27; 
+        $data['page_title'] = 'Basic Information';       
+       $data['basic_info'] =  Basic_info::get();
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function add_basic_info()
+    {
+        $data['flag'] = 28; 
+        $data['page_title'] = 'Add Basic Information';
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function submit_basic_info(Request $req)
+    {
+     
+        // dd($req);
+
+        $this->validate($req,[
+            'address'=>'required', 
+            'phone1'=>'required'            
+         ]);
+
+
+         if($req->basic_info_id) { 
+            Basic_info::where('id',$req->basic_info_id)->update([
+                'address' => $req->address,
+                'phone1' => $req->phone1,
+                'phone2' => $req->phone2,
+                'email' => $req->email,
+                'timing' => $req->timing,
+                'map' => $req->map,
+                'status' => $req->status,
+            ]);
+            toastr()->success('Basic Information Updated!');
+            return redirect('view-basic-info');
+         }else{
+                $data = new Basic_info;
+                $data->address=$req->address; 
+                $data->phone1=$req->phone1; 
+                $data->phone2=$req->phone2; 
+                $data->email=$req->email; 
+                $data->timing=$req->timing;  
+                $data->map=$req->map;            
+                $data->status=$req->status;             
+                $result = $data->save();               
+            if($result)
+            {
+                toastr()->success('Basic Information Added!');
+            }
+            else
+            {
+                toastr()->error('Basic Information Not Added!!');
+            }         
+    
+        // toastr()->success('Subject Successfully Added!');
+        return redirect('view-basic-info');
+        }
+    }
+
+
+    public function delete_basic_info($id){ 
+        $data['result']=Basic_info::where('id',$id)->delete();
+        toastr()->error('Basic Information Deleted !');
+        return redirect('view-basic-info');
+    }
+
+    public function edit_basic_info($id){
+        $data['flag'] = 29; 
+        $data['page_title'] = 'Basic Information'; 
+        $data['basic_info'] = Basic_info::where('id',$id)->first(); 
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
     
 }

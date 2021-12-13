@@ -488,11 +488,12 @@ class WebsiteController extends Controller
         $data['product_images'] = Product_Images::where('status',1)->where('products_id',$product_id)->orderby('type','DESC')->get();
         // $data['Review'] = Review::where('status',1)->where('product_id',$product_id)->get();
         $data['Review'] = DB::table('reviews')
-        ->join('users', 'users.id','=','reviews.user_id')
-        ->select('reviews.*','users.name')
-        ->where('reviews.status',1)
-        ->where('reviews.product_id',$product_id)
-        ->get();
+                                ->join('users', 'users.id','=','reviews.user_id')
+                                ->select('reviews.*','users.name')
+                                ->where('reviews.status',1)
+                                ->where('reviews.product_id',$product_id)
+                                ->orderby('reviews.created_at','DESC')
+                                ->paginate(3);
 
         $data['Simillar_products'] = DB::table('products')
 		->join('category', 'category.id', '=', 'products.category_id')
@@ -695,5 +696,26 @@ class WebsiteController extends Controller
             toastr()->warning('Item Already into Wishlist');
         }
     return back();
-}
+    }
+
+    public function addReviewComment(Request $req){
+        //    dd($req);
+        $review_count = Review::where(['user_id'=>Auth::user()->id,'product_id'=>$req->product_id])->get();
+        // dd($review_count->count());
+    
+        if ($review_count->count() >= 1) {
+            toastr()->error('You already given review');
+            return back();
+        }
+        else{
+            $reg = new Review;
+            $reg->user_id = Auth::id();
+            $reg->product_id = $req->product_id;
+            $reg->comment = $req->comment;
+            $reg->rating = $req->rating;
+            $reg->save();
+            toastr()->success('Review submited  successfully!');
+            return back();
+        }
+    }
 }

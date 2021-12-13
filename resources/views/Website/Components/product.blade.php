@@ -174,6 +174,9 @@
                                 </div>
                             </div> 
                             @endforeach
+                            <div class="mt-3">
+                                {{ $Review->links() }}
+                            </div>
                             {{-- <div class="review-item">
                                 <div class="review-item__head">
                                     <div class="review-item__author">
@@ -249,31 +252,47 @@
                                     you)
                                 </div>
                             </div> --}}
-                            <a href="#" class="blog-item__link">show more <i
-                                    class="icon-arrow-md"></i></a>
+                            {{-- <a href="#" class="blog-item__link">show more <i
+                                    class="icon-arrow-md"></i></a> --}}
                         </div>
+                        @if (Auth::check())
                         <div class="product-detail__form post-comment__form">
                             <div class="subscribe-form__img">
-                                <img data-src="https://via.placeholder.com/157x108" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+                                <img data-src="{{asset('images/subscribe-img.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
                                     class="js-img" alt="">
                             </div>
-                            <form>
+                            @php
+                                $user_info = DB::table('users')->where('id',Auth::user()->id)->where('status',1)->first();
+                            @endphp
+                            <form action="{{url('product-review-submit')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{$Products->products_id}}">
                                 <h4>leave a review</h4>
                                 <p>Your email address will not be published.</p>
                                 <div class="rating" data-id="rating_1"></div>
                                 <div class="box-field">
-                                    <input type="text" class="form-control" placeholder="Enter your name">
+                                    <input type="text" class="form-control" placeholder="Enter your name" value="{{$user_info->name}}">
                                 </div>
                                 <div class="box-field">
-                                    <input type="email" class="form-control" placeholder="Enter your email">
+                                    <select id="review-stars" class="form-control" name="rating" >
+                                        <option value="5">5 Stars Rating</option>
+                                        <option value="4">4 Stars Rating</option>
+                                        <option value="3">3 Stars Rating</option>
+                                        <option value="2">2 Stars Rating</option>
+                                        <option value="1">1 Stars Rating</option>
+                                    </select>
+                                </div>
+                                <div class="box-field">
+                                    <input type="email" class="form-control" placeholder="Enter your email" value="{{$user_info->email}}">
                                 </div>
                                 <div class="box-field box-field__textarea">
-                                    <textarea class="form-control"
+                                    <textarea class="form-control" name="comment"
                                         placeholder="Enter your review"></textarea>
                                 </div>
                                 <button type="submit" class="btn">send</button>
                             </form>
                         </div>
+                    @endif
                     </div>
                 </div>
             </div>
