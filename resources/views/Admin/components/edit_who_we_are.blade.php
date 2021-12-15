@@ -2,85 +2,72 @@
 <div class="col-12">
     <div class="card">
         <div class="card-body">
-
             {{-- <h4 class="card-title">Buttons example</h4> --}}
             {{-- <p class="card-title-desc">The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
             </p> --}}
-            <div class="col-md-8 m-auto">
-                                       
-                <form class="" action="{{url('submit-basic-info')}}" method="POST" enctype="multipart/form-data">                        
+            <div class="col-md-8 m-auto">                                       
+                <form class="" action="{{url('submit-who-we-are')}}" method="POST" enctype="multipart/form-data">                        
                 @csrf 
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Add Address</label>
-                    <div class="col-sm-9">
-                        <div class="form-group">                            
-                            <div>
-                                <textarea class="form-control" rows="3" name="address" placeholder="Enter Address"></textarea>
+                <input type="hidden" name="id" value="{{$who_we_are->id}}">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Title <small class="text-danger">*</small></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="title"  placeholder="Enter Title" value="{{$who_we_are->title}}"  required/>
+                        </div>
+                    </div>   
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> Content</label>
+                        <div class="col-sm-9">
+                            <div class="form-group">                            
+                                <div>
+                                    <textarea id="elm1"  class="form-control" rows="3" name="content" placeholder="Enter Content">{{$who_we_are->content}}</textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                    
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Phone no. <small class="text-danger">*</small></label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="phone1" required placeholder="Enter Phone No. " required/>
-                        </div>
-                    </div>  
+
+                    @if($who_we_are->bg_image)
+                    <div class="form-group row ">
+                        <label class="form-label col-md-3 p-2">Preview</label>
+                        <div class=" col-md-9">                                  
+                           <img class="document_img" src="{{asset($who_we_are->bg_image)}}" alt="" width="80" height="80">
+                        </div>                                
+                    </div>
+                    @endif
 
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Alt Phone no.  <small class="text-danger">*</small></label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="phone2" required placeholder="Enter Alternate Phone No." required/>
+                        <label class="col-md-3 col-form-label">Background Image </label>
+                        <div class="col-md-9">
+                            <input type="file" name="new_bg_image">
                         </div>
-                    </div>  
+                    </div>
+
+                    {{-- @if($who_we_are->right_side_video)
+                    <div class="form-group row ">
+                        <label class="form-label col-md-3 p-2">Preview</label>
+                        <div class=" col-md-9">  
+                            <video width="100%" height="auto" controls>
+                                <source src="{{asset($who_we_are->right_side_video)}}" type="video/mp4">
+                                Your browser does not support the video tag.
+                              </video>                                 
+                        </div>                                
+                    </div>
+                    @endif
 
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Email <small class="text-danger">*</small></label>
+                        <label class="col-md-3 col-form-label">Right Side Video </label>
+                        <div class="col-md-9">
+                            <input type="file" name="new_right_side_video">
+                        </div>
+                    </div> --}}
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Video Link <small class="text-danger">*</small></label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" name="email" required placeholder="Enter Email" required/>
+                            <input type="text" class="form-control" name="right_side_video_link"  placeholder="Enter Video Link" required/>
                         </div>
                     </div> 
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Timing </label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="timing" required placeholder="Enter Timing" />
-                        </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Add Google Map</label>
-                        <div class="col-sm-9">
-                            <div class="form-group">                            
-                                <div>
-                                    <textarea class="form-control" rows="3" name="map" placeholder="Enter Embeded Map link"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Google Analytics</label>
-                        <div class="col-sm-9">
-                            <div class="form-group">                            
-                                <div>
-                                    <textarea class="form-control" rows="3" name="google_analytics" placeholder="Enter Google Analytics code here"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Facebook Pixel </label>
-                        <div class="col-sm-9">
-                            <div class="form-group">                            
-                                <div>
-                                    <textarea class="form-control" rows="3" name="facebook_pixel" placeholder="Enter Facebook Pixel Code here"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Status</label>
@@ -98,9 +85,8 @@
                             </button>
                             <button type="submit" class="btn btn-primary waves-effect waves-light">
                             Submit
-                            </button>
+                            </button>                           
                         </div>
-
                         <div class="any_message mt-3">
                             @if ($errors->any())
                                 <div class="alert alert-danger">

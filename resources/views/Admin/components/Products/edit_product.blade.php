@@ -73,6 +73,24 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Keywords</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="key_words"  value="{{$product->key_words}}" placeholder="Enter Keywords" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Meta Description</label>
+                        <div class="col-sm-9">
+                            <div class="form-group">                            
+                                <div>
+                                    <textarea class="form-control" rows="3" name="meta_description" placeholder="Enter Meta Description">{{$product->meta_description}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Status</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="status">                                    
@@ -88,8 +106,7 @@
                             </button>
                             <button type="submit" class="btn btn-primary waves-effect waves-light">
                             Submit
-                            </button>
-                           
+                            </button>                           
                         </div>
 
                         <div class="any_message mt-3">

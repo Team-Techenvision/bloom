@@ -14,6 +14,8 @@ use App\Blogs;
 use App\Banner;
 use App\Social_media;
 use App\Basic_info;
+use App\CheckThisOut;
+use App\Who_We_Are;
 use DB;
 use Auth;
 
@@ -845,6 +847,8 @@ class AdminController extends Controller
                 'email' => $req->email,
                 'timing' => $req->timing,
                 'map' => $req->map,
+                'google_analytics' => $req->google_analytics,
+                'facebook_pixel' => $req->facebook_pixel,
                 'status' => $req->status,
             ]);
             toastr()->success('Basic Information Updated!');
@@ -856,7 +860,9 @@ class AdminController extends Controller
                 $data->phone2=$req->phone2; 
                 $data->email=$req->email; 
                 $data->timing=$req->timing;  
-                $data->map=$req->map;            
+                $data->map=$req->map; 
+                $data->google_analytics=$req->google_analytics;            
+                $data->facebook_pixel=$req->facebook_pixel;            
                 $data->status=$req->status;             
                 $result = $data->save();               
             if($result)
@@ -884,6 +890,245 @@ class AdminController extends Controller
         $data['flag'] = 29; 
         $data['page_title'] = 'Basic Information'; 
         $data['basic_info'] = Basic_info::where('id',$id)->first(); 
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function view_check_out_section()
+    {
+        $data['flag'] = 30; 
+        $data['page_title'] = 'Check This Out Section';       
+        $data['check_this_out'] =  CheckThisOut::get();
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function add_check_out_section()
+    {
+        $data['flag'] = 31; 
+        $data['page_title'] = 'Check This Out Section';
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function submit_check_out_section(Request $req)
+    {
+     
+        // dd($req);
+
+        $this->validate($req,[
+            'title'=>'required',       
+            'status'=>'nullable|numeric'             
+         ]);
+
+
+         if($req->id) { 
+            CheckThisOut::where('id',$req->id)->update([
+                'title' => $req->title,
+                'content' => $req->content,
+                'status' => $req->status,
+            ]);
+            if($req->hasFile('new_bg_image')) {
+                $file = $req->file('new_bg_image');
+                $filename = 'bg_image'.time().'.'.$req->new_bg_image->extension();
+                $destinationPath = public_path('images/');
+                $file->move($destinationPath, $filename);
+                $image = 'images/'.$filename;
+                CheckThisOut::where('id',$req->id)->update([  
+                    'bg_image' => $image,
+                ]);
+            }
+            if($req->hasFile('new_left_side_image')) {
+                $file = $req->file('new_left_side_image');
+                $filename = 'left_side_image'.time().'.'.$req->new_left_side_image->extension();
+                $destinationPath = public_path('images/');
+                $file->move($destinationPath, $filename);
+                $image = 'images/'.$filename;
+                CheckThisOut::where('id',$req->id)->update([  
+                    'left_side_image' => $image,
+                ]);
+            }
+            
+            toastr()->success('Check This Out Section Updated!');
+            return redirect('view-check-out-section');
+         }else{
+                $data = new CheckThisOut;
+                $data->title=$req->title;
+                $data->content=$req->content;            
+                $data->status=$req->status;             
+                $result = $data->save();
+                $insertedId = $data->id;
+
+                if($req->hasFile('bg_image')) {
+                    $file = $req->file('bg_image');
+                    $filename = 'bg_image'.time().'.'.$req->bg_image->extension();
+                    $destinationPath = public_path('images/');
+                    $file->move($destinationPath, $filename);
+                    $image = 'images/'.$filename;
+                    CheckThisOut::where('id',$insertedId)->update([  
+                        'bg_image' => $image,
+                    ]);
+                }
+                if($req->hasFile('left_side_image')) {
+                    $file = $req->file('left_side_image');
+                    $filename = 'left_side_image'.time().'.'.$req->left_side_image->extension();
+                    $destinationPath = public_path('images/');
+                    $file->move($destinationPath, $filename);
+                    $image = 'images/'.$filename;
+                    CheckThisOut::where('id',$insertedId)->update([  
+                        'left_side_image' => $image,
+                    ]);
+                }
+
+            if($result)
+            {
+                toastr()->success('Check This Out Section Added!');
+            }
+            else
+            {
+                toastr()->error('Check This Out Section Not Added!!');
+            }         
+    
+        // toastr()->success('Subject Successfully Added!');
+        return redirect('view-check-out-section');
+
+        }
+    }
+
+
+    public function delete_check_out_section($id){ 
+
+        $result = CheckThisOut::where('id',$id)->first();
+        
+        // $path = public_path()."/".$result->sub_category_image;
+        // // dd($path);
+        // unlink($path);
+        $data['result']=CheckThisOut::where('id',$id)->delete();
+        toastr()->error('Check This Out !');
+        return redirect('view-check-out-section');
+    }
+
+    public function edit_check_out_section($id){
+        $data['flag'] = 32; 
+        $data['page_title'] = 'Edit Check This Out'; 
+        $data['checkthisout'] = CheckThisOut::where('id',$id)->first(); 
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function view_who_we_are()
+    {
+        $data['flag'] = 33; 
+        $data['page_title'] = 'Who We Are Section';       
+        $data['who_we_are'] =  Who_We_Are::get();
+        // dd($data);
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function add_who_we_are()
+    {
+        $data['flag'] = 34; 
+        $data['page_title'] = 'Check This Out Section';
+        return view('Admin/Webviews/manage_admin_user',$data);
+    }
+
+    public function submit_who_we_are(Request $req)
+    {
+     
+        // dd($req);
+
+        $this->validate($req,[
+            'title'=>'required',       
+            'status'=>'nullable|numeric'             
+         ]);
+
+
+         if($req->id) { 
+            Who_We_Are::where('id',$req->id)->update([
+                'title' => $req->title,
+                'content' => $req->content,
+                'status' => $req->status,
+                'right_side_video_link' => $req->right_side_video_link,
+            ]);
+            if($req->hasFile('new_bg_image')) {
+                $file = $req->file('new_bg_image');
+                $filename = 'bg_image'.time().'.'.$req->new_bg_image->extension();
+                $destinationPath = public_path('images/');
+                $file->move($destinationPath, $filename);
+                $image = 'images/'.$filename;
+                Who_We_Are::where('id',$req->id)->update([  
+                    'bg_image' => $image,
+                ]);
+            }
+            if($req->hasFile('new_right_side_video')) {
+                $file = $req->file('new_right_side_video');
+                $filename = 'right_side_video'.time().'.'.$req->new_right_side_video->extension();
+                $destinationPath = public_path('video/');
+                $file->move($destinationPath, $filename);
+                $image = 'video/'.$filename;
+                Who_We_Are::where('id',$req->id)->update([  
+                    'right_side_video' => $image,
+                ]);
+            }
+            
+            toastr()->success('Who We Are Section Updated!');
+            return redirect('view-who-we-are');
+         }else{
+                $data = new Who_We_Are;
+                $data->title=$req->title;
+                $data->content=$req->content;            
+                $data->right_side_video_link=$req->right_side_video_link; 
+                $data->status=$req->status;             
+                $result = $data->save();
+                $insertedId = $data->id;
+
+                if($req->hasFile('bg_image')) {
+                    $file = $req->file('bg_image');
+                    $filename = 'bg_image'.time().'.'.$req->bg_image->extension();
+                    $destinationPath = public_path('images/');
+                    $file->move($destinationPath, $filename);
+                    $image = 'images/'.$filename;
+                    Who_We_Are::where('id',$insertedId)->update([  
+                        'bg_image' => $image,
+                    ]);
+                }
+                if($req->hasFile('right_side_video')) {
+                    $file = $req->file('right_side_video');
+                    $filename = 'right_side_video'.time().'.'.$req->right_side_video->extension();
+                    $destinationPath = public_path('video/');
+                    $file->move($destinationPath, $filename);
+                    $image = 'video/'.$filename;
+                    Who_We_Are::where('id',$insertedId)->update([  
+                        'right_side_video' => $image,
+                    ]);
+                }
+
+            if($result)
+            {
+                toastr()->success('Who We Are Added!');
+            }
+            else
+            {
+                toastr()->error('Who We Are Not Added!!');
+            }         
+    
+        // toastr()->success('Subject Successfully Added!');
+        return redirect('view-who-we-are');
+
+        }
+    }
+
+
+    public function delete_who_we_are($id){ 
+        $result = Who_We_Are::where('id',$id)->first();
+        $data['result']=Who_We_Are::where('id',$id)->delete();
+        toastr()->error('Who We Are Deleted !');
+        return redirect('view-who-we-are');
+    }
+
+    public function edit_who_we_are($id){
+        $data['flag'] = 35; 
+        $data['page_title'] = 'Edit Who We Are'; 
+        $data['who_we_are'] = Who_We_Are::where('id',$id)->first(); 
         // dd($data);
         return view('Admin/Webviews/manage_admin_user',$data);
     }

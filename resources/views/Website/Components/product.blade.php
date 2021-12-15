@@ -28,9 +28,9 @@
                                 <span class="products-item__sale">sale</span>
                             </div>
                             @if($item->product_image)
-                                <img loading="lazy" src="{{asset($item->product_image)}}"  alt="product">
+                                <img loading="lazy" src="{{asset($item->product_image)}}"  alt="{{$Products->key_words}}">
                             @else 
-                                <img loading="lazy" src="https://via.placeholder.com/570"  alt="product">
+                                <img loading="lazy" src="https://via.placeholder.com/570" alt="{{$Products->key_words}}">
                             @endif
                         </div>
                     @endforeach
@@ -52,9 +52,9 @@
                     @foreach ($product_images as $item)
                     <div class="product-slider__nav-item">
                         @if($item->product_image)
-                            <img loading="lazy" src="{{asset($item->product_image)}}" class="img_url" alt="product">
+                            <img loading="lazy" src="{{asset($item->product_image)}}" class="img_url" alt="{{$Products->key_words}}">
                         @else
-                            <img loading="lazy" src="https://via.placeholder.com/135" class="img_url" alt="product"> 
+                            <img loading="lazy" src="https://via.placeholder.com/135" class="img_url" alt="{{$Products->key_words}}"> 
                         @endif
                     </div>
                     @endforeach
@@ -119,8 +119,7 @@
                             <span class="counter-link counter-link__next"><i class="icon-arrow"></i></span>
                         </div>
                     </div>
-                </div>
-               
+                </div>               
                     <input type="hidden" name="products_id" id="product_id_detail_page" value="{{$Products->products_id}}">
                     <input type="hidden" name="attribute_id" id="attribute_id_detail_page" value="{{$Products->id}}">
                     <div class="product-buttons">

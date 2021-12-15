@@ -185,6 +185,18 @@ Route::middleware(['auth', 'Admin'])->group(function () {
     Route::get('edit-basic-info/{id}', 'Admin\AdminController@edit_basic_info');
     Route::get('delete-basic-info/{id}', 'Admin\AdminController@delete_basic_info');
 
+    Route::get('view-check-out-section', 'Admin\AdminController@view_check_out_section');
+    Route::get('add-check-out-section', 'Admin\AdminController@add_check_out_section');
+    Route::post('submit-check-out-section', 'Admin\AdminController@submit_check_out_section');
+    Route::get('edit-check-out-section/{id}', 'Admin\AdminController@edit_check_out_section');
+    Route::get('delete-check-out-section/{id}', 'Admin\AdminController@delete_check_out_section');
+
+    Route::get('view-who-we-are', 'Admin\AdminController@view_who_we_are');
+    Route::get('add-who-we-are', 'Admin\AdminController@add_who_we_are');
+    Route::post('submit-who-we-are', 'Admin\AdminController@submit_who_we_are');
+    Route::get('edit-who-we-are/{id}', 'Admin\AdminController@edit_who_we_are');
+    Route::get('delete-who-we-are/{id}', 'Admin\AdminController@delete_who_we_are');
+
     Route::get('view-admin-order', 'Admin\ProductController@order_list');
     Route::get('admin-order-detail/{id}','Admin\ProductController@userOrderDetail');
 

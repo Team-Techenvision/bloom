@@ -58,6 +58,8 @@ class ProductController extends Controller
                 'sub_category_id' => $req->sub_category_id,
                 'short_description' => $req->short_description,
                 'long_description' => $req->long_description,
+                'key_words' => $req->key_words,
+                'meta_description' => $req->meta_description,
                 'status' => $req->status,    
             ]);
 
@@ -93,7 +95,9 @@ class ProductController extends Controller
                 $data->sub_category_id=$req->sub_category_id;            
                 $data->product_code=$req->product_code;
                 $data->short_description=$req->short_description;            
-                $data->long_description=$req->long_description;           
+                $data->long_description=$req->long_description; 
+                $data->key_words=$req->key_words;            
+                $data->meta_description=$req->meta_description;           
                 $data->status=$req->status;           
                 $result = $data->save();
                 $insertedId = $data->id;

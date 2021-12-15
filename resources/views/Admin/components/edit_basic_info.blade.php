@@ -62,6 +62,28 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Google Analytics</label>
+                        <div class="col-sm-9">
+                            <div class="form-group">                            
+                                <div>
+                                    <textarea class="form-control" rows="3" name="google_analytics" placeholder="Enter Google Analytics code here">{{$basic_info->google_analytics}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Facebook Pixel </label>
+                        <div class="col-sm-9">
+                            <div class="form-group">                            
+                                <div>
+                                    <textarea class="form-control" rows="3" name="facebook_pixel" placeholder="Enter Facebook Pixel Code here">{{$basic_info->facebook_pixel}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Status</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="status">                                    

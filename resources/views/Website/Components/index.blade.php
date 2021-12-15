@@ -168,20 +168,24 @@
     </div>
 </section>
 <!-- TOP CATEGORIES EOF   -->
+
+@php
+$checkthisout = DB::table('checkthisout')->where('status',1)->first();
+$who_we_are = DB::table('who_we_are')->where('status',1)->first();
+@endphp
+
 <!-- BEGIN INFO BLOCKS -->
 <div class="info-blocks">
-    <div class="info-blocks__item js-img" data-src="{{asset('Website/img/image/luchiana-1659945081.jpg')}}">
+    <div class="info-blocks__item js-img" data-src="@if($checkthisout->bg_image){{$checkthisout->bg_image}}@else{{asset('Website/img/image/luchiana-1659945081.jpg')}}@endif">
         <div class="wrapper">
             <div class="info-blocks__item-img"> <!----------https://via.placeholder.com/960x900----------------->
-                <img data-src="{{asset('Website/img/image/luchiana-1658108654.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                <img data-src="@if($checkthisout->left_side_image){{$checkthisout->left_side_image}}@else{{asset('Website/img/image/luchiana-1658108654.jpg')}}@endif" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
             </div>
             <div class="info-blocks__item-text">
                 <span class="saint-text">Check This Out</span>
-                <h2>new collection for delicate skin</h2>
-                <span class="info-blocks__item-descr">Nourish your skin with toxin-free cosmetic products.
-                    With the offers that you can’t refuse.</span>
-                <p>Non aliqua reprehenderit reprehenderit culpa laboris nulla minim anim velit adipisicing ea aliqua alluptate sit do do.Non aliqua reprehenderit reprehenderit culpa laboris nulla minim anim velit adipisicing ea aliqua alluptate
-                    sit do do.Non aliqua reprehenderit reprehenderit culpa laboris nulla minim.</p>
+                <h2>{{$checkthisout->title}}</h2>
+                {{-- <span class="info-blocks__item-descr"></span> --}}
+                <p>{!!$checkthisout->content!!}</p>
                 <a href="#" class="btn btn-info">Shop now</a>
             </div>
         </div>
@@ -190,21 +194,20 @@
     <div class="info-blocks__item info-blocks__item-reverse js-img" data-src="{{asset('Website/img/image/coconut-soap-HWRZKN3-683x1024-1-200x3001.jpg')}}">
         <div class="wrapper">
             <div class="info-blocks__item-img">
-                <img data-src="{{asset('Website/img/image/Image-3KGQSJN-1024x683-1-300x200.jpg')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
-                <iframe allowfullscreen></iframe>
-                <div class="info-blocks__item-img-overlay">
+                <img data-src="{{asset($who_we_are->bg_image)}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
+                <iframe src="{{asset($who_we_are->right_side_video_link)}}" allowfullscreen></iframe>
+                <div class="info-blocks__item-img-overlay1">
                     <span>Promotion video</span>
-                    <div class="info-blocks__item-img-play">
+                    <div class="info-blocks__item-img-play1">
                         <img data-src="{{asset('Website/img/image/play-white-1.png')}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" class="js-img" alt="">
                     </div>
                 </div>
             </div>
             <div class="info-blocks__item-text">
                 <span class="saint-text">About Us</span>
-                <h2>Who we are</h2>
+                <h2>{{$who_we_are->title}}</h2>
                 <span class="info-blocks__item-descr1">
-                   <p> Our LIP Balms,moisturizer, Lotions & Soaps are made out of Shea,Cocoa,Mango,Avacado, Soy Butters, and completely free from SLS, Sulphates & Parabens.Forming the range of stores, we, above all, strive not only to meet the format of "home shop", offering each customer the most basic household goods, but also to create a unique space of beauty and care. BeShope stores offer their customers the widest and highest quality selection of products from world-renowned manufacturers.</p></span>
-                <p>We take lots of care to ensure that every products is loaded with Vitamin E and carrier oils like Almond, Avacado, Argan Oil, Olive Oil, Castor oil etc and also Glycering to keep your skin hydrated throught out. We use pure essential oils in all our products,which adds up to enhanced texture of skin and hairs.Also skin absorbs the essential oils and keeps you overall whole and healthy.</p>
+                   <p>{!!$who_we_are->content!!}</p>
                 <a href="#" class="info-blocks__item-link">
                     <i class="icon-video"></i> Watch video about us
                     <i class="icon-arrow-lg"></i>
@@ -332,7 +335,6 @@
             </p>
         </div>
         <div class="blog-items">
-
             @if($blog)
                 @foreach ($blog as $item)
             <div class="blog-item">

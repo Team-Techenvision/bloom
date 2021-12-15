@@ -76,6 +76,18 @@
         @include('Admin.components/add_basic_info')
     @elseif($flag == 29) 
         @include('Admin.components/edit_basic_info')
+    @elseif($flag == 30) 
+        @include('Admin.components/check_out_section_list')
+    @elseif($flag == 31) 
+        @include('Admin.components/add_check_out_section')
+    @elseif($flag == 32) 
+        @include('Admin.components/edit_check_out_section')
+    @elseif($flag == 33) 
+        @include('Admin.components/who_we_are_list')
+    @elseif($flag == 34) 
+        @include('Admin.components/add_who_we_are')
+    @elseif($flag == 35) 
+        @include('Admin.components/edit_who_we_are')
     @endif
     </div>
                     <!-- end row -->
